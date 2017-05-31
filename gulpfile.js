@@ -10,11 +10,10 @@ var gulp = require('gulp'),
  * es compile
  */
 gulp.task('build', function () {
-    return gulp.src('./src/*.js')
+    return gulp.src('./src/**/*.js')
         .pipe(babel({
             plugins: ['transform-runtime']
         }))
-        .pipe(concat('index.js'))
         .on('error', function () {
             console.error(e.toString());
         })
@@ -25,5 +24,5 @@ gulp.task('build', function () {
  * watch components src files
  */
 gulp.task('watch', function () {
-    gulp.watch('./src/*.js', ['build']);
+    gulp.watch('./src/**/*.js', ['build']);
 });
