@@ -6,7 +6,7 @@ import ReactTextEdit from 'react-text-edit';
 
 import Event from 'utils/Event';
 
-import README from 'README.md';
+import README from 'assets/README.md';
 
 import 'assets/sass/MarkDownEditor.scss';
 
