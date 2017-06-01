@@ -1,1 +1,1 @@
-export default from './lib/JsMarkdown';
+export default from './lib/Markdown';
