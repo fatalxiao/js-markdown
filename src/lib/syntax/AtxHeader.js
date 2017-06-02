@@ -8,7 +8,7 @@ function parse(line, index, lines, blocks) {
 
     const block = {
         display: 'block',
-        type: 'Header',
+        type: 'AtxHeader',
         level: result[1].length,
         rawValue: result[2]
     };

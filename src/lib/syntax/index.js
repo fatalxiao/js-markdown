@@ -1,12 +1,14 @@
-import Header from './Header';
+import AtxHeader from './AtxHeader';
+import SetextHeader from './SetextHeader';
 import Paragraph from './Paragraph';
 
 export default {
 
-    blockTypes: ['Header', 'Paragraph'],
+    blockTypes: ['AtxHeader', 'SetextHeader', 'Paragraph'],
     inlineTypes: [],
 
-    Header,
+    AtxHeader,
+    SetextHeader,
     Paragraph
 
 };
