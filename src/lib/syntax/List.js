@@ -39,6 +39,7 @@ function parse(line, index, lines, blocks) {
     }
 
     const block = initListRootNode(result);
+    let noMatchCount = 0;
 
     // index++;
     // for (let len = lines.length; index < len; index++) {
@@ -51,7 +52,7 @@ function parse(line, index, lines, blocks) {
     //
     // }
 
-    return [block,index];
+    return [block, index];
 
 }
 

@@ -2,24 +2,14 @@ import _ from 'lodash';
 
 function parse(line, index, lines, blocks) {
 
-    if (blocks && blocks.length > 0) {
-
-        const lastBlock = blocks[blocks.length - 1];
-
-        if (lastBlock.type === 'Paragraph' && lastBlock.rawValue.slice(-2) !== '  ') {
-
-            if (line === '' && _.trim(line) === '') {
-                blocks[blocks.length - 1].rawValue += '  ';
-            } else {
-                blocks[blocks.length - 1].rawValue += '\n' + line;
-                return [null, index];
-            }
-
-        }
-
-    }
-
     if (line === '' || _.trim(line) === '' || line === '#' || _.trim(line) === '#') {
+        return [{
+            display: 'block',
+            type: 'BlankLine',
+            rawValue: ''
+        }, index];
+    } else if (blocks && blocks.length > 0 && blocks[blocks.length - 1].type === 'Paragraph') {
+        blocks[blocks.length - 1].rawValue += '\n' + line;
         return [null, index];
     } else {
         return [{
