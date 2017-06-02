@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 function parse(line, index, lines, blocks) {
 
-    const result = line.match(/^(`{3,}|\t|\s{4})\s*(.*?)\s*(?:\n|$)/);
+    const result = line.match(/^(`{3,}|\t| {4})\s*(.*?)\s*(?:\n|$)/);
 
     if (!result) {
         return;
