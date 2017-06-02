@@ -1,17 +1,42 @@
-function parse(line, index, lines) {
+import _ from 'lodash';
 
-    const block = {
-        display: 'block',
-        type: 'Paragraph',
-        rawValue: line
-    };
+function parse(line, index, lines, blocks) {
 
-    return [block, index];
+    if (blocks && blocks.length > 0) {
+
+        const lastBlock = blocks[blocks.length - 1];
+
+        if (lastBlock.type === 'Paragraph' && lastBlock.rawValue.slice(-2) !== '  ') {
+
+            if (line === '' && _.trim(line) === '') {
+                blocks[blocks.length - 1].rawValue += '  ';
+            } else {
+                blocks[blocks.length - 1].rawValue += '\n' + line;
+                return [null, index];
+            }
+
+        }
+
+    }
+
+    if (line === '' && _.trim(line) === '') {
+        return [null, index];
+    } else {
+
+        const block = {
+            display: 'block',
+            type: 'Paragraph',
+            rawValue: line
+        };
+
+        return [block, index];
+
+    }
 
 }
 
 function render(data = '', node) {
-    return `<p>${data}</p>`;
+    return `<p>${_.trim(data)}</p>`;
 }
 
 export default {

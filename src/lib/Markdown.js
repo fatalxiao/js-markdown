@@ -21,11 +21,11 @@ Markdown.parse = function (data) {
 
 };
 
-Markdown.prototype.parseBlock = function (line, index, lines) {
+Markdown.prototype.parseBlock = function (line, index, lines, blocks) {
 
     for (let i = 0, len = Syntax.blockTypes.length; i < len; i++) {
 
-        const result = Syntax[Syntax.blockTypes[i]].parse(line, index, lines);
+        const result = Syntax[Syntax.blockTypes[i]].parse(line, index, lines, blocks);
 
         if (!result) {
             continue;
@@ -50,11 +50,7 @@ Markdown.prototype.parseBlocks = function () {
 
         line = lines[i];
 
-        if (line === '' || _.trim(line) === '') {
-            continue;
-        }
-
-        const result = this.parseBlock(line, i, lines);
+        const result = this.parseBlock(line, i, lines, blocks);
 
         if (result) {
 
