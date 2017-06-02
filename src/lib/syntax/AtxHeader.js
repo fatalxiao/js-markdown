@@ -1,19 +1,17 @@
 function parse(line, index, lines, blocks) {
 
-    const result = line.match(/^(#{1,6})\s*(.*?)\s*#*\s*(?:\n|$)/);
+    const result = line.match(/^(#{1,6})\s*(.*?)\s*(?:\n|$)/);
 
     if (!result) {
         return;
     }
 
-    const block = {
+    return [{
         display: 'block',
         type: 'AtxHeader',
         level: result[1].length,
         rawValue: result[2]
-    };
-
-    return [block, index];
+    }, index];
 
 }
 

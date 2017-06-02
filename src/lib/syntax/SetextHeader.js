@@ -11,14 +11,12 @@ function parse(line, index, lines, blocks) {
         return;
     }
 
-    const block = {
+    return [{
         display: 'block',
         type: 'SetextHeader',
         level: result[1] === '=' ? 1 : 2,
         rawValue: line
-    };
-
-    return [block, index + 1];
+    }, index + 1];
 
 }
 

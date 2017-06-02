@@ -22,15 +22,11 @@ function parse(line, index, lines, blocks) {
     if (line === '' && _.trim(line) === '') {
         return [null, index];
     } else {
-
-        const block = {
+        return [{
             display: 'block',
             type: 'Paragraph',
             rawValue: line
-        };
-
-        return [block, index];
-
+        }, index];
     }
 
 }
