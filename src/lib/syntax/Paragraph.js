@@ -19,7 +19,7 @@ function parse(line, index, lines, blocks) {
 
     }
 
-    if (line === '' && _.trim(line) === '') {
+    if (line === '' || _.trim(line) === '' || line === '#' || _.trim(line) === '#') {
         return [null, index];
     } else {
         return [{

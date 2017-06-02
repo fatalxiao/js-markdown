@@ -1,6 +1,6 @@
 function parse(line, index, lines, blocks) {
 
-    const result = line.match(/^(#{1,6})\s*(.*?)\s*(?:\n|$)/);
+    const result = line.match(/^(#{1,6})\s*([^\s]+?)\s*(?:\n|$)/);
 
     if (!result) {
         return;
