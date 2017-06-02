@@ -3,6 +3,7 @@ import SetextHeader from './SetextHeader';
 import Code from './Code';
 import HorizontalRule from './HorizontalRule';
 import List from './List';
+import ListItem from './ListItem';
 import Paragraph from './Paragraph';
 
 export default {
@@ -15,6 +16,7 @@ export default {
     Code,
     HorizontalRule,
     List,
+    ListItem,
     Paragraph
 
 };

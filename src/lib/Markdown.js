@@ -95,7 +95,7 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
 
     let string = '';
 
-    if (node.children) {
+    if (node.children && node.children.length > 0) {
         for (let i = 0, len = node.children.length; i < len; i++) {
             string += this.toHTML(node.children[i]);
         }
