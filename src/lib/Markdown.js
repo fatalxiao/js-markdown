@@ -54,7 +54,7 @@ Markdown.prototype.parseBlocks = function () {
             continue;
         }
 
-        const result = this.parseBlock(line);
+        const result = this.parseBlock(line, i, lines);
 
         if (result) {
 
