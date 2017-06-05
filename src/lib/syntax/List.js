@@ -27,29 +27,19 @@ function initListRootNode(result, isFirst) {
 
 }
 
-function calDeep(indent) {
+function calDeep(result) {
 
-    if (!indent) {
+    if (!result) {
         return 0;
     }
 
-    const reg = /^( {0,3}\t| {4})/;
-    let count = 0,
-        result;
+    const indent = result[0].match(/^( {0,3}\t| {4})*/);
 
-    while (indent) {
-
-        result = indent.match(reg);
-        if (!result) {
-            return count;
-        }
-
-        count++;
-        indent = indent.slice(4);
-
+    if (!indent || !indent[0]) {
+        return 0;
     }
 
-    return count;
+    return ~~(indent[0].length / 4);
 
 }
 
@@ -60,8 +50,15 @@ function calParentNode(block, deep) {
     }
 
     let parentNode = block;
-    for (let i = 0; i < deep; i++) {
+    deep *= 2;
+    for (; deep > 0; deep--) {
+
+        if (!parentNode.children || parentNode.children.length < 1) {
+            return parentNode;
+        }
+
         parentNode = parentNode.children[parentNode.children.length - 1];
+
     }
 
     return parentNode;
@@ -74,10 +71,12 @@ function getLastListItemNode(block) {
         return;
     }
 
-    let node = block, deep = -1;
+    let node = block, deep = 0;
     while (node && node.children && node.children.length > 0) {
         node = node.children[node.children.length - 1];
-        deep++;
+        if (node.type === 'List') {
+            deep++;
+        }
     }
 
     return {node, deep};
@@ -86,7 +85,7 @@ function getLastListItemNode(block) {
 
 function addListItem(result, block) {
 
-    const deep = calDeep(result[1]),
+    const deep = calDeep(result),
         {deep: lastItemDeep} = getLastListItemNode(block),
         parentNode = calParentNode(block, deep);
 
@@ -156,7 +155,7 @@ function parse(line, index, lines, blocks) {
 
     }
 
-    console.log(block);
+    // console.log(JSON.stringify(block));
 
     return [block, index - 1];
 
