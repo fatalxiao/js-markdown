@@ -155,8 +155,6 @@ function parse(line, index, lines, blocks) {
 
     }
 
-    // console.log(JSON.stringify(block));
-
     return [block, index - 1];
 
 }
