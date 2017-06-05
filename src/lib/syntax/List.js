@@ -74,18 +74,32 @@ function getLastListItemNode(block) {
         return;
     }
 
-    let result = block;
-    while (result && result.children && result.children.length > 0) {
-        result = result.children[result.children.length - 1];
+    let node = block, deep = -1;
+    while (node && node.children && node.children.length > 0) {
+        node = node.children[node.children.length - 1];
+        deep++;
     }
 
-    return result;
+    return {node, deep};
 
 }
 
 function addListItem(result, block) {
-    const deep = calDeep(result[1]);
-    calParentNode(block, deep).children.push(generateListItemNode(result, false));
+
+    const deep = calDeep(result[1]),
+        {deep: lastItemDeep} = getLastListItemNode(block),
+        parentNode = calParentNode(block, deep);
+
+    let node;
+    if (deep <= lastItemDeep) {
+        node = generateListItemNode(result, false);
+    } else {
+        node = generateListNode(result, false);
+        node.children.push(generateListItemNode(result, false));
+    }
+
+    parentNode.children.push(node);
+
 }
 
 function appendParagraph(node, str) {
@@ -111,10 +125,9 @@ function appendParagraph(node, str) {
 
 function parse(line, index, lines, blocks) {
 
-    const noDeepReg = /^([\*\+\-]|\d+\.)\s+(.*?)\s*(?:\n|$)/,
-        deepReg = /^( {0,3}\t| {4})*([\*\-\+]|\d+\.)\s+(.*?)\s*(?:\n|$)/;
+    const reg = /^( {0,3}\t| {4})*([\*\-\+]|\d+\.)\s+(.*?)\s*(?:\n|$)/;
 
-    let result = line.match(noDeepReg);
+    let result = line.match(/^([\*\+\-]|\d+\.)\s+(.*?)\s*(?:\n|$)/);
 
     if (!result) {
         return;
@@ -129,10 +142,10 @@ function parse(line, index, lines, blocks) {
             break;
         }
 
-        result = lines[index].match(deepReg);
+        result = lines[index].match(reg);
         if (!result) {
             if (this.parseBlock(lines[index], 0, [lines[index]], [])[0].type === 'Paragraph') {
-                appendParagraph(getLastListItemNode(block), '\n' + lines[index]);
+                appendParagraph(getLastListItemNode(block).node, '\n' + lines[index]);
                 continue;
             } else {
                 break;
@@ -142,6 +155,8 @@ function parse(line, index, lines, blocks) {
         addListItem(result, block);
 
     }
+
+    console.log(block);
 
     return [block, index - 1];
 

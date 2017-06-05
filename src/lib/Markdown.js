@@ -101,7 +101,7 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
         }
     } else {
         if (node.type && Syntax[node.type]) {
-            return Syntax[node.type].render(node.rawValue, node);
+            return Syntax[node.type].render('', node);
         } else {
             return node.rawValue;
         }

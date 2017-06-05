@@ -1,5 +1,5 @@
 function render(data = '', node) {
-    return `<li>${data}</li>`;
+    return `<li>${node.rawValue || ''}${data}</li>`;
 }
 
 export default {
