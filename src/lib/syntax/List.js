@@ -71,12 +71,23 @@ function getLastListItemNode(block) {
         return;
     }
 
-    let node = block, deep = 0;
+    let node = block,
+        deep = 0,
+        temp;
+
     while (node && node.children && node.children.length > 0) {
-        node = node.children[node.children.length - 1];
+
+        temp = node.children[node.children.length - 1];
+
+        if (temp.type !== 'List' && temp.type !== 'ListItem') {
+            break;
+        }
+
+        node = temp;
         if (node.type === 'List') {
             deep++;
         }
+
     }
 
     return {node, deep};
@@ -101,24 +112,41 @@ function addListItem(result, block) {
 
 }
 
-function appendParagraph(node, str) {
+function appendParagraph(str, block) {
+
+    const node = getLastListItemNode(block).node;
 
     if (!node) {
         return;
     }
 
-    str = node.rawValue + str;
-    delete node.rawValue;
+    if (!node.children || node.children.length < 1) {
 
-    if (!node.children) {
-        node.children = [];
+        str = node.rawValue + str;
+        node.rawValue = '';
+
+        node.children = [{
+            display: 'block',
+            type: 'Paragraph',
+            rawValue: str
+        }];
+
+    } else {
+
+        for (let i = 0, len = node.children.length; i < len; i++) {
+            if (node.children[i].type === 'Paragraph') {
+                node.children[i].rawValue += str;
+                return;
+            }
+        }
+
+        node.children.push({
+            display: 'block',
+            type: 'Paragraph',
+            rawValue: str
+        });
+
     }
-
-    node.children.unshift({
-        display: 'block',
-        type: 'Paragraph',
-        rawValue: str
-    });
 
 }
 
@@ -144,7 +172,7 @@ function parse(line, index, lines, blocks) {
         result = lines[index].match(reg);
         if (!result) {
             if (this.parseBlock(lines[index], 0, [lines[index]], [])[0].type === 'Paragraph') {
-                appendParagraph(getLastListItemNode(block).node, '\n' + lines[index]);
+                appendParagraph('\n' + lines[index], block);
                 continue;
             } else {
                 break;
