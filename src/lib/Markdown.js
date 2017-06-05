@@ -25,7 +25,7 @@ Markdown.prototype.parseBlock = function (line, index, lines, blocks) {
 
     for (let i = 0, len = Syntax.blockTypes.length; i < len; i++) {
 
-        const result = Syntax[Syntax.blockTypes[i]].parse(line, index, lines, blocks);
+        const result = Syntax[Syntax.blockTypes[i]].parse.call(this, line, index, lines, blocks);
 
         if (!result) {
             continue;
