@@ -126,6 +126,8 @@ Markdown.prototype.render = function () {
         return '';
     }
 
+    console.log(blocks);
+
     const renderTree = this.toTree(blocks);
     if (!renderTree) {
         return '';

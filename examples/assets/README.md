@@ -1,8 +1,11 @@
-# React-Text-Edit
+# MacDown
 
-[![NPM Version][npm-image]][npm-url]
-[![License][license-image]][npm-url]
+![MacDown logo](http://macdown.uranusjr.com/static/images/logo-160.png)
 
-[npm-image]: https://img.shields.io/npm/v/react-text-edit.svg
-[npm-url]: https://npmjs.org/package/react-text-edit
-[license-image]: https://img.shields.io/npm/l/react-text-edit.svg
+Hello there! I’m **MacDown**, the open source Markdown editor for OS X.
+
+Let me introduce myself.
+
+
+
+## Markdown and I

@@ -1,8 +1,10 @@
+import _ from 'lodash';
+
 function parse(line, index, lines, blocks) {
 
-    const result = line.match(/^(#{1,6})\s*([^\s]+?)\s*(?:\n|$)/);
+    const result = line.match(/^(#{1,6})\s*(.*?)\s*(?:\n|$)/);
 
-    if (!result) {
+    if (!result || _.trim(result[2]) === '') {
         return;
     }
 
