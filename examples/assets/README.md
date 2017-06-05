@@ -1,11 +1,14 @@
 # MacDown
 
-![MacDown logo](http://macdown.uranusjr.com/static/images/logo-160.png)
-
-Hello there! I’m **MacDown**, the open source Markdown editor for OS X.
-
-Let me introduce myself.
-
-
-
-## Markdown and I
+> Angle brackets `>` are used for block quotes.
+Technically not every line needs to start with a `>` as long as
+there are no empty lines between paragraphs.
+> Looks kinda ugly though.
+> > Block quotes can be nested.
+> > > Multiple Levels
+>
+> Most markdown syntaxes work inside block quotes.
+>
+> * Lists
+> * [Links][arbitrary_id]
+> * Etc.

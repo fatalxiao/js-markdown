@@ -4,11 +4,12 @@ import Code from './Code';
 import HorizontalRule from './HorizontalRule';
 import List from './List';
 import ListItem from './ListItem';
+import Blockquote from './Blockquote';
 import Paragraph from './Paragraph';
 
 export default {
 
-    blockTypes: ['AtxHeader', 'SetextHeader', 'Code', 'HorizontalRule', 'List', 'Paragraph'],
+    blockTypes: ['AtxHeader', 'SetextHeader', 'Code', 'HorizontalRule', 'List', 'Blockquote', 'Paragraph'],
     inlineTypes: [],
 
     AtxHeader,
@@ -17,6 +18,7 @@ export default {
     HorizontalRule,
     List,
     ListItem,
+    Blockquote,
     Paragraph
 
 };
