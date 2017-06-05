@@ -33,8 +33,8 @@ function calDeep(indent) {
         return 0;
     }
 
-    let reg = /^( {0,3}\t| {4})/,
-        count = 0,
+    const reg = /^( {0,3}\t| {4})/;
+    let count = 0,
         result;
 
     while (indent) {
@@ -68,9 +68,45 @@ function calParentNode(block, deep) {
 
 }
 
+function getLastListItemNode(block) {
+
+    if (!block) {
+        return;
+    }
+
+    let result = block;
+    while (result && result.children && result.children.length > 0) {
+        result = result.children[result.children.length - 1];
+    }
+
+    return result;
+
+}
+
 function addListItem(result, block) {
     const deep = calDeep(result[1]);
     calParentNode(block, deep).children.push(generateListItemNode(result, false));
+}
+
+function appendParagraph(node, str) {
+
+    if (!node) {
+        return;
+    }
+
+    str = node.rawValue + str;
+    delete node.rawValue;
+
+    if (!node.children) {
+        node.children = [];
+    }
+
+    node.children.unshift({
+        display: 'block',
+        type: 'Paragraph',
+        rawValue: str
+    });
+
 }
 
 function parse(line, index, lines, blocks) {
@@ -86,26 +122,21 @@ function parse(line, index, lines, blocks) {
 
     const block = initListRootNode(result, true);
 
-    let lastListItemPath = [0], // 记录上一次添加的ListItem
-        blankLineFlag = false;
-
     index++;
     for (let len = lines.length; index < len; index++) {
 
         if (lines[index] === '' || _.trim(lines[index]) === '') {
-            blankLineFlag = true;
-            continue;
+            break;
         }
-
-        // if (blankLineFlag) { // 上一行是空行
-        //
-        // } else {
-        //
-        // }
 
         result = lines[index].match(deepReg);
         if (!result) {
-            break;
+            if (this.parseBlock(lines[index], 0, [lines[index]], [])[0].type === 'Paragraph') {
+                appendParagraph(getLastListItemNode(block), '\n' + lines[index]);
+                continue;
+            } else {
+                break;
+            }
         }
 
         addListItem(result, block);
