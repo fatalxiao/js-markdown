@@ -33,13 +33,16 @@ function calDeep(result) {
         return 0;
     }
 
-    const indent = result[0].match(/^( {0,3}\t| {4})*/);
+    let str = result[0],
+        indent,
+        count = 0;
 
-    if (!indent || !indent[0]) {
-        return 0;
+    while (str && (indent = str.match(/^( {0,3}\t| {4}|\t)/))) {
+        str = str.slice(indent[0].length);
+        count++;
     }
 
-    return ~~(indent[0].length / 4);
+    return count;
 
 }
 
@@ -152,7 +155,7 @@ function appendParagraph(str, block) {
 
 function parse(line, index, lines, blocks) {
 
-    const reg = /^( {0,3}\t| {4})*([\*\-\+]|\d+\.)\s+(.*?)\s*(?:\n|$)/;
+    const reg = /^( {0,3}\t| {4}|\t)*([\*\-\+]|\d+\.)\s+(.*?)\s*(?:\n|$)/;
 
     let result = line.match(/^([\*\+\-]|\d+\.)\s+(.*?)\s*(?:\n|$)/);
 
