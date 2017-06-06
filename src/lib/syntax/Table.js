@@ -21,6 +21,34 @@ function generateTableTree(head, separator) {
     };
 }
 
+function generateTableBodyNode() {
+    return {
+        display: 'block',
+        type: 'TableBody',
+        children: []
+    };
+}
+
+function generateTableRowNode(line, separator) {
+
+    const tableRow = {
+        display: 'block',
+        type: 'TableRow',
+        children: separator.map(align => ({
+            display: 'block',
+            type: 'TableDataCell',
+            align
+        }))
+    };
+
+    for (let i = 0, data = calRow(line), len = data.length; i < len; i++) {
+        tableRow.children[i].rawValue = data[i];
+    }
+
+    return tableRow;
+
+}
+
 function calRow(str) {
 
     str = _.trim(str);
@@ -47,9 +75,10 @@ function calSeparator(str) {
 function parse(line, index, lines, renderTree) {
 
     const reg = /^ {0,3}(\S(?:\\.|[^\\|])*\|.*)/,
-        separatorReg = /^ {0,3}\|?(\s*:?\-{3,}:?\s*\|)+\s*:?\-{3,}:?\s*\|?\s*$/;
+        separatorReg = /^ {0,3}\|?(\s*:?\-{3,}:?\s*\|)+\s*:?\-{3,}:?\s*\|?\s*$/,
+        linesLen = lines.length;
 
-    if (index + 1 >= lines.length) {
+    if (index + 1 >= linesLen) {
         return;
     }
 
@@ -67,12 +96,22 @@ function parse(line, index, lines, renderTree) {
     }
 
     const block = generateTableTree(head, separator),
-        tableBody = {
-            display: 'block',
-            type: 'TableBody'
-        };
+        tableBody = generateTableBodyNode();
 
-    return [block, index + 1];
+    for (index += 2; index < linesLen; index++) {
+
+        if (!lines[index].match(reg)) {
+            index--;
+            break;
+        }
+
+        tableBody.children.push(generateTableRowNode(lines[index], separator));
+
+    }
+
+    tableBody.children.length > 0 && block.children.push(tableBody);
+
+    return [block, index];
 
 }
 
