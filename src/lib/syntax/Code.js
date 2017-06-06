@@ -50,7 +50,7 @@ function parse(line, index, lines, blocks) {
 }
 
 function render(data = '', node) {
-    return `<pre><code>${data || node.rawValue || ''}</code></pre>`;
+    return `<pre><code>${data}</code></pre>`;
 }
 
 export default {
