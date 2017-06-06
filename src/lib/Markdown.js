@@ -97,22 +97,14 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
             string += this.toHTML(node.children[i]);
         }
     } else {
-        if (node.type && Syntax[node.type]) {
-            return Syntax[node.type].render('', node);
-        } else {
-            return node.rawValue;
-        }
+        string = node.rawValue || '';
     }
 
     if (node.type && Syntax[node.type]) {
-        return Syntax[node.type].render(string, node);
-    } else {
-        return string;
+        string = Syntax[node.type].render(string, node);
     }
 
-    if (node.isRoot) {
-        return string;
-    }
+    return string;
 
 };
 

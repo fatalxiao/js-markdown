@@ -31,7 +31,7 @@ function parse(line, index, lines, blocks) {
             blankLineFlag = false;
         }
 
-        lineType = this.parseBlock(lines[index], 0, [lines[index]])[0].type;
+        lineType = this.parseBlock(lines[index], 0, lines.slice(index))[0].type;
 
         if ((lineType !== 'Blockquote' && lineType !== 'Paragraph') || (blankLineFlag && lineType === 'Paragraph')) {
             index--;
@@ -61,7 +61,7 @@ function parse(line, index, lines, blocks) {
 }
 
 function render(data = '', node) {
-    return `<blockquote>${data}</blockquote>`;
+    return `<blockquote>${data || node.rawValue || ''}</blockquote>`;
 }
 
 export default {

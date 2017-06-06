@@ -171,7 +171,7 @@ function parse(line, index, lines, blocks) {
 
         result = lines[index].match(reg);
         if (!result) {
-            if (this.parseBlock(lines[index], 0, [lines[index]])[0].type === 'Paragraph') {
+            if (this.parseBlock(lines[index], 0, lines.slice(index))[0].type === 'Paragraph') {
                 appendParagraph('\n' + lines[index], block);
                 continue;
             } else {
