@@ -27,13 +27,15 @@ function parse(line, index, lines, blocks) {
             content.push('');
             continue;
 
-        } else {
-            blankLineFlag = false;
         }
 
         lineType = this.parseBlock(lines[index], 0, lines.slice(index))[0].type;
 
-        if ((lineType !== 'Blockquote' && lineType !== 'Paragraph') || (blankLineFlag && lineType === 'Paragraph')) {
+        if (
+            (lineType !== 'Blockquote' && lineType !== 'Paragraph')
+            ||
+            (blankLineFlag && lineType === 'Paragraph')
+        ) {
             index--;
             break;
         }
@@ -51,6 +53,7 @@ function parse(line, index, lines, blocks) {
         }
 
         content.push(result[1]);
+        blankLineFlag = false;
 
     }
 
