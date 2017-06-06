@@ -82,8 +82,6 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
         for (let i = 0, len = node.children.length; i < len; i++) {
             string += this.toHTML(node.children[i]);
         }
-    } else {
-        string = node.rawValue || '';
     }
 
     if (node.type && Syntax[node.type]) {

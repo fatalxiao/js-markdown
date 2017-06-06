@@ -64,7 +64,7 @@ function parse(line, index, lines, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<blockquote>${data || node.rawValue || ''}</blockquote>`;
+    return `<blockquote>${node.rawValue || ''}${data}</blockquote>`;
 }
 
 export default {

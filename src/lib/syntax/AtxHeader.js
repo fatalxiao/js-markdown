@@ -18,7 +18,7 @@ function parse(line, index, lines, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<h${node.level}>${data}</h${node.level}>`;
+    return `<h${node.level}>${node.rawValue || ''}${data}</h${node.level}>`;
 }
 
 export default {

@@ -23,7 +23,7 @@ function parse(line, index, lines, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<p>${_.trim(data)}</p>`;
+    return `<p>${node.rawValue || ''}${_.trim(data)}</p>`;
 }
 
 export default {

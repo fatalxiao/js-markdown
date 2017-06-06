@@ -192,7 +192,7 @@ function parse(line, index, lines, renderTree) {
 
 function render(data = '', node) {
     const tag = node.isOrder ? 'ol' : 'ul';
-    return `<${tag}>${data}</${tag}>`;
+    return `<${tag}>${node.rawValue || ''}${data}</${tag}>`;
 }
 
 export default {
