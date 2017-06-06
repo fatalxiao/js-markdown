@@ -1,4 +1,4 @@
-function parse(line, index, lines, blocks) {
+function parse(line, index, lines, renderTree) {
 
     const reg = /^(?:\>)\s*(.*?)\s*(?:\n|$)/;
     let result = line.match(reg);
@@ -57,7 +57,7 @@ function parse(line, index, lines, blocks) {
 
     }
 
-    block.children = this.parseBlocks(content);
+    this.parseBlocks(content, block);
 
     return [block, index];
 

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-function parse(line, index, lines, blocks) {
+function parse(line, index, lines, renderTree) {
 
     if (line === '' || _.trim(line) === '' || index >= lines.length - 1) {
         return;

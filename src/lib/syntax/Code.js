@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-function parse(line, index, lines, blocks) {
+function parse(line, index, lines, renderTree) {
 
     const result = line.match(/^(`{3,}|\t| {4})\s*(.*?)\s*(?:\n|$)/);
 

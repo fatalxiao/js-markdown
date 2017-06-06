@@ -21,11 +21,11 @@ Markdown.parse = function (data) {
 
 };
 
-Markdown.prototype.parseBlock = function (line, index, lines, blocks) {
+Markdown.prototype.parseBlock = function (line, index, lines, renderTree) {
 
     for (let i = 0, len = Syntax.blockTypes.length; i < len; i++) {
 
-        const result = Syntax[Syntax.blockTypes[i]].parse.call(this, line, index, lines, blocks);
+        const result = Syntax[Syntax.blockTypes[i]].parse.call(this, line, index, lines, renderTree);
 
         if (!result) {
             continue;
@@ -37,31 +37,28 @@ Markdown.prototype.parseBlock = function (line, index, lines, blocks) {
 
 };
 
-Markdown.prototype.parseBlocks = function (lines) {
+Markdown.prototype.parseBlocks = function (lines, renderTree) {
 
     let line,
-        blocks = [],
         block;
 
     for (let i = 0, len = lines.length; i < len; i++) {
 
         line = lines[i];
 
-        const result = this.parseBlock(line, i, lines, blocks);
+        const result = this.parseBlock(line, i, lines, renderTree);
 
         if (result) {
 
             [block, i] = result;
 
-            if (block) {
-                blocks.push(block);
+            if (renderTree && renderTree.children && block) {
+                renderTree.children.push(block);
             }
 
         }
 
     }
-
-    return blocks;
 
 };
 
@@ -71,21 +68,10 @@ Markdown.prototype.parseInline = function (node) {
         return;
     }
 
-
-
 };
 
-Markdown.prototype.toTree = function (blocks) {
-
-    const tree = {
-        isRoot: true,
-        children: blocks
-    };
-
-    Util.postOrderTraverse(tree, this.parseInline);
-
-    return tree;
-
+Markdown.prototype.parseInlines = function (renderTree) {
+    Util.postOrderTraverse(renderTree, this.parseInline);
 };
 
 Markdown.prototype.toHTML = function (node = this.renderTree) {
@@ -111,17 +97,14 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
 Markdown.prototype.render = function () {
 
     const data = Util.formatCRLF(this.initData),
-        lines = data.split('\n');
+        lines = data.split('\n'),
+        renderTree = {
+            isRoot: true,
+            children: []
+        };
 
-    const blocks = this.parseBlocks(lines);
-    if (!blocks || blocks.length < 1) {
-        return '';
-    }
-
-    const renderTree = this.toTree(blocks);
-    if (!renderTree) {
-        return '';
-    }
+    this.parseBlocks(lines, renderTree);
+    this.parseInlines(renderTree);
 
     this.result = this.toHTML(renderTree);
     return this.result;

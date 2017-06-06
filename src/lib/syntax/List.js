@@ -153,7 +153,7 @@ function appendParagraph(str, block) {
 
 }
 
-function parse(line, index, lines, blocks) {
+function parse(line, index, lines, renderTree) {
 
     const reg = /^( {0,3}\t| {4}|\t)*([\*\-\+]|\d+\.)\s+(.*?)\s*(?:\n|$)/;
 

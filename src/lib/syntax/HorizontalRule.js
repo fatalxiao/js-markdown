@@ -1,4 +1,4 @@
-function parse(line, index, lines, blocks) {
+function parse(line, index, lines, renderTree) {
 
     const result = line.match(/^([\*\-])\1\1+\s*(?:\n|$)/);
 

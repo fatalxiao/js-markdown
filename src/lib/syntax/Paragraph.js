@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-function parse(line, index, lines, blocks) {
+function parse(line, index, lines, renderTree) {
 
     if (line === '' || _.trim(line) === '' || line === '#' || _.trim(line) === '#') {
         return [{
@@ -8,8 +8,9 @@ function parse(line, index, lines, blocks) {
             type: 'BlankLine',
             rawValue: ''
         }, index];
-    } else if (blocks && blocks.length > 0 && blocks[blocks.length - 1].type === 'Paragraph') {
-        blocks[blocks.length - 1].rawValue += '\n' + line;
+    } else if (renderTree && renderTree.children && renderTree.children.length > 0
+        && renderTree.children[renderTree.children.length - 1].type === 'Paragraph') {
+        renderTree.children[renderTree.children.length - 1].rawValue += '\n' + line;
         return [null, index];
     } else {
         return [{
