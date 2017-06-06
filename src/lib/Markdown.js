@@ -37,10 +37,7 @@ Markdown.prototype.parseBlock = function (line, index, lines, blocks) {
 
 };
 
-Markdown.prototype.parseBlocks = function () {
-
-    const data = Util.formatCRLF(this.initData),
-        lines = data.split('\n');
+Markdown.prototype.parseBlocks = function (lines) {
 
     let line,
         blocks = [],
@@ -121,7 +118,10 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
 
 Markdown.prototype.render = function () {
 
-    const blocks = this.parseBlocks();
+    const data = Util.formatCRLF(this.initData),
+        lines = data.split('\n');
+
+    const blocks = this.parseBlocks(lines);
     if (!blocks || blocks.length < 1) {
         return '';
     }
