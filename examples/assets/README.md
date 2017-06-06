@@ -1,8 +1,9 @@
-# React-Text-Edit
+Title:       |  
+Subtitle:    |  
+Project:     |  
+Author:      Hilton Lipschitz  
+Affiliation: Noverse LLC  
+Web:         http://www.noverse.com  
+Date:        June 18, 2012  
 
-[![NPM Version][npm-image]][npm-url]
-[![License][license-image]][npm-url]
-
-[npm-image]: https://img.shields.io/npm/v/react-text-edit.svg
-[npm-url]: https://npmjs.org/package/react-text-edit
-[license-image]: https://img.shields.io/npm/l/react-text-edit.svg
+Your first paragraph starts here

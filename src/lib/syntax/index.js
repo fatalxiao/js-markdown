@@ -1,3 +1,4 @@
+import MetaData from './MetaData';
 import AtxHeader from './AtxHeader';
 import SetextHeader from './SetextHeader';
 import Code from './Code';
@@ -11,11 +12,13 @@ import Paragraph from './Paragraph';
 export default {
 
     blockTypes: [
+        'MetaData',
         'AtxHeader', 'SetextHeader', 'Code', 'HorizontalRule', 'List', 'Blockquote',
         'ReferenceDefine', 'Paragraph'
     ],
     inlineTypes: [],
 
+    MetaData,
     AtxHeader,
     SetextHeader,
     Code,

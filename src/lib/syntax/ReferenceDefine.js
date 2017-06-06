@@ -8,7 +8,7 @@ function parse(line, index, lines, renderTree) {
 
     renderTree.referenceDefine[result[1]] = result[2];
 
-    return [null, index];
+    return;
 
 }
 

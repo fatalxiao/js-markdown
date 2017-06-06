@@ -99,6 +99,7 @@ Markdown.prototype.render = function () {
 
     this.renderTree = {
         isRoot: true,
+        metaData: {},
         referenceDefine: {},
         children: []
     };
