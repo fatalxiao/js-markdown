@@ -5,7 +5,7 @@ import Syntax from './syntax';
 function Markdown(data = '') {
 
     this.initData = data;
-
+    this.renderTree = null;
     this.result = '';
 
 }
@@ -85,7 +85,7 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
     }
 
     if (node.type && Syntax[node.type]) {
-        string = Syntax[node.type].render(string, node);
+        return Syntax[node.type].render(string, node);
     }
 
     return string;
@@ -95,16 +95,18 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
 Markdown.prototype.render = function () {
 
     const data = Util.formatCRLF(this.initData),
-        lines = data.split('\n'),
-        renderTree = {
-            isRoot: true,
-            children: []
-        };
+        lines = data.split('\n');
 
-    this.parseBlocks(lines, renderTree);
-    this.parseInlines(renderTree);
+    this.renderTree = {
+        isRoot: true,
+        referenceDefine: {},
+        children: []
+    };
 
-    this.result = this.toHTML(renderTree);
+    this.parseBlocks(lines, this.renderTree);
+    this.parseInlines(this.renderTree);
+
+    this.result = this.toHTML(this.renderTree);
     return this.result;
 
 };

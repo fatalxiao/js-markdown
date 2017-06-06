@@ -1,6 +1,14 @@
 function parse(line, index, lines, renderTree) {
 
+    const result = line.match(/^\s*\[([^\[\]]+)\]:\s*(\S+)/);
 
+    if (!result) {
+        return;
+    }
+
+    renderTree.referenceDefine[result[1]] = result[2];
+
+    return [null, index];
 
 }
 
