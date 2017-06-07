@@ -68,15 +68,15 @@ Markdown.prototype.matchInline = function (str, children) {
     const result = reg.exec(str);
 
     if (!result) {
-        return {
+        return [{
             type: 'String',
             rawValue: str
-        };
+        }, str.length];
     } else if (result[1]) {
-        return {
+        return [{
             type: 'String',
             rawValue: result[1]
-        };
+        }, result[1].length];
     }
 
     let res;
@@ -84,10 +84,10 @@ Markdown.prototype.matchInline = function (str, children) {
         res = Syntax[Syntax.inlineTypes[result[2]]].parse.call(this, str, children, this.renderTree);
     }
 
-    return res || {
+    return res || [{
             type: 'String',
             rawValue: result[2]
-        };
+        }, result[2].length];
 
 };
 
@@ -98,7 +98,7 @@ Markdown.prototype.parseInline = function (node) {
     }
 
     const children = [];
-    let result;
+    let result, inline, len;
 
     while (node.rawValue.length > 0) {
 
@@ -108,12 +108,16 @@ Markdown.prototype.parseInline = function (node) {
             break;
         }
 
-        node.rawValue = node.rawValue.slice(result.rawValue.length);
+        [inline, len] = result;
 
-        if (children && children.length > 0 && children[children.length - 1].type === 'String') {
-            children[children.length - 1].rawValue += result.rawValue;
-        } else {
-            children.push(result);
+        node.rawValue = node.rawValue.slice(len);
+
+        if (inline) {
+            if (children && children.length > 0 && children[children.length - 1].type === 'String') {
+                children[children.length - 1].rawValue += inline.rawValue;
+            } else {
+                children.push(inline);
+            }
         }
 
     }

@@ -1,0 +1,2449 @@
+{
+    "isRoot": true,
+    "metaData": {},
+    "referenceDefine": {
+        "arbitrary_id": "http://macdown.uranusjr.com \"Title\"",
+        "like this": "http://macdown.uranusjr.com"
+    },
+    "footnotes": {
+        "4": "You don't have to use a number. Arbitrary things like `[^footy note4]` and `[^footy note4]:` will also work. But they will *render* as numbered footnotes. Also, no need to keep your footnotes in order, I will sort out the order for you so they appear in the same order they were referenced in the text body. You can even keep some footnotes near where you referenced them, and collect others at the bottom of the file in the traditional place for footnotes.",
+        "emphasize": "If **Underlines** is turned on, `_this notation_` will render as underlined instead of emphasized",
+        "under": "If **Underline** is disabled `_this_` will be rendered as *emphasized* instead of being underlined.",
+        "quote": "**Quote** replaces literal `\"` characters with html `<q>` tags. **Quote** and **Smartypants** are syntactically incompatible. If both are enabled, **Quote** takes precedence. Note that **Quote** is different from *blockquote*, which is part of standard Markdown.",
+        "math": "Internet connection required."
+    },
+    "children": [
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 1,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "JS-Markdown"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 2,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "The Basics"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Before I tell you about all the extra syntaxes and capabilities I have, I'll introduce you to the basics of standard markdown. If you already know markdown, and want to jump straight to learning about the fancier things I can do, I suggest you skip to the [**Markdown** preference pane](#markdown-pane). Lets jump right in."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Line Breaks"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "To force a line break, put two spaces and a newline (return) at the end of the line."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "List",
+            "isOrder": false,
+            "children": [
+                {
+                    "display": "block",
+                    "type": "ListItem",
+                    "rawValue": "",
+                    "children": [
+                        {
+                            "display": "block",
+                            "type": "Paragraph",
+                            "rawValue": "",
+                            "children": [
+                                {
+                                    "type": "String",
+                                    "rawValue": "This two-line bullet\nwon't break"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "List",
+            "isOrder": false,
+            "children": [
+                {
+                    "display": "block",
+                    "type": "ListItem",
+                    "rawValue": "",
+                    "children": [
+                        {
+                            "display": "block",
+                            "type": "Paragraph",
+                            "rawValue": "",
+                            "children": [
+                                {
+                                    "type": "String",
+                                    "rawValue": "This two-line bullet\nwill break"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Here is the code:"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "BlockCode",
+            "language": "",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "* This two-line bullet\nwon't break\n\n* This two-line bullet\nwill break"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Strong and Emphasize"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "**Strong**: `**Strong**` or `__Strong__` (Command-B)\n*Emphasize*: `*Emphasize*` or `_Emphasize_`[^emphasize] (Command-I)"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Headers (like this one!)"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "BlockCode",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Header 1\n========\n\nHeader 2\n--------\n"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "or"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "BlockCode",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "# Header 1\n## Header 2\n### Header 3\n#### Header 4\n##### Header 5\n###### Header 6\n\n\n"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Links and Email"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 4,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Inline"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Just put angle brackets around an email and it becomes clickable: <uranusjr@gmail.com>\n`<uranusjr@gmail.com>`"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Same thing with urls: <http://macdown.uranusjr.com>\n` <http://macdown.uranusjr.com>`"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Perhaps you want to some link text like this: [Macdown Website](http://macdown.uranusjr.com \"Title\")\n`[Macdown Website](http://macdown.uranusjr.com \"Title\")` (The title is optional)"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 4,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Reference style"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Sometimes it looks too messy to include big long urls inline, or you want to keep all your urls together."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Make [a link][arbitrary_id] `[a link][arbitrary_id]` then on it's own line anywhere else in the file:\n`[arbitrary_id]: http://macdown.uranusjr.com \"Title\"`"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "If the link text itself would make a good id, you can link [like this][] `[like this][]`, then on it's own line anywhere else in the file:\n`[like this]: http://macdown.uranusjr.com`"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Images"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 4,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Inline"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "`![Alt Image Text](path/or/url/to.jpg \"Optional Title\")`"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 4,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Reference style"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "`![Alt Image Text][image-id]`\non it's own line elsewhere:\n`[image-id]: path/or/url/to.jpg \"Optional Title\"`"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Lists"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "List",
+            "isOrder": false,
+            "children": [
+                {
+                    "display": "block",
+                    "type": "ListItem",
+                    "rawValue": "",
+                    "children": [
+                        {
+                            "type": "String",
+                            "rawValue": "Lists must be preceded by a blank line (or block element)"
+                        }
+                    ]
+                },
+                {
+                    "display": "block",
+                    "type": "ListItem",
+                    "rawValue": "",
+                    "children": [
+                        {
+                            "type": "String",
+                            "rawValue": "Unordered lists start each item with a `*`"
+                        }
+                    ]
+                },
+                {
+                    "display": "block",
+                    "type": "ListItem",
+                    "rawValue": "",
+                    "children": [
+                        {
+                            "type": "String",
+                            "rawValue": "`-` works too"
+                        },
+                        {
+                            "display": "block",
+                            "type": "List",
+                            "isOrder": false,
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "ListItem",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Indent a level to make a nested list"
+                                        },
+                                        {
+                                            "display": "block",
+                                            "type": "List",
+                                            "isOrder": true,
+                                            "children": [
+                                                {
+                                                    "display": "block",
+                                                    "type": "ListItem",
+                                                    "rawValue": "",
+                                                    "children": [
+                                                        {
+                                                            "type": "String",
+                                                            "rawValue": "Ordered lists are supported."
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "display": "block",
+                                                    "type": "ListItem",
+                                                    "rawValue": "",
+                                                    "children": [
+                                                        {
+                                                            "type": "String",
+                                                            "rawValue": "Start each item (number-period-space) like `1. `"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "display": "block",
+                                                    "type": "ListItem",
+                                                    "rawValue": "",
+                                                    "children": [
+                                                        {
+                                                            "type": "String",
+                                                            "rawValue": "It doesn't matter what number you use, I will render them sequentially"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "display": "block",
+                                                    "type": "ListItem",
+                                                    "rawValue": "",
+                                                    "children": [
+                                                        {
+                                                            "type": "String",
+                                                            "rawValue": "So you might want to start each line with `1.` and let me sort it out"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Here is the code:"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "BlockCode",
+            "language": "",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "* Lists must be preceded by a blank line (or block element)\n* Unordered lists start each item with a `*`\n- `-` works too\n\t* Indent a level to make a nested list\n\t\t1. Ordered lists are supported.\n\t\t2. Start each item (number-period-space) like `1. `\n\t\t42. It doesn't matter what number you use, I will render them sequentially\n\t\t1. So you might want to start each line with `1.` and let me sort it out"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Block Quote"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Blockquote",
+            "children": [
+                {
+                    "display": "block",
+                    "type": "Paragraph",
+                    "rawValue": "",
+                    "children": [
+                        {
+                            "type": "String",
+                            "rawValue": "Angle brackets `>` are used for block quotes.\nTechnically not every line needs to start with a `>` as long as\nthere are no empty lines between paragraphs.\nLooks kinda ugly though."
+                        }
+                    ]
+                },
+                {
+                    "display": "block",
+                    "type": "Blockquote",
+                    "children": [
+                        {
+                            "display": "block",
+                            "type": "Paragraph",
+                            "rawValue": "",
+                            "children": [
+                                {
+                                    "type": "String",
+                                    "rawValue": "Block quotes can be nested."
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "Blockquote",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "Paragraph",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Multiple Levels"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "BlankLine",
+                                    "rawValue": ""
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "display": "block",
+                    "type": "Paragraph",
+                    "rawValue": "",
+                    "children": [
+                        {
+                            "type": "String",
+                            "rawValue": "Most markdown syntaxes work inside block quotes."
+                        }
+                    ]
+                },
+                {
+                    "display": "block",
+                    "type": "BlankLine",
+                    "rawValue": ""
+                },
+                {
+                    "display": "block",
+                    "type": "List",
+                    "isOrder": false,
+                    "children": [
+                        {
+                            "display": "block",
+                            "type": "ListItem",
+                            "rawValue": "",
+                            "children": [
+                                {
+                                    "type": "String",
+                                    "rawValue": "Lists"
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "ListItem",
+                            "rawValue": "",
+                            "children": [
+                                {
+                                    "type": "String",
+                                    "rawValue": "[Links][arbitrary_id]"
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "ListItem",
+                            "rawValue": "",
+                            "children": [
+                                {
+                                    "type": "String",
+                                    "rawValue": "Etc."
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "display": "block",
+                    "type": "BlankLine",
+                    "rawValue": ""
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Here is the code:"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "BlockCode",
+            "language": "",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "> Angle brackets `>` are used for block quotes.\nTechnically not every line needs to start with a `>` as long as\nthere are no empty lines between paragraphs.\n> Looks kinda ugly though.\n> > Block quotes can be nested.\n> > > Multiple Levels\n>\n> Most markdown syntaxes work inside block quotes.\n>\n> * Lists\n> * [Links][arbitrary_id]\n> * Etc."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Inline Code"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "`Inline code` is indicated by surrounding it with backticks:\n`` `Inline code` ``"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "If your ``code has `backticks` `` that need to be displayed, you can use double backticks:\n```` ``Code with `backticks` `` ````  (mind the spaces preceding the final set of backticks)"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Block Code"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "If you indent at least four spaces or one tab, I'll display a code block."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "BlockCode",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "print('This is a code block')\nprint('The block must be preceded by a blank line')\nprint('Then indent at least 4 spaces or 1 tab')\n\tprint('Nesting does nothing. Your code is displayed Literally')\n"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "I also know how to do something called [Fenced Code Blocks](#fenced-code-block) which I will tell you about later."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Horizontal Rules"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "If you type three asterisks `***` or three dashes `---` on a line, I'll display a horizontal rule:"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "HorizontalRule"
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 2,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "<a name=\"markdown-pane\"></a>The Markdown Preference Pane"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "This is where I keep all preferences related to how I parse markdown into html.\n![Markdown preferences pane](http://d.pr/i/RQEi+)"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Document Formatting"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "The ***Smartypants*** extension automatically transforms straight quotes (`\"` and `'`) in your text into typographer’s quotes (`“`, `”`, `‘`, and `’`) according to the context. Very useful if you’re a typography freak like I am. Quote and Smartypants are syntactically incompatible. If both are enabled, Quote takes precedence."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Block Formatting"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 4,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Table"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "This is a table:"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Table",
+            "children": [
+                {
+                    "display": "block",
+                    "type": "TableHead",
+                    "children": [
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableHeadCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "First Header"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableHeadCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Second Header"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "display": "block",
+                    "type": "TableBody",
+                    "children": [
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Content Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Content Cell"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Content Cell"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Content Cell"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "You can align cell contents with syntax like this:"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Table",
+            "children": [
+                {
+                    "display": "block",
+                    "type": "TableHead",
+                    "children": [
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableHeadCell",
+                                    "align": "left",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": " Left Aligned"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableHeadCell",
+                                    "align": "center",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Center Aligned"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableHeadCell",
+                                    "align": "right",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Right Aligned "
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "display": "block",
+                    "type": "TableBody",
+                    "children": [
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "align": "left",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": " col 3 is"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "align": "center",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "some wordy text"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "align": "right",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "$1600 "
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "align": "left",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": " col 2 is"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "align": "center",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "centered"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "align": "right",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "$12 "
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "align": "left",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": " zebra stripes"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "align": "center",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "are neat"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "align": "right",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "$1 "
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "The left- and right-most pipes (`|`) are only aesthetic, and can be omitted. The spaces don’t matter, either. Alignment depends solely on `:` marks."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 4,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "<a name=\"fenced-code-block\">Fenced Code Block</a>"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "This is a fenced code block:"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "BlockCode",
+            "language": "",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "print('Hello world!')"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "You can also use waves (`~`) instead of back ticks (`` ` ``):"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "~~~\nprint('Hello world!')\n~~~"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "You can add an optional language ID at the end of the first line. The language ID will only be used to highlight the code inside if you tick the ***Enable highlighting in code blocks*** option. This is what happens if you enable it:"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "![Syntax highlighting example](http://d.pr/i/9HM6+)"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "I support many popular languages as well as some generic syntax descriptions that can be used if your language of choice is not supported. See [relevant sections on the official site](http://macdown.uranusjr.com/features/) for a full list of supported syntaxes."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Inline Formatting"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "The following is a list of optional inline markups supported:"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Table",
+            "children": [
+                {
+                    "display": "block",
+                    "type": "TableHead",
+                    "children": [
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableHeadCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Option name"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableHeadCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Markup"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableHeadCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Result if enabled     "
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "display": "block",
+                    "type": "TableBody",
+                    "children": [
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Intra-word emphasis"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "So A\\*maz\\*ing"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "So A<em>maz</em>ing   "
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Strikethrough"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "\\~~Much wow\\~~"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "<del>Much wow</del>   "
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Underline [^under]"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "\\_So doge\\_"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "<u>So doge</u>        "
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Quote [^quote]"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "\\\"Such editor\\\""
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "<q>Such editor</q>    "
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Highlight"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "\\==So good\\=="
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "<mark>So good</mark>  "
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Superscript"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "hoge\\^(fuga)"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "hoge<sup>fuga</sup>   "
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Autolink"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "http://t.co"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "<http://t.co>         "
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "display": "block",
+                            "type": "TableRow",
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "Footnotes"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "[\\^4] and [\\^4]:"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "TableDataCell",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "[^4] and footnote 4   "
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 2,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "<a name=\"rendering-pane\"></a>The Rendering Preference Pane"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "This is where I keep preferences relating to how I render and style the parsed markdown in the preview window.\n![Rendering preferences pane](http://d.pr/i/rT4d+)"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "CSS"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "You can choose different css files for me to use to render your html. You can even customize or add your own custom css files."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Syntax Highlighting"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "You have already seen how I can syntax highlight your fenced code blocks. See the [Fenced Code Block](#fenced-code-block) section if you haven’t! You can also choose different themes for syntax highlighting."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "TeX-like Math Syntax"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "I can also render TeX-like math syntaxes, if you allow me to.[^math] I can do inline math like this: \\\\( 1 + 1 \\\\) or this (in MathML): <math><mn>1</mn><mo>+</mo><mn>1</mn></math>, and block math:"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "\\\\["
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlockCode",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "A^T_S = B"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "\\\\]"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "or (in MathML)"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "<math display=\"block\">"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlockCode",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "<msubsup><mi>A</mi> <mi>S</mi> <mi>T</mi></msubsup>\n<mo>=</mo>\n<mi>B</mi>"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "</math>"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Task List Syntax"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "List",
+            "isOrder": true,
+            "children": [
+                {
+                    "display": "block",
+                    "type": "ListItem",
+                    "rawValue": "",
+                    "children": [
+                        {
+                            "type": "String",
+                            "rawValue": "[x] I can render checkbox list syntax"
+                        },
+                        {
+                            "display": "block",
+                            "type": "List",
+                            "isOrder": false,
+                            "children": [
+                                {
+                                    "display": "block",
+                                    "type": "ListItem",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "[x] I support nesting"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "display": "block",
+                                    "type": "ListItem",
+                                    "rawValue": "",
+                                    "children": [
+                                        {
+                                            "type": "String",
+                                            "rawValue": "[x] I support ordered *and* unordered lists"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "display": "block",
+                    "type": "ListItem",
+                    "rawValue": "",
+                    "children": [
+                        {
+                            "type": "String",
+                            "rawValue": "[ ] I don't support clicking checkboxes directly in the html window"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Jekyll front-matter"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "If you like, I can display Jekyll front-matter in a nice table. Just make sure you put the front-matter at the very beginning of the file, and fence it with `---`. For example:"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "BlockCode",
+            "language": "",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "---\ntitle: \"Macdown is my friend\"\ndate: 2014-06-06 20:00:00\n---"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Render newline literally"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Normally I require you to put two spaces and a newline (aka return) at the end of a line in order to create a line break. If you like, I can render a newline any time you end a line with a newline. However, if you enable this, markdown that looks lovely when I render it might look pretty funky when you let some *other* program render it."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 2,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "<a name=\"general-pane\"></a>The General Preferences Pane"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "This is where I keep preferences related to application behavior.\n![General preferences pane](http://d.pr/i/rvwu+)"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "The General Preferences Pane allows you to tell me how you want me to behave. For example, do you want me to make sure there is a document open when I launch? You can also tell me if I should constantly update the preview window as you type, or wait for you to hit `command-R` instead. Maybe you prefer your editor window on the right? Or to see the word-count as you type. This is also the place to tell me if you are interested in pre-releases of me, or just want to stick to better-tested official releases."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 2,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "<a name=\"editor-pane\"></a>The Editor Preference Pane"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "This is where I keep preferences related to the behavior and styling of the editing window.\n![Editor preferences pane](http://d.pr/i/6OL5+)"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 3,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Styling"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "My editor provides syntax highlighting. You can edit the base font and the coloring/sizing theme. I provided some default themes (courtesy of [Mou](http://mouapp.com)’s creator, Chen Luo) if you don’t know where to start."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "You can also edit, or even add new themes if you want to! Just click the ***Reveal*** button, and start moving things around. Remember to use the correct file extension (`.styles`), though. I’m picky about that."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "I offer auto-completion and other functions to ease your editing experience. If you don’t like it, however, you can turn them off."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "AtxHeader",
+            "level": 2,
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Hack On"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "That’s about it. Thanks for listening. I’ll be quiet from now on (unless there’s an update about the app—I’ll remind you for that!)."
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        },
+        {
+            "display": "block",
+            "type": "Paragraph",
+            "rawValue": "",
+            "children": [
+                {
+                    "type": "String",
+                    "rawValue": "Happy writing!"
+                }
+            ]
+        },
+        {
+            "display": "block",
+            "type": "BlankLine",
+            "rawValue": ""
+        }
+    ]
+}

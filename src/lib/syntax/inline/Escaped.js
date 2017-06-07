@@ -1,4 +1,4 @@
-function parse(line, index, lines, renderTree) {
+function parse(str, children, renderTree) {
 
 }
 
