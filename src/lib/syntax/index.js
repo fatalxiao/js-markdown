@@ -19,7 +19,7 @@ export default {
 
     blockTypes: [
         'MetaData',
-        'AtxHeader', 'SetextHeader', 'BlockCode', 'HorizontalRule', 'List', 'Blockquote', 'Table',
+        'AtxHeader', 'BlockCode', 'SetextHeader', 'HorizontalRule', 'List', 'Blockquote', 'Table',
         'ReferenceDefine', 'Paragraph'
     ],
     inlineTypes: [],

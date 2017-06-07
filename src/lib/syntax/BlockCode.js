@@ -9,7 +9,13 @@ function isInlineMatch(line) {
     }
 
     const startFlag = result[1];
-    result = line.slice(startFlag.length).match(new RegExp(`[^\`]+(${startFlag})[^\`]+`));
+    line = line.slice(startFlag.length);
+
+    if (_.trim(line) === '') {
+        return false;
+    }
+
+    result = line.match(new RegExp(`[^\`]+(${startFlag})[^\`]+`));
     if (result) {
         return true;
     }
