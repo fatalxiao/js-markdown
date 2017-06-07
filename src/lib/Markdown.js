@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import Util from './utils/Util';
 import Syntax from './syntax';
 
@@ -64,7 +63,7 @@ Markdown.prototype.parseBlocks = function (lines, renderTree) {
 
 Markdown.prototype.parseInline = function (node) {
 
-    if (node.display !== 'block' || node.children || node.rawValue === '') {
+    if (node.display !== 'block' || node.rawValue === '') {
         return;
     }
 
@@ -105,6 +104,9 @@ Markdown.prototype.render = function () {
     };
 
     this.parseBlocks(lines, this.renderTree);
+
+    console.log(JSON.stringify(this.renderTree));
+
     this.parseInlines(this.renderTree);
 
     this.result = this.toHTML(this.renderTree);
