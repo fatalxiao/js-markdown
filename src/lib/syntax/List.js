@@ -136,9 +136,9 @@ function appendParagraph(str, block) {
 
     } else {
 
-        for (let i = 0, len = node.children.length; i < len; i++) {
-            if (node.children[i].type === 'Paragraph') {
-                node.children[i].rawValue += str;
+        for (let item of node.children) {
+            if (item.type === 'Paragraph') {
+                item.rawValue += str;
                 return;
             }
         }

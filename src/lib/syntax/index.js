@@ -12,6 +12,7 @@ import TableHeadCell from './TableHeadCell';
 import TableBody from './TableBody';
 import TableRow from './TableRow';
 import TableDataCell from './TableDataCell';
+import Footnote from './Footnote';
 import ReferenceDefine from './ReferenceDefine';
 import Paragraph from './Paragraph';
 
@@ -20,7 +21,7 @@ export default {
     blockTypes: [
         'MetaData',
         'AtxHeader', 'BlockCode', 'SetextHeader', 'HorizontalRule', 'List', 'Blockquote', 'Table',
-        'ReferenceDefine', 'Paragraph'
+        'Footnote', 'ReferenceDefine', 'Paragraph'
     ],
     inlineTypes: [],
 
@@ -38,6 +39,7 @@ export default {
     TableBody,
     TableRow,
     TableDataCell,
+    Footnote,
     ReferenceDefine,
     Paragraph
 

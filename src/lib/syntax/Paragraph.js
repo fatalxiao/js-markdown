@@ -24,7 +24,7 @@ function parse(line, index, lines, renderTree) {
                 rawValue: ''
             }, index];
         } else {
-            return;
+            return [null, index];
         }
 
     } else if (prev && prev.type === 'Paragraph') {

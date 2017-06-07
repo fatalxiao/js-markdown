@@ -100,12 +100,13 @@ Markdown.prototype.render = function () {
         isRoot: true,
         metaData: {},
         referenceDefine: {},
+        footnotes: {},
         children: []
     };
 
     this.parseBlocks(lines, this.renderTree);
 
-    console.log(JSON.stringify(this.renderTree));
+    // console.log(JSON.stringify(this.renderTree));
 
     this.parseInlines(this.renderTree);
 
