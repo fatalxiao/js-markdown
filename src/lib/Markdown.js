@@ -79,10 +79,15 @@ Markdown.prototype.matchInline = function (str, children) {
         };
     }
 
-    return {
-        type: 'String',
-        rawValue: str
-    };
+    let res;
+    if (result[2] in Syntax.inlineTypes) {
+        res = Syntax[Syntax.inlineTypes[result[2]]].parse.call(this, str, children, this.renderTree);
+    }
+
+    return res || {
+            type: 'String',
+            rawValue: result[2]
+        };
 
 };
 
