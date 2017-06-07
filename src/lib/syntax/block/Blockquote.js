@@ -1,6 +1,6 @@
 function parse(line, index, lines, renderTree) {
 
-    const reg = /^(?:\>)\s*(.*?)\s*$/;
+    const reg = /^(?:\>)\s*(.*?)(?:\n|$)/;
     let result = line.match(reg);
 
     if (!result) {

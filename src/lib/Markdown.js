@@ -63,7 +63,7 @@ Markdown.prototype.parseBlocks = function (lines, renderTree) {
 
 Markdown.prototype.matchInline = function (str, children) {
 
-    const reg = /([\s\S]*?)((?:\{:)|\]|\}|\\|(?:!\[)|\[|<|`|(?: \n)|(?:\*\*)|(?:__)|\*|_)/;
+    const reg = /([\s\S]*?)(\\|(?:!\[)|\[|<|`|(  \n)|(?:\*\*)|(?:__)|\*|_)/;
 
     const result = reg.exec(str);
 
@@ -116,7 +116,8 @@ Markdown.prototype.parseInline = function (node) {
         node.rawValue = node.rawValue.slice(len);
 
         if (inline) {
-            if (children && children.length > 0 && children[children.length - 1].type === 'String') {
+            if (inline.type === 'String'
+                && children && children.length > 0 && children[children.length - 1].type === 'String') {
                 children[children.length - 1].rawValue += inline.rawValue;
             } else {
                 children.push(inline);
@@ -175,6 +176,7 @@ Markdown.prototype.render = function () {
     };
 
     this.parseBlocks(lines, this.renderTree);
+
     this.parseInlines(this.renderTree);
 
     // console.log(JSON.stringify(this.renderTree));

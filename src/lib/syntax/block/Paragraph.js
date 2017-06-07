@@ -20,8 +20,7 @@ function parse(line, index, lines, renderTree) {
         if (prev && prev.type !== 'BlankLine') {
             return [{
                 display: 'block',
-                type: 'BlankLine',
-                rawValue: ''
+                type: 'BlankLine'
             }, index];
         } else {
             return [null, index];
@@ -41,7 +40,7 @@ function parse(line, index, lines, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<p>${node.rawValue || ''}${_.trim(data)}</p>`;
+    return `<p>${node.rawValue || ''}${data}</p>`;
 }
 
 export default {

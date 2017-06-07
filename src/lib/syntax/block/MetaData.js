@@ -4,7 +4,7 @@ function parse(line, index, lines, renderTree) {
         return;
     }
 
-    const reg = /^(\w+):\s*(.+?)\s*$/;
+    const reg = /^(\w+):\s*(.+?)(?:\n|$)/;
 
     let result = line.match(reg);
 

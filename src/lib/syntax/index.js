@@ -38,7 +38,7 @@ export default {
         '[': 'Anchor',
         '<': 'AutoLink',
         '`': 'InlineCode',
-        '  ': 'BreakRow',
+        '  \n': 'BreakRow',
         '**': 'Strong',
         '__': 'Strong',
         '*': 'Emphasize',

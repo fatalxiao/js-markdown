@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 function parse(line, index, lines, renderTree) {
 
-    const result = line.match(/^(#{1,6})\s*(.*?)\s*$/);
+    const result = line.match(/^(#{1,6})\s*(.*?)(?:\n|$)/);
 
     if (!result || _.trim(result[2]) === '') {
         return;
@@ -12,7 +12,7 @@ function parse(line, index, lines, renderTree) {
         display: 'block',
         type: 'AtxHeader',
         level: result[1].length,
-        rawValue: result[2]
+        rawValue: result[2] + '\n'
     }, index];
 
 }

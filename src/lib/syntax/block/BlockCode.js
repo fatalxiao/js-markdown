@@ -26,7 +26,7 @@ function isInlineMatch(line) {
 
 function parse(line, index, lines, renderTree) {
 
-    let result = line.match(/^(`{3,}|\t| {4})\s*(.*?)\s*$/);
+    let result = line.match(/^(`{3,}|\t| {4})\s*(.*?)(?:\n|$)/);
 
     if (!result) {
         return;
@@ -52,7 +52,7 @@ function parse(line, index, lines, renderTree) {
         return [{
             display: 'block',
             type: 'BlockCode',
-            rawValue: codeContent.join('\n')
+            rawValue: codeContent.join('\n') + '\n'
         }, index - 1];
 
     } else {
@@ -70,7 +70,7 @@ function parse(line, index, lines, renderTree) {
             display: 'block',
             type: 'BlockCode',
             language: result[2],
-            rawValue: codeContent.join('\n')
+            rawValue: codeContent.join('\n') + '\n'
         }, index];
 
     }

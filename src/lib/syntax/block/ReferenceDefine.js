@@ -1,6 +1,6 @@
 function parse(line, index, lines, renderTree) {
 
-    const result = line.match(/^\s*\[([^\[\]]+)\]:\s*(.+)$/);
+    const result = line.match(/^\s*\[([^\[\]]+)\]:\s*(.+)(?:\n|$)/);
 
     if (!result) {
         return;
