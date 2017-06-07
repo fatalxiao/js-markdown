@@ -6,13 +6,13 @@ function parse(str, children, renderTree) {
             type: 'String',
             rawValue: str.at(1)
         }, 2];
-    } else {
-        return [{
-            display: 'inline',
-            type: 'Escaped',
-            rawValue: str.at(0)
-        }, 1];
     }
+
+    return [{
+        display: 'inline',
+        type: 'Escaped',
+        rawValue: str.at(0)
+    }, 1];
 
 }
 

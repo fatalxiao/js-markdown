@@ -1,8 +1,18 @@
+### Line Breaks
+To force a line break, put two spaces and a newline (return) at the end of the line.
 
-![NPM Version](http://pic.xiami.net/images/album/img25/652725/6527251492652725.jpg)
+* This two-line bullet 
+won't break
 
-![License][license-image]
+* This two-line bullet  
+will break
 
-[npm-image]: https://img.shields.io/npm/v/react-text-edit.svg
-[npm-url]: https://npmjs.org/package/react-text-edit
-[license-image]: https://img.shields.io/npm/l/react-text-edit.svg
+Here is the code:
+
+```
+* This two-line bullet 
+won't break
+
+* This two-line bullet  
+will break
+```
