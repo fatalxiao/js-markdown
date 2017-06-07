@@ -69,11 +69,13 @@ Markdown.prototype.matchInline = function (str, children) {
 
     if (!result) {
         return [{
+            display: 'inline',
             type: 'String',
             rawValue: str
         }, str.length];
     } else if (result[1]) {
         return [{
+            display: 'inline',
             type: 'String',
             rawValue: result[1]
         }, result[1].length];
@@ -85,6 +87,7 @@ Markdown.prototype.matchInline = function (str, children) {
     }
 
     return res || [{
+            display: 'inline',
             type: 'String',
             rawValue: result[2]
         }, result[2].length];
@@ -174,7 +177,7 @@ Markdown.prototype.render = function () {
     this.parseBlocks(lines, this.renderTree);
     this.parseInlines(this.renderTree);
 
-    // console.log(JSON.stringify(this.renderTree));
+    console.log(JSON.stringify(this.renderTree));
 
     this.result = this.toHTML(this.renderTree);
     return this.result;
