@@ -3,7 +3,7 @@ function parse(line, index, lines, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<img ${node.alt ? `alt="${node.alt}"` : ''} src="${node.src}"/>`;
+    return `<strong>${node.rawValue || ''}${data}</strong>`;
 }
 
 export default {

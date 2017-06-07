@@ -22,6 +22,8 @@ import Anchor from './inline/Anchor';
 import AutoLink from './inline/AutoLink';
 import InlineCode from './inline/InlineCode';
 import BreakRow from './inline/BreakRow';
+import Strong from './inline/Strong';
+import Emphasize from './inline/Emphasize';
 
 export default {
 
@@ -36,7 +38,11 @@ export default {
         '[': 'Anchor',
         '<': 'AutoLink',
         '`': 'InlineCode',
-        '  ': 'BreakRow'
+        '  ': 'BreakRow',
+        '**': 'Strong',
+        '__': 'Strong',
+        '*': 'Emphasize',
+        '_': 'Emphasize'
     },
 
     // block
@@ -64,6 +70,8 @@ export default {
     Anchor,
     AutoLink,
     InlineCode,
-    BreakRow
+    BreakRow,
+    Strong,
+    Emphasize
 
 };
