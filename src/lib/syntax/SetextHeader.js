@@ -7,7 +7,7 @@ function parse(line, index, lines, renderTree) {
     }
 
     const nextLine = lines[index + 1],
-        result = nextLine.match(/^([-=])\1\1+(?:\n|$)/);
+        result = nextLine.match(/^([-=])\1\1+$/);
 
     if (!result) {
         return;

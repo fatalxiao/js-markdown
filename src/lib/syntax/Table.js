@@ -74,7 +74,7 @@ function calSeparator(str) {
 
 function parse(line, index, lines, renderTree) {
 
-    const reg = /^ {0,3}(\S(?:\\.|[^\\|])*\|.*)/,
+    const reg = /^ {0,3}(\S(?:\\.|[^\\|])*\|.*)$/,
         separatorReg = /^ {0,3}\|?(\s*:?\-{3,}:?\s*\|)+\s*:?\-{3,}:?\s*\|?\s*$/,
         linesLen = lines.length;
 

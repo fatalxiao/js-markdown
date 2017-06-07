@@ -1,7 +1,7 @@
 import MetaData from './MetaData';
 import AtxHeader from './AtxHeader';
 import SetextHeader from './SetextHeader';
-import Code from './Code';
+import BlockCode from './BlockCode';
 import HorizontalRule from './HorizontalRule';
 import List from './List';
 import ListItem from './ListItem';
@@ -19,7 +19,7 @@ export default {
 
     blockTypes: [
         'MetaData',
-        'AtxHeader', 'SetextHeader', 'Code', 'HorizontalRule', 'List', 'Blockquote', 'Table',
+        'AtxHeader', 'SetextHeader', 'BlockCode', 'HorizontalRule', 'List', 'Blockquote', 'Table',
         'ReferenceDefine', 'Paragraph'
     ],
     inlineTypes: [],
@@ -27,7 +27,7 @@ export default {
     MetaData,
     AtxHeader,
     SetextHeader,
-    Code,
+    BlockCode,
     HorizontalRule,
     List,
     ListItem,

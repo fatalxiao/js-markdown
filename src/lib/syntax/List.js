@@ -155,9 +155,9 @@ function appendParagraph(str, block) {
 
 function parse(line, index, lines, renderTree) {
 
-    const reg = /^( {0,3}\t| {4}|\t)*([\*\-\+]|\d+\.)\s+(.*?)\s*(?:\n|$)/;
+    const reg = /^( {0,3}\t| {4}|\t)*([\*\-\+]|\d+\.)\s+(.*?)\s*$/;
 
-    let result = line.match(/^([\*\+\-]|\d+\.)\s+(.*?)\s*(?:\n|$)/);
+    let result = line.match(/^([\*\+\-]|\d+\.)\s+(.*?)\s*$/);
 
     if (!result) {
         return;

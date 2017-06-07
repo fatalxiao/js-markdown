@@ -1,10 +1,32 @@
 import _ from 'lodash';
 
+function isInlineMatch(line) {
+
+    let result = line.match(/^(`{3,}).*$/);
+
+    if (!result || result.length < 2) {
+        return false;
+    }
+
+    const startFlag = result[1];
+    result = line.slice(startFlag.length).match(new RegExp(`[^\`]+(${startFlag})[^\`]+`));
+    if (result) {
+        return true;
+    }
+
+    return false;
+
+}
+
 function parse(line, index, lines, renderTree) {
 
-    const result = line.match(/^(`{3,}|\t| {4})\s*(.*?)\s*(?:\n|$)/);
+    let result = line.match(/^(`{3,}|\t| {4})\s*(.*?)\s*$/);
 
     if (!result) {
+        return;
+    }
+
+    if (isInlineMatch(line)) {
         return;
     }
 
@@ -23,7 +45,7 @@ function parse(line, index, lines, renderTree) {
 
         return [{
             display: 'block',
-            type: 'Code',
+            type: 'BlockCode',
             rawValue: codeContent.join('\n')
         }, index - 1];
 
@@ -40,7 +62,7 @@ function parse(line, index, lines, renderTree) {
 
         return [{
             display: 'block',
-            type: 'Code',
+            type: 'BlockCode',
             language: result[2],
             rawValue: codeContent.join('\n')
         }, index];
