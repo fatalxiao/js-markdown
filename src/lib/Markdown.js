@@ -61,16 +61,72 @@ Markdown.prototype.parseBlocks = function (lines, renderTree) {
 
 };
 
+Markdown.prototype.matchInline = function (str, children) {
+
+    const reg = /([\s\S]*?)((?:\{:)|\]|\}|\\|(?:!\[)|\[|<|`|(?: \n)|(?:\*\*)|(?:__)|\*|_)/;
+
+    const result = reg.exec(str);
+
+    if (!result) {
+        return {
+            type: 'String',
+            rawValue: str
+        };
+    } else if (result[1]) {
+        return {
+            type: 'String',
+            rawValue: result[1]
+        };
+    }
+
+    return {
+        type: 'String',
+        rawValue: str
+    };
+
+};
+
 Markdown.prototype.parseInline = function (node) {
 
-    if (node.display !== 'block' || node.rawValue === '') {
+    if (node.display !== 'block' || !node.rawValue) {
         return;
+    }
+
+    const children = [];
+    let result;
+
+    while (node.rawValue.length > 0) {
+
+        result = this.matchInline(node.rawValue, children);
+
+        if (!result) {
+            break;
+        }
+
+        node.rawValue = node.rawValue.slice(result.rawValue.length);
+
+        if (children && children.length > 0 && children[children.length - 1].type === 'String') {
+            children[children.length - 1].rawValue += result.rawValue;
+        } else {
+            children.push(result);
+        }
+
+    }
+
+    if (children.length > 0) {
+
+        if (!node.children) {
+            node.children = [];
+        }
+
+        node.children = [...children, ...node.children];
+
     }
 
 };
 
 Markdown.prototype.parseInlines = function (renderTree) {
-    Util.postOrderTraverse(renderTree, this.parseInline);
+    Util.postOrderTraverse.call(this, renderTree, this.parseInline);
 };
 
 Markdown.prototype.toHTML = function (node = this.renderTree) {
@@ -85,6 +141,8 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
 
     if (node.type && Syntax[node.type]) {
         return Syntax[node.type].render(string, node);
+    } else {
+        return node.rawValue || '' + string;
     }
 
     return string;
@@ -105,10 +163,9 @@ Markdown.prototype.render = function () {
     };
 
     this.parseBlocks(lines, this.renderTree);
+    this.parseInlines(this.renderTree);
 
     // console.log(JSON.stringify(this.renderTree));
-
-    this.parseInlines(this.renderTree);
 
     this.result = this.toHTML(this.renderTree);
     return this.result;

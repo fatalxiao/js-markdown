@@ -8,11 +8,11 @@ function countLines(str) {
 
 function preOrderTraverse(node, callback, deep = 0) {
 
-    callback(node, deep);
+    callback.call(this, node, deep);
 
     if (node.children && node.children.length > 0) {
         for (let i = 0, len = node.children.length; i < len; i++) {
-            preOrderTraverse(node.children[i], callback, deep + 1);
+            preOrderTraverse.call(this, node.children[i], callback, deep + 1);
         }
     }
 
@@ -22,11 +22,11 @@ function postOrderTraverse(node, callback, deep = 0) {
 
     if (node.children && node.children.length > 0) {
         for (let i = 0, len = node.children.length; i < len; i++) {
-            postOrderTraverse(node.children[i], callback, deep + 1);
+            postOrderTraverse.call(this, node.children[i], callback, deep + 1);
         }
     }
 
-    callback(node, deep);
+    callback.call(this, node, deep);
 
 }
 

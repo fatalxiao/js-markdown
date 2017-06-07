@@ -1,5 +1,5 @@
 function render(data = '', node) {
-    return `<tbody><tr>${data}</tr></tbody>`;
+    return `<tbody>${data}</tbody>`;
 }
 
 export default {
