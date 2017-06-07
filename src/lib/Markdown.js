@@ -177,7 +177,7 @@ Markdown.prototype.render = function () {
     this.parseBlocks(lines, this.renderTree);
     this.parseInlines(this.renderTree);
 
-    console.log(JSON.stringify(this.renderTree));
+    // console.log(JSON.stringify(this.renderTree));
 
     this.result = this.toHTML(this.renderTree);
     return this.result;
