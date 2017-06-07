@@ -19,7 +19,7 @@ import Paragraph from './block/Paragraph';
 import Escaped from './inline/Escaped';
 import Image from './inline/Image';
 import Anchor from './inline/Anchor';
-import AutoLink from './inline/AutoLink';
+import AutoAnchor from './inline/AutoAnchor';
 import InlineCode from './inline/InlineCode';
 import BreakRow from './inline/BreakRow';
 import Strong from './inline/Strong';
@@ -36,7 +36,7 @@ export default {
         '\\': 'Escaped',
         '![': 'Image',
         '[': 'Anchor',
-        '<': 'AutoLink',
+        '<': 'AutoAnchor',
         '`': 'InlineCode',
         '  \n': 'BreakRow',
         '**': 'Strong',
@@ -68,7 +68,7 @@ export default {
     Escaped,
     Image,
     Anchor,
-    AutoLink,
+    AutoAnchor,
     InlineCode,
     BreakRow,
     Strong,
