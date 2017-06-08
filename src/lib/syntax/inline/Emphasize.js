@@ -3,13 +3,14 @@ function parse(str, children, renderTree) {
     const flag = str.at(0),
         reg = new RegExp(`([\\s\\S]*?)(\\${flag})`);
 
-    if (!str.includes(flag)) {
+    let restStr = str.slice(1);
+
+    if (!restStr.includes(flag)) {
         return;
     }
 
     let count = 0,
         pn = 1,
-        restStr = str.slice(1),
         resultStr = '',
         result;
 
