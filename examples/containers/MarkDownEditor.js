@@ -6,7 +6,7 @@ import ReactTextEdit from 'react-text-edit';
 
 import Event from 'utils/Event';
 
-import README from 'assets/README.md';
+import MarkDownData from 'assets/MarkDown.md';
 
 import 'assets/sass/MarkDownEditor.scss';
 
@@ -20,7 +20,7 @@ export default class MarkDownEditor extends Component {
 
         this.state = {
 
-            data: README,
+            data: MarkDownData,
 
             fullWidth: window.innerWidth,
             editorWidthPerCent: .5,
