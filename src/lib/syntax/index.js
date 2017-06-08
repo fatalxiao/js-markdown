@@ -29,9 +29,8 @@ import Emphasize from './inline/Emphasize';
 export default {
 
     blockTypes: [
-        'MetaData',
         'AtxHeader', 'BlockCode', 'SetextHeader', 'HorizontalRule', 'List', 'Blockquote', 'Table',
-        'Footnote', 'ReferenceDefine', 'Paragraph'
+        'Footnote', 'ReferenceDefine', 'MetaData', 'Paragraph'
     ],
     inlineTypes: {
         '\\': 'Escaped',
