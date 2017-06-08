@@ -41,11 +41,17 @@ function parse(str, children, renderTree) {
     }
 
     if (resultStr.length > 0) {
-        return [{
+
+        const node = {
             display: 'inline',
             type: 'Strong',
             rawValue: resultStr
-        }, resultStr.length + 4];
+        };
+
+        this.parseInline(node);
+
+        return [node, resultStr.length + 4];
+
     }
 
     return;
