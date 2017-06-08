@@ -1,3 +1,5 @@
+import Util from '../../utils/Util';
+
 function parse(str, children, renderTree) {
 
     // let result = str.match(/^(`+)/);
@@ -38,7 +40,7 @@ function parse(str, children, renderTree) {
         return [{
             display: 'inline',
             type: 'InlineCode',
-            rawValue: result[3]
+            rawValue: Util.encodeHTML(result[3])
         }, result[1].length + result[2].length];
     }
 

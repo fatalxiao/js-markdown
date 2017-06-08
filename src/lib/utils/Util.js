@@ -30,9 +30,21 @@ function postOrderTraverse(node, callback, deep = 0) {
 
 }
 
+function encodeHTML(str) {
+
+    if (!str) {
+        return str;
+    }
+
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+}
+
 export default {
     formatCRLF,
     countLines,
     preOrderTraverse,
-    postOrderTraverse
+    postOrderTraverse,
+    encodeHTML
 };

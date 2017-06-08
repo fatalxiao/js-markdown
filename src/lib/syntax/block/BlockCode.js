@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import Util from '../../utils/Util';
 
 function isInlineMatch(line) {
     return line.match(/^(`{3,}).*\1/);
@@ -32,7 +33,7 @@ function parse(line, index, lines, renderTree) {
         return [{
             display: 'block',
             type: 'BlockCode',
-            rawValue: codeContent.join('\n') + '\n'
+            rawValue: Util.encodeHTML(codeContent.join('\n')) + '\n'
         }, index - 1];
 
     } else {
@@ -50,7 +51,7 @@ function parse(line, index, lines, renderTree) {
             display: 'block',
             type: 'BlockCode',
             language: result[2],
-            rawValue: codeContent.join('\n') + '\n'
+            rawValue: Util.encodeHTML(codeContent.join('\n')) + '\n'
         }, index];
 
     }
