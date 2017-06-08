@@ -21,12 +21,27 @@ function parse(str, children, renderTree) {
     result = str.match(/^!\[(.*?)\][ \t]*\[(.*?)\]/);
 
     if (result) {
-        return [{
+
+        let ref = renderTree.referenceDefine[result[2]];
+
+        if (!ref) {
+            ref = {
+                href: ''
+            };
+        }
+
+        const node = {
             display: 'inline',
             type: 'Image',
             alt: result[1],
-            src: renderTree.referenceDefine[result[2]]
-        }, result[0].length];
+            src: ref.href
+        };
+
+        if (ref.title) {
+            node.title = ref.title;
+        }
+
+        return [node, result[0].length];
     }
 
 }

@@ -25,16 +25,29 @@ function parse(str, children, renderTree) {
 
     if (result) {
 
+        let ref = renderTree.referenceDefine[result[2]];
+
+        if (!ref) {
+            ref = {
+                href: ''
+            };
+        }
+
         const node = {
             display: 'inline',
             type: 'Anchor',
-            href: renderTree.referenceDefine[result[2]],
+            href: ref.href,
             rawValue: result[1]
         };
+
+        if (ref.title) {
+            node.title = ref.title;
+        }
 
         this.parseInline(node);
 
         return [node, result[0].length];
+
     }
 
 }
