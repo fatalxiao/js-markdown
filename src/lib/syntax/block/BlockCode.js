@@ -2,12 +2,12 @@ import _ from 'lodash';
 import Util from '../../utils/Util';
 
 function isInlineMatch(line) {
-    return line.match(/^(`{3,}).*\1/);
+    return line.match(/^([`~]{3,}).*\1/);
 }
 
 function parse(line, index, lines, renderTree) {
 
-    let result = line.match(/^(`{3,}|\t| {4})\s*(.*?)(?:\n|$)/);
+    let result = line.match(/^([`~]{3,}|\t| {4})\s*(.*?)(?:\n|$)/);
 
     if (!result) {
         return;
