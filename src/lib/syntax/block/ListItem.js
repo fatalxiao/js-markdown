@@ -1,5 +1,12 @@
 function render(data = '', node) {
-    return `<li>${node.rawValue || ''}${data}</li>`;
+
+    const checkbox = node.checked !== undefined ?
+        `<input type="checkbox" ${node.checked ? 'checked' : ''}>`
+        :
+        '';
+
+    return `<li>${checkbox}${node.rawValue || ''}${data}</li>`;
+
 }
 
 export default {

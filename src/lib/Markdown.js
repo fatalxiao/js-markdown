@@ -64,7 +64,7 @@ Markdown.prototype.parseBlocks = function (lines, renderTree) {
 
 Markdown.prototype.matchInline = function (str, children) {
 
-    const reg = /([\s\S]*?)(\\|(?:!\[)|(?:\[\^)|(?:\[x\])|(?:\[\])|\[|<|`|(  \n)|(?:\*\*)|(?:__)|\*\*|__|\*|_)/;
+    const reg = /([\s\S]*?)(\\|(?:!\[)|(?:\[\^)|\[|<|`|(  \n)|(?:\*\*)|(?:__)|\*\*|__|\*|_)/;
 
     const result = reg.exec(str);
 

@@ -19,7 +19,6 @@ import Paragraph from './block/Paragraph';
 import Escaped from './inline/Escaped';
 import Image from './inline/Image';
 import Superscript from './inline/Superscript';
-import CheckBox from './inline/CheckBox';
 import Anchor from './inline/Anchor';
 import AutoAnchor from './inline/AutoAnchor';
 import InlineCode from './inline/InlineCode';
@@ -38,8 +37,6 @@ export default {
         '\\': 'Escaped',
         '![': 'Image',
         '[^': 'Superscript',
-        '[x]': 'CheckBox',
-        '[]': 'CheckBox',
         '[': 'Anchor',
         '<': 'AutoAnchor',
         '`': 'InlineCode',
@@ -73,7 +70,6 @@ export default {
     Escaped,
     Image,
     Superscript,
-    CheckBox,
     Anchor,
     AutoAnchor,
     InlineCode,
