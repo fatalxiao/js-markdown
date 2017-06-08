@@ -1,4 +1,54 @@
-function parse(line, index, lines, renderTree) {
+function parse(str, children, renderTree) {
+
+    const reg = /([\s\S]*?)(\*)/,
+        flag = str.at(0);
+
+    if (!str.includes(flag + flag)) {
+        return;
+    }
+
+    let count = 0,
+        pn = 1,
+        restStr = str.slice(2),
+        resultStr = '',
+        result;
+
+    while (restStr.length > 0) {
+
+        if (count === 0 && restStr.startsWith(flag + flag)) {
+            break;
+        }
+
+        result = restStr.match(reg);
+
+        if (!result) {
+            break;
+        }
+
+        if (result[1]) {
+            restStr = restStr.slice(result[1].length);
+            resultStr += result[1];
+            continue;
+        }
+
+        if (result[2]) {
+            restStr = restStr.slice(result[2].length);
+            resultStr += result[2];
+            count += pn;
+            pn = -pn;
+        }
+
+    }
+
+    if (resultStr.length > 0) {
+        return [{
+            display: 'inline',
+            type: 'Strong',
+            rawValue: resultStr
+        }, resultStr.length + 4];
+    }
+
+    return;
 
 }
 
