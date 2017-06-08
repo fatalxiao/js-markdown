@@ -30,10 +30,14 @@ function parse(line, index, lines, renderTree) {
             codeContent.push(lines[index].slice(indentLen));
         }
 
+        while (_.trim(codeContent[codeContent.length - 1]) === '') {
+            codeContent.pop();
+        }
+
         return [{
             display: 'block',
             type: 'BlockCode',
-            rawValue: Util.encodeHTML(codeContent.join('\n')) + '\n'
+            rawValue: Util.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n')) + '\n'
         }, index - 1];
 
     } else {
@@ -51,7 +55,7 @@ function parse(line, index, lines, renderTree) {
             display: 'block',
             type: 'BlockCode',
             language: result[2],
-            rawValue: Util.encodeHTML(codeContent.join('\n')) + '\n'
+            rawValue: Util.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n'))
         }, index];
 
     }
