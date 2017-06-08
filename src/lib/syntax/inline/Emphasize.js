@@ -16,13 +16,6 @@ function parse(str, children, renderTree) {
 
     while (restStr.length > 0) {
 
-        if (restStr.startsWith(flag + flag)) {
-            restStr = restStr.slice(2);
-            resultStr += flag + flag;
-            count += pn;
-            pn = -pn;
-        }
-
         result = restStr.match(reg);
 
         if (!result) {
@@ -37,6 +30,13 @@ function parse(str, children, renderTree) {
 
         if (count === 0 && result[2]) {
             break;
+        }
+
+        if (restStr.startsWith(flag + flag)) {
+            restStr = restStr.slice(2);
+            resultStr += flag + flag;
+            count += pn;
+            pn = -pn;
         }
 
     }

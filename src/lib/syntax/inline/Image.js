@@ -3,13 +3,19 @@ function parse(str, children, renderTree) {
     let result = str.match(/^!\[(.*?)\][ \t]*\([ \t]*([^")]*?)(?:[ \t]+(["'])(.*?)\3)?[ \t]*\)/);
 
     if (result) {
-        return [{
+
+        const node = {
             display: 'inline',
             type: 'Image',
             alt: result[1],
-            src: result[2],
-            title: result[4]
-        }, result[0].length];
+            src: result[2]
+        };
+
+        if (result[4]) {
+            node.title = result[4];
+        }
+
+        return [node, result[0].length];
     }
 
     result = str.match(/^!\[(.*?)\][ \t]*\[(.*?)\]/);
