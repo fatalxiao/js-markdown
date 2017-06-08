@@ -1,7 +1,7 @@
 function parse(str, children, renderTree) {
 
-    const reg = /([\s\S]*?)(\*)/,
-        flag = str.at(0);
+    const flag = str.at(0),
+        reg = new RegExp(`([\\s\\S]*?)(\\${flag})`);
 
     if (!str.includes(flag + flag)) {
         return;
