@@ -96,7 +96,7 @@ Markdown.prototype.matchInline = function (str, children) {
 
 Markdown.prototype.parseInline = function (node) {
 
-    if (!node.rawValue) {
+    if (!node.rawValue || node.type === 'BlockCode' || node.type === 'InlineCode') {
         return;
     }
 
