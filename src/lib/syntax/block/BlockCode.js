@@ -1,27 +1,7 @@
 import _ from 'lodash';
 
 function isInlineMatch(line) {
-
-    let result = line.match(/^(`{3,}).*$/);
-
-    if (!result || result.length < 2) {
-        return false;
-    }
-
-    const startFlag = result[1];
-    line = line.slice(startFlag.length);
-
-    if (_.trim(line) === '') {
-        return false;
-    }
-
-    result = line.match(new RegExp(`[^\`]+(${startFlag})[^\`]+`));
-    if (result) {
-        return true;
-    }
-
-    return false;
-
+    return line.match(/^(`{3,}).*\1/);
 }
 
 function parse(line, index, lines, renderTree) {
