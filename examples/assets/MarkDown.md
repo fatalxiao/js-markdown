@@ -1,4 +1,4 @@
-# MarkDown
+# MarkDown Syntax
 
 ## The Basics
 
@@ -16,14 +16,18 @@ Here is the code:
 * This two-line bullet
 won't break
 
-* This two-line bullet
+* This two-line bullet  
 will break
 ```
 
+
+
 ### Strong and Emphasize
 
-**Strong**: `**Strong**` or `__Strong__` (Command-B)
-*Emphasize*: `*Emphasize*` or `_Emphasize_`[^emphasize] (Command-I)
+**Strong**: `**Strong**` or `__Strong__`  
+*Emphasize*: `*Emphasize*` or `_Emphasize_`[^emphasize]
+
+
 
 ### Headers
 
@@ -45,21 +49,24 @@ or
 
 
 ### Links and Email
+
 #### Inline
-Just put angle brackets around an email and it becomes clickable: <uranusjr@gmail.com>
-`<uranusjr@gmail.com>`
 
-Same thing with urls: <http://macdown.uranusjr.com>
-`<http://macdown.uranusjr.com>`
+<fatalxiao@gmail.com>  
+`<fatalxiao@gmail.com>`
 
-Perhaps you want to some link text like this: [Macdown Website](http://macdown.uranusjr.com "Title")
-`[Macdown Website](http://macdown.uranusjr.com "Title")` (The title is optional)
+Same thing with urls: <https://github.com/fatalxiao/js-markdown>  
+`<https://github.com/fatalxiao/js-markdown>`
+
+Perhaps you want to some link text like this: 
+[js-markdown](https://github.com/fatalxiao/js-markdown "title")
+`[js-markdown](https://github.com/fatalxiao/js-markdown "title")` (The title is optional)
 
 
 #### Reference style
-Sometimes it looks too messy to include big long urls inline, or you want to keep all your urls together.
 
-Make [a link][arbitrary_id] `[a link][arbitrary_id]` then on it's own line anywhere else in the file:
+[a link][arbitrary_id]  
+`[a link][arbitrary_id]` 
 `[arbitrary_id]: http://macdown.uranusjr.com "Title"`
 
 If the link text itself would make a good id, you can link [like this][] `[like this][]`, then on it's own line anywhere else in the file:
