@@ -7,9 +7,10 @@ function parse(line, index, lines, renderTree) {
         return;
     }
 
-    if (!(result[1] in renderTree.footnotes)) {
-        renderTree.footnotes[result[1]] = result[2];
-    }
+    renderTree.footnotes.push({
+        key: result[1],
+        value: result[2]
+    });
 
     return [null, index];
 

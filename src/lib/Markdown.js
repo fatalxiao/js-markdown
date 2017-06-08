@@ -162,6 +162,32 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
 
 };
 
+Markdown.prototype.formatFootnotes = function () {
+
+    const footnotes = this.renderTree.footnotes;
+
+    let result = [],
+        temp = {};
+
+    if (!footnotes || footnotes.length < 1) {
+        return;
+    }
+
+    result = footnotes.filter(item => isNaN(item.key));
+
+    for (let item of footnotes) {
+        if (!isNaN(item.key)) {
+            temp[item.key] = item;
+        }
+    }
+    for (let index of Object.keys(temp).sort()) {
+        result.splice(index - 1, 0, temp[index]);
+    }
+
+    this.renderTree.footnotes = result;
+
+};
+
 Markdown.prototype.render = function () {
 
     const data = Util.formatCRLF(this.initData),
@@ -171,15 +197,15 @@ Markdown.prototype.render = function () {
         isRoot: true,
         metaData: {},
         referenceDefine: {},
-        footnotes: {},
+        footnotes: [],
         children: []
     };
 
     this.parseBlocks(lines, this.renderTree);
 
-    this.parseInlines(this.renderTree);
+    this.formatFootnotes();
 
-    // console.log(JSON.stringify(this.renderTree));
+    this.parseInlines(this.renderTree);
 
     this.result = this.toHTML(this.renderTree);
     return this.result;
