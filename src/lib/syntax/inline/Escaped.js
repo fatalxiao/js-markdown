@@ -1,6 +1,6 @@
 function parse(str, children, renderTree) {
 
-    if (/^\\[\\`\*_{}<>\[\]()#\+.!\-]/.test(str)) {
+    if (/^\\[\\`\*_{}<>\[\]()#\+.!\-~"=\^]/.test(str)) {
         return [{
             display: 'inline',
             type: 'String',
