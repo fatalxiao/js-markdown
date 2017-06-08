@@ -4,7 +4,7 @@ function generateListNode(result, isFirst) {
     return {
         display: 'block',
         type: 'List',
-        isOrder: result[isFirst ? 2 : 3].includes('.'),
+        isOrder: result[isFirst ? 1 : 2].includes('.'),
         children: []
     };
 }
@@ -156,9 +156,9 @@ function appendParagraph(str, block) {
 
 function parse(line, index, lines, renderTree) {
 
-    const reg = /^( {0,3}\t| {4}|\t)*([\*\-\+]|\d+\.)\s+(\[[x| ]\])(.*?)(?:\n|$)/;
+    const reg = /^( {0,3}\t| {4}|\t)*([\*\-\+]|\d+\.)\s+(\[[x| ]\])?(.*?)(?:\n|$)/;
 
-    let result = line.match(/^([\*\+\-]|\d+\.)\s+(\[[x| ]\])(.*?)(?:\n|$)/);
+    let result = line.match(/^([\*\+\-]|\d+\.)\s+(\[[x| ]\])?(.*?)(?:\n|$)/);
 
     if (!result) {
         return;

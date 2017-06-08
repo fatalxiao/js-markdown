@@ -25,30 +25,30 @@ You can customize the editor window to you liking in the [**Editor** preferences
 You can configure various application (that's me!) behaviors in the [**General** preference pane](#general-pane).
 
 ## The Basics
-Before I tell you about all the extra syntaxes and capabilities I have, I'll introduce you to the basics of standard markdown. If you already know markdown, and want to jump straight to learning about the fancier things I can do, I suggest you skip to the [**Markdown** preference pane](#markdown-pane). Lets jump right in.  
+Before I tell you about all the extra syntaxes and capabilities I have, I'll introduce you to the basics of standard markdown. If you already know markdown, and want to jump straight to learning about the fancier things I can do, I suggest you skip to the [**Markdown** preference pane](#markdown-pane). Lets jump right in.
 
 ### Line Breaks
 To force a line break, put two spaces and a newline (return) at the end of the line.
 
-* This two-line bullet 
+* This two-line bullet
 won't break
 
-* This two-line bullet  
+* This two-line bullet
 will break
 
 Here is the code:
 
 ```
-* This two-line bullet 
+* This two-line bullet
 won't break
 
-* This two-line bullet  
+* This two-line bullet
 will break
 ```
 
 ### Strong and Emphasize
 
-**Strong**: `**Strong**` or `__Strong__` (Command-B)  
+**Strong**: `**Strong**` or `__Strong__` (Command-B)
 *Emphasize*: `*Emphasize*` or `_Emphasize_`[^emphasize] (Command-I)
 
 ### Headers (like this one!)
@@ -72,35 +72,35 @@ or
 
 ### Links and Email
 #### Inline
-Just put angle brackets around an email and it becomes clickable: <uranusjr@gmail.com>  
-`<uranusjr@gmail.com>`  
+Just put angle brackets around an email and it becomes clickable: <uranusjr@gmail.com>
+`<uranusjr@gmail.com>`
 
-Same thing with urls: <http://macdown.uranusjr.com>  
-` <http://macdown.uranusjr.com>`  
+Same thing with urls: <http://macdown.uranusjr.com>
+` <http://macdown.uranusjr.com>`
 
-Perhaps you want to some link text like this: [Macdown Website](http://macdown.uranusjr.com "Title")  
-`[Macdown Website](http://macdown.uranusjr.com "Title")` (The title is optional)  
+Perhaps you want to some link text like this: [Macdown Website](http://macdown.uranusjr.com "Title")
+`[Macdown Website](http://macdown.uranusjr.com "Title")` (The title is optional)
 
 
 #### Reference style
-Sometimes it looks too messy to include big long urls inline, or you want to keep all your urls together.  
+Sometimes it looks too messy to include big long urls inline, or you want to keep all your urls together.
 
-Make [a link][arbitrary_id] `[a link][arbitrary_id]` then on it's own line anywhere else in the file:  
+Make [a link][arbitrary_id] `[a link][arbitrary_id]` then on it's own line anywhere else in the file:
 `[arbitrary_id]: http://macdown.uranusjr.com "Title"`
-  
-If the link text itself would make a good id, you can link [like this][] `[like this][]`, then on it's own line anywhere else in the file:  
-`[like this]: http://macdown.uranusjr.com`  
+
+If the link text itself would make a good id, you can link [like this][] `[like this][]`, then on it's own line anywhere else in the file:
+`[like this]: http://macdown.uranusjr.com`
 
 [arbitrary_id]: http://macdown.uranusjr.com "Title"
-[like this]: http://macdown.uranusjr.com  
+[like this]: http://macdown.uranusjr.com
 
 
 ### Images
 #### Inline
 `![Alt Image Text](path/or/url/to.jpg "Optional Title")`
 #### Reference style
-`![Alt Image Text][image-id]`  
-on it's own line elsewhere:  
+`![Alt Image Text][image-id]`
+on it's own line elsewhere:
 `[image-id]: path/or/url/to.jpg "Optional Title"`
 
 
@@ -132,11 +132,11 @@ Here is the code:
 
 ### Block Quote
 
-> Angle brackets `>` are used for block quotes.  
+> Angle brackets `>` are used for block quotes.
 Technically not every line needs to start with a `>` as long as
-there are no empty lines between paragraphs.  
+there are no empty lines between paragraphs.
 > Looks kinda ugly though.
-> > Block quotes can be nested.  
+> > Block quotes can be nested.
 > > > Multiple Levels
 >
 > Most markdown syntaxes work inside block quotes.
@@ -148,11 +148,11 @@ there are no empty lines between paragraphs.
 Here is the code:
 
 ```
-> Angle brackets `>` are used for block quotes.  
+> Angle brackets `>` are used for block quotes.
 Technically not every line needs to start with a `>` as long as
-there are no empty lines between paragraphs.  
+there are no empty lines between paragraphs.
 > Looks kinda ugly though.
-> > Block quotes can be nested.  
+> > Block quotes can be nested.
 > > > Multiple Levels
 >
 > Most markdown syntaxes work inside block quotes.
@@ -161,13 +161,13 @@ there are no empty lines between paragraphs.
 > * [Links][arbitrary_id]
 > * Etc.
 ```
-  
-  
+
+
 ### Inline Code
-`Inline code` is indicated by surrounding it with backticks:  
+`Inline code` is indicated by surrounding it with backticks:
 `` `Inline code` ``
 
-If your ``code has `backticks` `` that need to be displayed, you can use double backticks:  
+If your ``code has `backticks` `` that need to be displayed, you can use double backticks:
 ```` ``Code with `backticks` `` ````  (mind the spaces preceding the final set of backticks)
 
 
@@ -188,7 +188,7 @@ If you type three asterisks `***` or three dashes `---` on a line, I'll display 
 
 
 ## <a name="markdown-pane"></a>The Markdown Preference Pane
-This is where I keep all preferences related to how I parse markdown into html.  
+This is where I keep all preferences related to how I parse markdown into html.
 ![Markdown preferences pane](http://d.pr/i/RQEi+)
 
 ### Document Formatting
@@ -253,13 +253,13 @@ Superscript         | hoge\^(fuga)     | hoge<sup>fuga</sup>   |
 Autolink            | http://t.co      | <http://t.co>         |
 Footnotes           | [\^4] and [\^4]: | [^4] and footnote 4   |
 
-[^4]: You don't have to use a number. Arbitrary things like `[^footy note4]` and `[^footy note4]:` will also work. But they will *render* as numbered footnotes. Also, no need to keep your footnotes in order, I will sort out the order for you so they appear in the same order they were referenced in the text body. You can even keep some footnotes near where you referenced them, and collect others at the bottom of the file in the traditional place for footnotes. 
+[^4]: You don't have to use a number. Arbitrary things like `[^footy note4]` and `[^footy note4]:` will also work. But they will *render* as numbered footnotes. Also, no need to keep your footnotes in order, I will sort out the order for you so they appear in the same order they were referenced in the text body. You can even keep some footnotes near where you referenced them, and collect others at the bottom of the file in the traditional place for footnotes.
 
 
 
 
 ## <a name="rendering-pane"></a>The Rendering Preference Pane
-This is where I keep preferences relating to how I render and style the parsed markdown in the preview window.  
+This is where I keep preferences relating to how I render and style the parsed markdown in the preview window.
 ![Rendering preferences pane](http://d.pr/i/rT4d+)
 
 ### CSS
@@ -267,21 +267,6 @@ You can choose different css files for me to use to render your html. You can ev
 
 ### Syntax Highlighting
 You have already seen how I can syntax highlight your fenced code blocks. See the [Fenced Code Block](#fenced-code-block) section if you haven’t! You can also choose different themes for syntax highlighting.
-
-### TeX-like Math Syntax
-I can also render TeX-like math syntaxes, if you allow me to.[^math] I can do inline math like this: \\( 1 + 1 \\) or this (in MathML): <math><mn>1</mn><mo>+</mo><mn>1</mn></math>, and block math:
-
-\\[
-    A^T_S = B
-\\]
-
-or (in MathML)
-
-<math display="block">
-    <msubsup><mi>A</mi> <mi>S</mi> <mi>T</mi></msubsup>
-    <mo>=</mo>
-    <mi>B</mi>
-</math>
 
 
 
@@ -311,13 +296,13 @@ Normally I require you to put two spaces and a newline (aka return) at the end o
 
 ## <a name="general-pane"></a>The General Preferences Pane
 
-This is where I keep preferences related to application behavior.  
+This is where I keep preferences related to application behavior.
 ![General preferences pane](http://d.pr/i/rvwu+)
 
-The General Preferences Pane allows you to tell me how you want me to behave. For example, do you want me to make sure there is a document open when I launch? You can also tell me if I should constantly update the preview window as you type, or wait for you to hit `command-R` instead. Maybe you prefer your editor window on the right? Or to see the word-count as you type. This is also the place to tell me if you are interested in pre-releases of me, or just want to stick to better-tested official releases.  
+The General Preferences Pane allows you to tell me how you want me to behave. For example, do you want me to make sure there is a document open when I launch? You can also tell me if I should constantly update the preview window as you type, or wait for you to hit `command-R` instead. Maybe you prefer your editor window on the right? Or to see the word-count as you type. This is also the place to tell me if you are interested in pre-releases of me, or just want to stick to better-tested official releases.
 
 ## <a name="editor-pane"></a>The Editor Preference Pane
-This is where I keep preferences related to the behavior and styling of the editing window.  
+This is where I keep preferences related to the behavior and styling of the editing window.
 ![Editor preferences pane](http://d.pr/i/6OL5+)
 
 
@@ -340,12 +325,10 @@ That’s about it. Thanks for listening. I’ll be quiet from now on (unless the
 Happy writing!
 
 
-[^emphasize]: If **Underlines** is turned on, `_this notation_` will render as underlined instead of emphasized 
+[^emphasize]: If **Underlines** is turned on, `_this notation_` will render as underlined instead of emphasized
 
 [^under]: If **Underline** is disabled `_this_` will be rendered as *emphasized* instead of being underlined.
 
 [^quote]: **Quote** replaces literal `"` characters with html `<q>` tags. **Quote** and **Smartypants** are syntactically incompatible. If both are enabled, **Quote** takes precedence. Note that **Quote** is different from *blockquote*, which is part of standard Markdown.
 
 [^math]: Internet connection required.
-
-
