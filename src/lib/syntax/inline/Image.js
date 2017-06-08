@@ -25,9 +25,7 @@ function parse(str, children, renderTree) {
         let ref = renderTree.referenceDefine[result[2]];
 
         if (!ref) {
-            ref = {
-                href: ''
-            };
+            return;
         }
 
         const node = {

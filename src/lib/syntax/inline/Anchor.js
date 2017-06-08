@@ -25,13 +25,16 @@ function parse(str, children, renderTree) {
 
     if (result) {
 
-        let ref = renderTree.referenceDefine[result[2]];
-
-        if (!ref) {
-            ref = {
-                href: ''
-            };
+        let ref = result[2];
+        if (!result[2]) {
+            ref = result[1];
         }
+
+        if (!(ref in renderTree.referenceDefine) || !renderTree.referenceDefine[ref].href) {
+            return;
+        }
+
+        ref = renderTree.referenceDefine[ref];
 
         const node = {
             display: 'inline',

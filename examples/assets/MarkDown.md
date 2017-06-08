@@ -65,15 +65,14 @@ Perhaps you want to some link text like this:
 
 #### Reference style
 
-[a link][arbitrary_id]  
-`[a link][arbitrary_id]` 
-`[arbitrary_id]: http://macdown.uranusjr.com "Title"`
+[a link][js-markdown]  
+`[a link][js-markdown]` 
+`[js-markdown]: https://github.com/fatalxiao/js-markdown "Title"`
 
-If the link text itself would make a good id, you can link [like this][] `[like this][]`, then on it's own line anywhere else in the file:
-`[like this]: http://macdown.uranusjr.com`
+If the link text itself would make a good id, you can link [js-markdown][] `[js-markdown][]`, then on it's own line anywhere else in the file:
+`[js-markdown]: https://github.com/fatalxiao/js-markdown`
 
-[arbitrary_id]: http://macdown.uranusjr.com "Title"
-[like this]: http://macdown.uranusjr.com
+[js-markdown]: https://github.com/fatalxiao/js-markdown "Title"
 
 
 ### Images
