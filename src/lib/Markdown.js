@@ -20,6 +20,7 @@ Markdown.parse = function (data) {
 
 };
 
+/** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- parse -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 Markdown.prototype.parseBlock = function (line, index, lines, renderTree) {
 
     for (let i = 0, len = Syntax.blockTypes.length; i < len; i++) {
@@ -142,26 +143,6 @@ Markdown.prototype.parseInlines = function (renderTree) {
     Util.postOrderTraverse.call(this, renderTree, this.parseInline);
 };
 
-Markdown.prototype.toHTML = function (node = this.renderTree) {
-
-    let string = '';
-
-    if (node.children && node.children.length > 0) {
-        for (let i = 0, len = node.children.length; i < len; i++) {
-            string += this.toHTML(node.children[i]);
-        }
-    }
-
-    if (node.type && Syntax[node.type] && Syntax[node.type].render) {
-        return Syntax[node.type].render(string, node);
-    } else {
-        return node.rawValue || '' + string;
-    }
-
-    return string;
-
-};
-
 Markdown.prototype.formatFootnotes = function () {
 
     const footnotes = this.renderTree.footnotes;
@@ -192,7 +173,7 @@ Markdown.prototype.reformatFootnotes = function () {
     this.renderTree.footnotes = this.renderTree.footnotes.filter(item => item.activated);
 };
 
-Markdown.prototype.render = function () {
+Markdown.prototype.parseTree = function () {
 
     const data = Util.formatCRLF(this.initData),
         lines = data.split('\n');
@@ -212,6 +193,34 @@ Markdown.prototype.render = function () {
     this.parseInlines(this.renderTree);
 
     this.reformatFootnotes();
+
+};
+
+/** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- render -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+Markdown.prototype.toHTML = function (node = this.renderTree) {
+
+    let string = '';
+
+    if (node.children && node.children.length > 0) {
+        for (let i = 0, len = node.children.length; i < len; i++) {
+            string += this.toHTML(node.children[i]);
+        }
+    }
+
+    if (node.type && Syntax[node.type] && Syntax[node.type].render) {
+        return Syntax[node.type].render(string, node);
+    } else {
+        return node.rawValue || '' + string;
+    }
+
+    return string;
+
+};
+
+/** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- main -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+Markdown.prototype.render = function () {
+
+    this.parseTree();
 
     this.result = this.toHTML(this.renderTree);
     return this.result;
