@@ -217,12 +217,48 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
 
 };
 
+Markdown.prototype.renderFootnotes = function () {
+
+    if (!this.renderTree.footnotes || this.renderTree.footnotes.length < 1) {
+        return '';
+    }
+
+    const footnotes = this.renderTree.footnotes.map(item => ({
+            display: 'block',
+            type: 'ListItem',
+            rawValue: item.rawValue
+        })),
+        node = {
+            display: 'block',
+            type: 'Footnote',
+            children: [{
+                display: 'block',
+                type: 'List',
+                isOrder: true,
+                children: footnotes
+            }]
+        };
+
+    this.parseInlines(node);
+
+    return this.toHTML(node);
+
+};
+
+Markdown.prototype.renderHTML = function () {
+
+    this.result = this.toHTML(this.renderTree);
+    this.result += this.renderFootnotes();
+
+};
+
 /** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- main -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 Markdown.prototype.render = function () {
 
     this.parseTree();
 
-    this.result = this.toHTML(this.renderTree);
+    this.renderHTML();
+
     return this.result;
 
 };

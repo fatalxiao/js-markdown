@@ -8,12 +8,16 @@ function parse(str, children, renderTree) {
 
     for (let i = 0, len = renderTree.footnotes.length; i < len; i++) {
         if (renderTree.footnotes[i].key === result[1]) {
+
+            renderTree.footnotes[i].activated = true;
+
             return [{
                 display: 'inline',
                 type: 'Superscript',
                 index: i + 1,
                 rawValue: ''
             }, result[0].length];
+
         }
     }
 
