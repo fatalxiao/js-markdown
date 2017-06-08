@@ -8,14 +8,21 @@ function parse(line, index, lines, renderTree) {
     }
 
     renderTree.footnotes.push({
+        display: 'block',
+        type: 'Footnote',
         key: result[1],
-        value: result[2]
+        rawValue: result[2]
     });
 
     return [null, index];
 
 }
 
+function render(data = '', node) {
+    return `<div class="footnotes"><hr>${node.rawValue || ''}${data}</div>`;
+}
+
 export default {
-    parse
+    parse,
+    render
 };

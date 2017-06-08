@@ -188,6 +188,10 @@ Markdown.prototype.formatFootnotes = function () {
 
 };
 
+Markdown.prototype.reformatFootnotes = function () {
+    this.renderTree.footnotes = this.renderTree.footnotes.filter(item => item.activated);
+};
+
 Markdown.prototype.render = function () {
 
     const data = Util.formatCRLF(this.initData),
@@ -206,6 +210,8 @@ Markdown.prototype.render = function () {
     this.formatFootnotes();
 
     this.parseInlines(this.renderTree);
+
+    this.reformatFootnotes();
 
     this.result = this.toHTML(this.renderTree);
     return this.result;
