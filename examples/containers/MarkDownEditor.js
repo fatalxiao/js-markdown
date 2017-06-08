@@ -121,7 +121,7 @@ export default class MarkDownEditor extends Component {
     render() {
 
         const {data, editorWidthPerCent, editorHeight, isResizing, editorScrollPerCent} = this.state,
-            html = {__html: Markdown.parse(data, 'Maruku')},
+            html = {__html: Markdown.parse(data)},
             markdownBodyWidth = window.innerWidth * (1 - editorWidthPerCent),
             markdownBodyStyle = {
                 width: markdownBodyWidth
