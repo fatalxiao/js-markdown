@@ -25,7 +25,7 @@ will break
 **Strong**: `**Strong**` or `__Strong__` (Command-B)
 *Emphasize*: `*Emphasize*` or `_Emphasize_`[^emphasize] (Command-I)
 
-### Headers (like this one!)
+### Headers
 
 	Header 1
 	========
@@ -50,7 +50,7 @@ Just put angle brackets around an email and it becomes clickable: <uranusjr@gmai
 `<uranusjr@gmail.com>`
 
 Same thing with urls: <http://macdown.uranusjr.com>
-` <http://macdown.uranusjr.com>`
+`<http://macdown.uranusjr.com>`
 
 Perhaps you want to some link text like this: [Macdown Website](http://macdown.uranusjr.com "Title")
 `[Macdown Website](http://macdown.uranusjr.com "Title")` (The title is optional)
