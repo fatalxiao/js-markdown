@@ -63,7 +63,7 @@ Markdown.prototype.parseBlocks = function (lines, renderTree) {
 
 Markdown.prototype.matchInline = function (str, children) {
 
-    const reg = /([\s\S]*?)(\\|(?:!\[)|\[|<|`|(  \n)|(?:\*\*)|(?:__)|\*\*|__|\*|_)/;
+    const reg = /([\s\S]*?)(\\|(?:!\[)|(?:\[\^)|\[|<|`|(  \n)|(?:\*\*)|(?:__)|\*\*|__|\*|_)/;
 
     const result = reg.exec(str);
 
@@ -152,7 +152,7 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
         }
     }
 
-    if (node.type && Syntax[node.type]) {
+    if (node.type && Syntax[node.type] && Syntax[node.type].render) {
         return Syntax[node.type].render(string, node);
     } else {
         return node.rawValue || '' + string;

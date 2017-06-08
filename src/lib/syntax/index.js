@@ -18,6 +18,7 @@ import Paragraph from './block/Paragraph';
 
 import Escaped from './inline/Escaped';
 import Image from './inline/Image';
+import Superscript from './inline/Superscript';
 import Anchor from './inline/Anchor';
 import AutoAnchor from './inline/AutoAnchor';
 import InlineCode from './inline/InlineCode';
@@ -35,6 +36,7 @@ export default {
     inlineTypes: {
         '\\': 'Escaped',
         '![': 'Image',
+        '[^': 'Superscript',
         '[': 'Anchor',
         '<': 'AutoAnchor',
         '`': 'InlineCode',
@@ -67,6 +69,7 @@ export default {
     // inline
     Escaped,
     Image,
+    Superscript,
     Anchor,
     AutoAnchor,
     InlineCode,
