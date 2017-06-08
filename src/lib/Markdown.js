@@ -64,10 +64,9 @@ Markdown.prototype.parseBlocks = function (lines, renderTree) {
 
 Markdown.prototype.matchInline = function (str, children) {
 
-    const urlReg = /^(?:\s*)(?:(https?|ftp|mailto))\S*/,
-        reg = /([\s\S]*?)(\s|\\|(?:!\[)|(?:\[\^)|\[|<|`|(  \n)|(?:\*\*)|(?:__)|\*\*|__|\*|_)/;
+    const reg = /([\s\S]*?)(\\|(?:!\[)|(?:\[\^)|\[|<|`|(  \n)|(?:\*\*)|(?:__)|\*\*|__|\*|_|\s)/;
 
-    let result = str.match(urlReg);
+    let result = Util.matchUrl(str);
 
     if (result) {
         return [{
