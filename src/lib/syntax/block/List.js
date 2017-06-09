@@ -165,30 +165,22 @@ function parse(line, index, lines, renderTree) {
     }
 
     const block = initListRootNode(result, true);
-    let temp, type;
 
     index++;
     for (let len = lines.length; index < len; index++) {
 
-        if (lines[index] === '' || _.trim(lines[index]) === '' || _.trim(lines[index], '\t') === '') {
-            appendParagraph(lines[index] + '\n', block);
-            continue;
+        if (lines[index] === '' || _.trim(lines[index]) === '') {
+            break;
         }
 
         result = lines[index].match(reg);
         if (!result) {
-
-            temp = _.trimStart(lines[index]);
-            temp = _.trimStart(temp, '\t');
-            type = this.parseBlock(temp, 0, [temp])[0].type;
-
-            if (type === 'Paragraph' || type === 'BlankLine') {
+            if (this.parseBlock(lines[index], 0, lines.slice(index))[0].type === 'Paragraph') {
                 appendParagraph(lines[index] + '\n', block);
                 continue;
             } else {
                 break;
             }
-
         }
 
         addListItem(result, block);
