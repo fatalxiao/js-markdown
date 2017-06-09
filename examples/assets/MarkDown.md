@@ -582,8 +582,6 @@ here is the code:
 To put a code block within a list item, the code block needs
 to be indented *twice* -- 8 spaces or two tabs:
 
-here is the code:
-
     *   A list item with a code block:
 
             <code goes here>
@@ -592,10 +590,18 @@ here is the code:
 It's worth noting that it's possible to trigger an ordered list by
 accident, by writing something like this:
 
+1986. What a great season.
+
+here is the code:
+
     1986. What a great season.
 
 In other words, a *number-period-space* sequence at the beginning of a
 line. To avoid this, you can backslash-escape the period:
+
+1986\. What a great season.
+
+here is the code:
 
     1986\. What a great season.
 
@@ -611,6 +617,12 @@ in both `<pre>` and `<code>` tags.
 To produce a code block in Markdown, simply indent every line of the
 block by at least 4 spaces or 1 tab. For example, given this input:
 
+This is a normal paragraph:
+
+    This is a code block.
+
+here is the code:
+
     This is a normal paragraph:
 
         This is a code block.
@@ -624,6 +636,14 @@ Markdown will generate:
 
 One level of indentation -- 4 spaces or 1 tab -- is removed from each
 line of the code block. For example, this:
+
+Here is an example of AppleScript:
+
+    tell application "Foo"
+        beep
+    end tell
+
+here is the code:
 
     Here is an example of AppleScript:
 
@@ -673,6 +693,18 @@ more hyphens, asterisks, or underscores on a line by themselves. If you
 wish, you may use spaces between the hyphens or asterisks. Each of the
 following lines will produce a horizontal rule:
 
+* * *
+
+***
+
+*****
+
+- - -
+
+---------------------------------------
+
+here is the code:
+
     * * *
 
     ***
@@ -699,6 +731,12 @@ after the link text's closing square bracket. Inside the parentheses,
 put the URL where you want the link to point, along with an *optional*
 title for the link, surrounded in quotes. For example:
 
+This is [an example](http://example.com/ "Title") inline link.
+
+[This link](http://example.net/) has no title attribute.
+
+here is the code:
+
     This is [an example](http://example.com/ "Title") inline link.
 
     [This link](http://example.net/) has no title attribute.
@@ -713,6 +751,10 @@ Will produce:
 
 If you're referring to a local resource on the same server, you can
 use relative paths:
+
+See my [About](/about/) page for details.
+
+here is the code:
 
     See my [About](/about/) page for details.
 
@@ -785,6 +827,10 @@ And then define the link:
 Because link names may contain spaces, this shortcut even works for
 multiple words in the link text:
 
+Visit [Daring Fireball][] for more information.
+
+here is the code:
+
 	Visit [Daring Fireball][] for more information.
 
 And then define the link:
@@ -798,6 +844,15 @@ document, sort of like footnotes.
 
 Here's an example of reference links in action:
 
+I get 10 times more traffic from [Google] [1] than from
+[Yahoo] [2] or [MSN] [3].
+
+  [1]: http://google.com/        "Google"
+  [2]: http://search.yahoo.com/  "Yahoo Search"
+  [3]: http://search.msn.com/    "MSN Search"
+
+here is the code:
+
     I get 10 times more traffic from [Google] [1] than from
     [Yahoo] [2] or [MSN] [3].
 
@@ -806,6 +861,15 @@ Here's an example of reference links in action:
       [3]: http://search.msn.com/    "MSN Search"
 
 Using the implicit link name shortcut, you could instead write:
+
+I get 10 times more traffic from [Google][] than from
+[Yahoo][] or [MSN][].
+
+  [google]: http://google.com/        "Google"
+  [yahoo]:  http://search.yahoo.com/  "Yahoo Search"
+  [msn]:    http://search.msn.com/    "MSN Search"
+
+here is the code:
 
     I get 10 times more traffic from [Google][] than from
     [Yahoo][] or [MSN][].

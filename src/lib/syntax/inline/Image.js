@@ -21,7 +21,7 @@ function parse(str, children, renderTree) {
 
     if (result) {
 
-        let ref = renderTree.referenceDefine[result[2]];
+        let ref = renderTree.referenceDefine[result[2].toLowerCase()];
 
         if (!ref) {
             return;

@@ -6,7 +6,7 @@ function parse(line, index, lines, renderTree) {
         return;
     }
 
-    renderTree.referenceDefine[result[1]] = {
+    renderTree.referenceDefine[result[1].toLowerCase()] = {
         href: result[2],
         title: result[4]
     };

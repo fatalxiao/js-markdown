@@ -29,6 +29,8 @@ function parse(str, children, renderTree) {
             ref = result[1];
         }
 
+        ref = ref.toLowerCase();
+
         if (!(ref in renderTree.referenceDefine) || !renderTree.referenceDefine[ref].href) {
             return;
         }
