@@ -1,3 +1,6 @@
+import _ from 'lodash';
+import Util from '../../utils/Util';
+
 function getPrev(renderTree) {
 
     if (!renderTree || !renderTree.children || renderTree.children.length < 1
@@ -11,7 +14,8 @@ function getPrev(renderTree) {
 
 function parse(line, index, lines, renderTree) {
 
-    const prev = getPrev(renderTree);
+    const prev = getPrev(renderTree),
+        isBlankLine = Util.isBlankLine(line);
 
     if (prev) {
 
@@ -21,11 +25,18 @@ function parse(line, index, lines, renderTree) {
             return [null, index];
         }
 
-        if (prev.type === 'Paragraph') { // append to prev Paragraph
+        if (!isBlankLine && prev.type === 'Paragraph') { // append to prev Paragraph
             prev.rawValue += '\n' + line;
             return [null, index];
         }
 
+    }
+
+    if (isBlankLine) {
+        return [{
+            type: 'BlankLine',
+            rawValue: ''
+        }, index];
     }
 
     // single line will be Text

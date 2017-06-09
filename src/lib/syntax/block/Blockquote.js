@@ -19,11 +19,11 @@ function parse(line, index, lines, renderTree) {
     index++;
     for (let len = lines.length; index < len; index++) {
 
-        if (lines[index] === '' || _.trim(lines[index]) === '') {
+        if (lines[index] === '' || _.trim(lines[index]) === '' || _.trim(lines[index], '\t') === '') {
 
             blankLineFlag = true;
 
-            content.push('');
+            content.push(lines[index]);
             continue;
 
         }
@@ -31,15 +31,15 @@ function parse(line, index, lines, renderTree) {
         lineType = this.parseBlock(lines[index], 0, lines.slice(index))[0].type;
 
         if (
-            (lineType !== 'Blockquote' && lineType !== 'Paragraph')
+            (lineType !== 'Blockquote' && lineType !== 'Paragraph' && lineType !== 'Text')
             ||
-            (blankLineFlag && lineType === 'Paragraph')
+            (blankLineFlag && (lineType === 'Paragraph' || lineType === 'Text'))
         ) {
             index--;
             break;
         }
 
-        if (lineType === 'Paragraph') {
+        if (lineType === 'Paragraph' || lineType === 'Text') {
             content.push(lines[index]);
             continue;
         }

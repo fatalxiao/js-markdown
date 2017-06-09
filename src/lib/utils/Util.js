@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 function formatCRLF(str) {
     return str.replace(/\r\n?/g, '\n');
 };
@@ -48,11 +50,16 @@ function matchUrl(str) {
     return str.match(reg);
 }
 
+function isBlankLine(line) {
+    return line === '' || _.trim(line) === '' || _.trim(line, '\t') === '';
+}
+
 export default {
     formatCRLF,
     countLines,
     postOrderTraverse,
     encodeHTML,
     trimEndBlankLines,
-    matchUrl
+    matchUrl,
+    isBlankLine
 };
