@@ -21,7 +21,7 @@
     "bugs": {
         "url": "https://github.com/fatalxiao/js-markdown/issues"
     },
-    "homepage": "https://github.com/fatalxiao/js-markdown",
+    "homepage": "https://fatalxiao.github.io/js-markdown",
     "dependencies": {
         "github-markdown-css": "^2.6.0",
         "lodash": "^4.17.4",
