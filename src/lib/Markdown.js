@@ -236,8 +236,9 @@ Markdown.prototype.renderFootnotes = function () {
         return '';
     }
 
-    const footnotes = this.renderTree.footnotes.map(item => ({
-            type: 'ListItem',
+    const footnotes = this.renderTree.footnotes.map((item, index) => ({
+            type: 'FootnoteListItem',
+            index,
             rawValue: item.rawValue
         })),
         node = {

@@ -13,6 +13,7 @@ import TableBody from './block/TableBody';
 import TableRow from './block/TableRow';
 import TableDataCell from './block/TableDataCell';
 import Footnote from './block/Footnote';
+import FootnoteListItem from './block/FootnoteListItem';
 import ReferenceDefine from './block/ReferenceDefine';
 import Paragraph from './block/Paragraph';
 
@@ -62,6 +63,7 @@ export default {
     TableRow,
     TableDataCell,
     Footnote,
+    FootnoteListItem,
     ReferenceDefine,
     Paragraph,
 

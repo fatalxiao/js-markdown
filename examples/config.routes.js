@@ -7,5 +7,6 @@ import MarkDownEditor from './containers/MarkDownEditor';
 export default (
     <Route path="/" component={Root}>
         <IndexRoute component={MarkDownEditor}/>
+        <Route path="/*" component={MarkDownEditor}/>
     </Route>
 );

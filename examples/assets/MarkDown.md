@@ -23,6 +23,7 @@ Markdown: Syntax
     *   [Code Blocks](#precode)
     *   [Horizontal Rules](#hr)
     *   [Table](#table)
+    *   [Footnote](#footnote)
 *   [Span Elements](#span)
     *   [Links](#link)
     *   [Emphasis](#em)
@@ -726,6 +727,7 @@ here is the code:
     ---------------------------------------
     
 
+
 <h3 id="table">Table</h3>
 
 This is a table:
@@ -769,7 +771,40 @@ here is the code:
 
     First Header  | Second Header
     ------------- | -------------
+
+
+
+
+<h3 id="footnote">Footnote</h3>
+
+Footnote1 [^footnote1]
+
+Footnote2 [^footnote2]
+
+Footnote3 [^footnote3]
+
+Footnote4 [^footnote4]
+
+Footnote5 [^footnote5]
+
+Footnote5 [^4]
+
+here is the code:
+
+    Footnote1 [^footnote1]
     
+    Footnote2 [^footnote2]
+
+    Footnote3 [^footnote3]
+
+    Footnote4 [^footnote4]
+
+    Footnote5 [^footnote5]
+
+    Footnote5 [^4]
+
+[^4]: You don't have to use a number. Arbitrary things like `[^footy note4]` and `[^footy note4]:` will also work. But they will *render* as numbered footnotes. Also, no need to keep your footnotes in order, I will sort out the order for you so they appear in the same order they were referenced in the text body. You can even keep some footnotes near where you referenced them, and collect others at the bottom of the file in the traditional place for footnotes. 
+
 
 
 * * *
@@ -1220,3 +1255,13 @@ Markdown provides backslash escapes for the following characters:
 	-	minus sign (hyphen)
     .   dot
     !   exclamation mark
+    
+
+
+[^footnote1]: footnote1
+
+[^footnote2]: footnote2
+
+[^footnote3]: footnote3
+
+[^footnote4]: footnote4
