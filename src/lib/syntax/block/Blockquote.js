@@ -1,6 +1,10 @@
+function handleData(data) {
+    return data.startsWith(' ') ? data.slice(1) : data;
+}
+
 function parse(line, index, lines, renderTree) {
 
-    const reg = /^(?:\>)\s*(.*?)(?:\n|$)/;
+    const reg = /^(?:\>)(?:\s*?)(.*?)(?:\n|$)/;
     let result = line.match(reg);
 
     if (!result) {
@@ -11,7 +15,7 @@ function parse(line, index, lines, renderTree) {
             type: 'Blockquote',
             children: []
         },
-        content = [result[1]];
+        content = [handleData(result[1])];
 
     let blankLineFlag = false,
         lineType;
@@ -51,7 +55,7 @@ function parse(line, index, lines, renderTree) {
             break;
         }
 
-        content.push(result[1]);
+        content.push(handleData(result[1]));
         blankLineFlag = false;
 
     }
