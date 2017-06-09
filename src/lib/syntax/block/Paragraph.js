@@ -20,9 +20,19 @@ function parse(line, index, lines, renderTree) {
     if (prev) {
 
         if (prev.type === 'Text') { // multi Text line will be a Paragraph
-            prev.type = 'Paragraph';
-            prev.rawValue += '\n' + line;
-            return [null, index];
+
+            if (isBlankLine) {
+                prev.type = 'Paragraph';
+                return [{
+                    type: 'BlankLine',
+                    rawValue: ''
+                }, index];
+            } else {
+                prev.type = 'Paragraph';
+                prev.rawValue += '\n' + line;
+                return [null, index];
+            }
+
         }
 
         if (!isBlankLine && prev.type === 'Paragraph') { // append to prev Paragraph

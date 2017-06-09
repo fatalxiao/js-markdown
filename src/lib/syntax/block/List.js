@@ -27,7 +27,7 @@ function parse(line, index, lines, renderTree) {
     };
 
     let lastListItem = generateListItem(result),
-        blankLine;
+        blankLine = undefined;
 
     index++;
     for (let len = lines.length; index < len; index++) {
@@ -45,6 +45,7 @@ function parse(line, index, lines, renderTree) {
 
                 if (blankLine !== undefined) {
                     lastListItem.content.push(blankLine);
+                    blankLine = undefined;
                 }
 
                 block.children.push(lastListItem);
@@ -75,6 +76,7 @@ function parse(line, index, lines, renderTree) {
 
             if (blankLine !== undefined) {
                 lastListItem.content.push(blankLine);
+                blankLine = undefined;
             }
 
             lastListItem.content.push(result[2]);
