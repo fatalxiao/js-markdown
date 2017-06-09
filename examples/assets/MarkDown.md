@@ -888,6 +888,12 @@ Both of the above examples will produce the following HTML output:
 For comparison, here is the same paragraph written using
 Markdown's inline link style:
 
+I get 10 times more traffic from [Google](http://google.com/ "Google")
+than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
+[MSN](http://search.msn.com/ "MSN Search").
+
+here is the code:
+
     I get 10 times more traffic from [Google](http://google.com/ "Google")
     than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
     [MSN](http://search.msn.com/ "MSN Search").
@@ -914,6 +920,16 @@ emphasis. Text wrapped with one `*` or `_` will be wrapped with an
 HTML `<em>` tag; double `*`'s or `_`'s will be wrapped with an HTML
 `<strong>` tag. E.g., this input:
 
+*single asterisks*
+
+_single underscores_
+
+**double asterisks**
+
+__double underscores__
+
+here is the code:
+
     *single asterisks*
 
     _single underscores_
@@ -937,6 +953,10 @@ the same character must be used to open and close an emphasis span.
 
 Emphasis can be used in the middle of a word:
 
+un*frigging*believable
+
+here is the code:
+
     un*frigging*believable
 
 But if you surround an `*` or `_` with spaces, it'll be treated as a
@@ -945,6 +965,10 @@ literal asterisk or underscore.
 To produce a literal asterisk or underscore at a position where it
 would otherwise be used as an emphasis delimiter, you can backslash
 escape it:
+
+\*this text is surrounded by literal asterisks\*
+
+here is the code:
 
     \*this text is surrounded by literal asterisks\*
 
@@ -956,6 +980,10 @@ To indicate a span of code, wrap it with backtick quotes (`` ` ``).
 Unlike a pre-formatted code block, a code span indicates code within a
 normal paragraph. For example:
 
+Use the `printf()` function.
+
+here is the code:
+
     Use the `printf()` function.
 
 will produce:
@@ -964,6 +992,10 @@ will produce:
 
 To include a literal backtick character within a code span, you can use
 multiple backticks as the opening and closing delimiters:
+
+``There is a literal backtick (`) here.``
+
+here is the code:
 
     ``There is a literal backtick (`) here.``
 
@@ -974,6 +1006,12 @@ which will produce this:
 The backtick delimiters surrounding a code span may include spaces --
 one after the opening, one before the closing. This allows you to place
 literal backtick characters at the beginning or end of a code span:
+
+A single backtick in a code span: `` ` ``
+
+A backtick-delimited string in a code span: `` `foo` ``
+
+here is the code:
 
 	A single backtick in a code span: `` ` ``
 
@@ -989,6 +1027,10 @@ With a code span, ampersands and angle brackets are encoded as HTML
 entities automatically, which makes it easy to include example HTML
 tags. Markdown will turn this:
 
+Please don't use any `<blink>` tags.
+
+here is the code:
+
     Please don't use any `<blink>` tags.
 
 into:
@@ -996,6 +1038,10 @@ into:
     <p>Please don't use any <code>&lt;blink&gt;</code> tags.</p>
 
 You can write this:
+
+`&#8212;` is the decimal-encoded equivalent of `&mdash;`.
+
+here is the code:
 
     `&#8212;` is the decimal-encoded equivalent of `&mdash;`.
 
@@ -1052,9 +1098,17 @@ use regular HTML `<img>` tags.
 
 Markdown supports a shortcut style for creating "automatic" links for URLs and email addresses: simply surround the URL or email address with angle brackets. What this means is that if you want to show the actual text of a URL or email address, and also have it be a clickable link, you can do this:
 
+<http://example.com/>
+
+here is the code:
+
     <http://example.com/>
 
 Markdown will turn this into:
+
+<a href="http://example.com/">http://example.com/</a>
+
+here is the code:
 
     <a href="http://example.com/">http://example.com/</a>
 
@@ -1063,14 +1117,19 @@ Markdown will also perform a bit of randomized decimal and hex
 entity-encoding to help obscure your address from address-harvesting
 spambots. For example, Markdown will turn this:
 
+<address@example.com>
+
+here is the code:
+
     <address@example.com>
 
 into something like this:
 
-    <a href="&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;
-    &#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;
-    &#109;">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;
-    &#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
+<a href="&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
+
+here is the code:
+
+    <a href="&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
 
 which will render in a browser as a clickable link to "address@example.com".
 
