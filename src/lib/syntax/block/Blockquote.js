@@ -8,7 +8,6 @@ function parse(line, index, lines, renderTree) {
     }
 
     const block = {
-            display: 'block',
             type: 'Blockquote',
             children: []
         },

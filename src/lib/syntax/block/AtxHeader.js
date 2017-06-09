@@ -9,7 +9,6 @@ function parse(line, index, lines, renderTree) {
     }
 
     return [{
-        display: 'block',
         type: 'AtxHeader',
         level: result[1].length,
         rawValue: result[2] + '\n'

@@ -7,7 +7,6 @@ function parse(str, children, renderTree) {
     }
 
     return [{
-        display: 'inline',
         type: 'AutoAnchor',
         href: result[3] ? 'mailto:' + result[3] : result[1],
         rawValue: result[3] ? result[3] : result[1]

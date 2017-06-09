@@ -8,7 +8,6 @@ function parse(line, index, lines, renderTree) {
     }
 
     renderTree.footnotes.push({
-        display: 'block',
         type: 'Footnote',
         key: result[1],
         rawValue: result[2]

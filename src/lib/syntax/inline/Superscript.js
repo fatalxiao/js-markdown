@@ -12,7 +12,6 @@ function parse(str, children, renderTree) {
             renderTree.footnotes[i].activated = true;
 
             return [{
-                display: 'inline',
                 type: 'Superscript',
                 index: i + 1,
                 rawValue: ''

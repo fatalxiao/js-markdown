@@ -1,6 +1,5 @@
 function parse(str, children, renderTree) {
     return [{
-        display: 'inline',
         type: 'BreakRow',
         rawValue: ''
     }, 3];

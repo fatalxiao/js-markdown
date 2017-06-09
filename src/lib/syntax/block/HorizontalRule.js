@@ -7,7 +7,6 @@ function parse(line, index, lines, renderTree) {
     }
 
     return [{
-        display: 'block',
         type: 'HorizontalRule'
     }, index];
 

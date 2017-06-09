@@ -5,7 +5,6 @@ function parse(str, children, renderTree) {
     if (result) {
 
         const node = {
-            display: 'inline',
             type: 'Image',
             alt: result[1],
             src: result[2]
@@ -29,7 +28,6 @@ function parse(str, children, renderTree) {
         }
 
         const node = {
-            display: 'inline',
             type: 'Image',
             alt: result[1],
             src: ref.href

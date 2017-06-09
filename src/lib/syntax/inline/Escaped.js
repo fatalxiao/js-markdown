@@ -2,14 +2,12 @@ function parse(str, children, renderTree) {
 
     if (/^\\[\\`\*_{}<>\[\]()#\+.!\-~"=\^]/.test(str)) {
         return [{
-            display: 'inline',
             type: 'Text',
             rawValue: str.at(1)
         }, 2];
     }
 
     return [{
-        display: 'inline',
         type: 'Escaped',
         rawValue: str.at(0)
     }, 1];

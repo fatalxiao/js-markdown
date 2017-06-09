@@ -2,16 +2,12 @@ import _ from 'lodash';
 
 function generateTableTree(head, separator) {
     return {
-        display: 'block',
         type: 'Table',
         children: [{
-            display: 'block',
             type: 'TableHead',
             children: [{
-                display: 'block',
                 type: 'TableRow',
                 children: head.map((rawValue, index) => ({
-                    display: 'block',
                     type: 'TableHeadCell',
                     align: separator[index],
                     rawValue
@@ -23,7 +19,6 @@ function generateTableTree(head, separator) {
 
 function generateTableBodyNode() {
     return {
-        display: 'block',
         type: 'TableBody',
         children: []
     };
@@ -32,10 +27,8 @@ function generateTableBodyNode() {
 function generateTableRowNode(line, separator) {
 
     const tableRow = {
-        display: 'block',
         type: 'TableRow',
         children: separator.map(align => ({
-            display: 'block',
             type: 'TableDataCell',
             align
         }))

@@ -35,7 +35,6 @@ function parse(line, index, lines, renderTree) {
         }
 
         return [{
-            display: 'block',
             type: 'BlockCode',
             rawValue: Util.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n')) + '\n'
         }, index - 1];
@@ -52,7 +51,6 @@ function parse(line, index, lines, renderTree) {
         }
 
         return [{
-            display: 'block',
             type: 'BlockCode',
             language: result[2],
             rawValue: Util.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n'))

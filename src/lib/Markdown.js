@@ -77,7 +77,6 @@ Markdown.prototype.matchInline = function (str, children) {
 
     if (result) {
         return [{
-            display: 'inline',
             type: 'Anchor',
             rawValue: result[0]
         }, result[0].length];
@@ -87,13 +86,11 @@ Markdown.prototype.matchInline = function (str, children) {
 
     if (!result) {
         return [{
-            display: 'inline',
             type: 'Text',
             rawValue: str
         }, str.length];
     } else if (result[1]) {
         return [{
-            display: 'inline',
             type: 'Text',
             rawValue: result[1]
         }, result[1].length];
@@ -105,7 +102,6 @@ Markdown.prototype.matchInline = function (str, children) {
     }
 
     return res || [{
-            display: 'inline',
             type: 'Text',
             rawValue: result[2]
         }, result[2].length];
@@ -241,15 +237,12 @@ Markdown.prototype.renderFootnotes = function () {
     }
 
     const footnotes = this.renderTree.footnotes.map(item => ({
-            display: 'block',
             type: 'ListItem',
             rawValue: item.rawValue
         })),
         node = {
-            display: 'block',
             type: 'Footnote',
             children: [{
-                display: 'block',
                 type: 'List',
                 isOrder: true,
                 children: footnotes

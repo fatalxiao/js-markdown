@@ -44,7 +44,6 @@ function parse(str, children, renderTree) {
     if (resultStr.length > 0) {
 
         const node = {
-            display: 'inline',
             type: 'Strong',
             rawValue: resultStr
         };

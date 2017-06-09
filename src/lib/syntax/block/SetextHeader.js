@@ -14,7 +14,6 @@ function parse(line, index, lines, renderTree) {
     }
 
     return [{
-        display: 'block',
         type: 'SetextHeader',
         level: result[1] === '=' ? 1 : 2,
         rawValue: line

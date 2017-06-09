@@ -5,7 +5,6 @@ function parse(str, children, renderTree) {
     if (result) {
 
         const node = {
-            display: 'inline',
             type: 'Anchor',
             href: result[2],
             rawValue: result[1]
@@ -37,7 +36,6 @@ function parse(str, children, renderTree) {
         ref = renderTree.referenceDefine[ref];
 
         const node = {
-            display: 'inline',
             type: 'Anchor',
             href: ref.href,
             rawValue: result[1]

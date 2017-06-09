@@ -2,7 +2,6 @@ import _ from 'lodash';
 
 function generateListItem(result) {
     return {
-        display: 'block',
         type: 'ListItem',
         checked: result[2] === '[x]' ? true : (result[2] === '[ ]' ? false : undefined),
         content: [result[3]],
@@ -22,7 +21,6 @@ function parse(line, index, lines, renderTree) {
     }
 
     const block = {
-        display: 'block',
         type: 'List',
         isOrder: result[1].includes('.'),
         children: []
