@@ -15,29 +15,50 @@ function parse(line, index, lines, renderTree) {
 
     const prev = getPrev(renderTree);
 
-    if (lines.length === 1) {
-        return;
-    } else if (line === '' || _.trim(line) === '' || line === '#' || _.trim(line) === '#') {
+    // if (lines.length === 1) {
+    //     return;
+    // } else if (line === '' || _.trim(line) === '' || line === '#' || _.trim(line) === '#') {
+    //
+    //     if (prev && prev.type !== 'BlankLine') {
+    //         return [{
+    //             display: 'block',
+    //             type: 'BlankLine'
+    //         }, index];
+    //     } else {
+    //         return [null, index];
+    //     }
+    //
+    // } else if (prev && prev.type === 'Paragraph') {
+    //     prev.rawValue += '\n' + line;
+    //     return [null, index];
+    // } else {
+    //     return [{
+    //         display: 'block',
+    //         type: 'Paragraph',
+    //         rawValue: line
+    //     }, index];
+    // }
 
-        if (prev && prev.type !== 'BlankLine') {
-            return [{
-                display: 'block',
-                type: 'BlankLine'
-            }, index];
-        } else {
+    if (prev) {
+
+        if (prev.type === 'Text') { // multi Text line will be a Paragraph
+            prev.type = 'Paragraph';
+            prev.rawValue += '\n' + line;
             return [null, index];
         }
 
-    } else if (prev && prev.type === 'Paragraph') {
-        prev.rawValue += '\n' + line;
-        return [null, index];
-    } else {
-        return [{
-            display: 'block',
-            type: 'Paragraph',
-            rawValue: line
-        }, index];
+        if (prev.type === 'Paragraph') { // append to prev Paragraph
+            prev.rawValue += '\n' + line;
+            return [null, index];
+        }
+
     }
+
+    // single line will be Text
+    return [{
+        type: 'Text',
+        rawValue: line
+    }, index];
 
 }
 

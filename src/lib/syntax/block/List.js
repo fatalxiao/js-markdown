@@ -44,7 +44,13 @@ function parse(line, index, lines, renderTree) {
         if (result) { // matched next list item
 
             if (lastListItem) {
+
+                if (blankLine !== undefined) {
+                    lastListItem.content.push(blankLine);
+                }
+
                 block.children.push(lastListItem);
+
             }
 
             lastListItem = generateListItem(result);
@@ -80,7 +86,13 @@ function parse(line, index, lines, renderTree) {
     }
 
     if (lastListItem) {
+
+        if (blankLine !== undefined) {
+            lastListItem.content.push(blankLine);
+        }
+
         block.children.push(lastListItem);
+
     }
 
     for (let i = 0, len = block.children.length; i < len; i++) {
