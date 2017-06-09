@@ -1,193 +1,93 @@
 import _ from 'lodash';
 
-function generateListNode(result, isFirst) {
-    return {
-        display: 'block',
-        type: 'List',
-        isOrder: result[isFirst ? 1 : 2].includes('.'),
-        children: []
-    };
-}
-
-function generateListItemNode(result, isFirst) {
+function generateListItem(result) {
     return {
         display: 'block',
         type: 'ListItem',
-        checked: result[isFirst ? 2 : 3] === '[x]' ? true : (result[isFirst ? 2 : 3] === '[ ]' ? false : undefined),
-        rawValue: result[isFirst ? 3 : 4] + '\n',
+        checked: result[2] === '[x]' ? true : (result[2] === '[ ]' ? false : undefined),
+        content: [result[3]],
         children: []
     };
-}
-
-function initListRootNode(result, isFirst) {
-
-    const root = generateListNode(result, isFirst);
-    root.children.push(generateListItemNode(result, isFirst));
-
-    return root;
-
-}
-
-function calDeep(result) {
-
-    if (!result) {
-        return 0;
-    }
-
-    let str = result[0],
-        indent,
-        count = 0;
-
-    while (str && (indent = str.match(/^( {0,3}\t| {4}|\t)/))) {
-        str = str.slice(indent[0].length);
-        count++;
-    }
-
-    return count;
-
-}
-
-function calParentNode(block, deep) {
-
-    if (deep === 0) {
-        return block;
-    }
-
-    let parentNode = block;
-    deep *= 2;
-    for (; deep > 0; deep--) {
-
-        if (!parentNode.children || parentNode.children.length < 1) {
-            return parentNode;
-        }
-
-        parentNode = parentNode.children[parentNode.children.length - 1];
-
-    }
-
-    return parentNode;
-
-}
-
-function getLastListItemNode(block) {
-
-    if (!block) {
-        return;
-    }
-
-    let node = block,
-        deep = 0,
-        temp;
-
-    while (node && node.children && node.children.length > 0) {
-
-        temp = node.children[node.children.length - 1];
-
-        if (temp.type !== 'List' && temp.type !== 'ListItem') {
-            break;
-        }
-
-        node = temp;
-        if (node.type === 'List') {
-            deep++;
-        }
-
-    }
-
-    return {node, deep};
-
-}
-
-function addListItem(result, block) {
-
-    const deep = calDeep(result),
-        {deep: lastItemDeep} = getLastListItemNode(block),
-        parentNode = calParentNode(block, deep);
-
-    let node;
-    if (deep <= lastItemDeep) {
-        node = generateListItemNode(result, false);
-    } else {
-        node = generateListNode(result, false);
-        node.children.push(generateListItemNode(result, false));
-    }
-
-    parentNode.children.push(node);
-
-}
-
-function appendParagraph(str, block) {
-
-    const node = getLastListItemNode(block).node;
-
-    if (!node) {
-        return;
-    }
-
-    if (!node.children || node.children.length < 1) {
-
-        str = node.rawValue + str;
-        node.rawValue = '';
-
-        node.children = [{
-            display: 'block',
-            type: 'Paragraph',
-            rawValue: str
-        }];
-
-    } else {
-
-        for (let item of node.children) {
-            if (item.type === 'Paragraph') {
-                item.rawValue += str;
-                return;
-            }
-        }
-
-        node.children.push({
-            display: 'block',
-            type: 'Paragraph',
-            rawValue: str
-        });
-
-    }
-
 }
 
 function parse(line, index, lines, renderTree) {
 
-    const reg = /^( {0,3}\t| {4}|\t)*([\*\-\+]|\d+\.)\s+(\[[x| ]\])?(.*?)(?:\n|$)/;
+    const reg = /^([\*\-\+]|\d+\.)\s+(\[[x| ]\])?(.*?)(?:\n|$)/,
+        indentReg = /^( {0,3}\t| {4}|\t)*(.*?)(?:\n|$)/;
 
-    let result = line.match(/^([\*\+\-]|\d+\.)\s+(\[[x| ]\])?(.*?)(?:\n|$)/);
+    let result = line.match(reg);
 
     if (!result) {
         return;
     }
 
-    const block = initListRootNode(result, true);
+    const block = {
+        display: 'block',
+        type: 'List',
+        isOrder: result[1].includes('.'),
+        children: []
+    };
+
+    let lastListItem = generateListItem(result),
+        blankLine;
 
     index++;
     for (let len = lines.length; index < len; index++) {
 
-        if (lines[index] === '' || _.trim(lines[index]) === '') {
-            break;
+        if (lines[index] === '' || _.trim(lines[index]) === '' || _.trim(lines[index], '\t') === '') {
+            blankLine = lines[index];
+            continue;
         }
 
         result = lines[index].match(reg);
-        if (!result) {
-            if (this.parseBlock(lines[index], 0, lines.slice(index))[0].type === 'Paragraph') {
-                appendParagraph(lines[index] + '\n', block);
-                continue;
-            } else {
-                break;
+
+        if (result) { // matched next list item
+
+            if (lastListItem) {
+                block.children.push(lastListItem);
             }
+
+            lastListItem = generateListItem(result);
+
+            continue;
+
         }
 
-        addListItem(result, block);
+        result = lines[index].match(indentReg);
+
+        if (blankLine !== undefined && (!result || !result[1])) { // end of list
+
+            if (lastListItem) {
+                block.children.push(lastListItem);
+                lastListItem = null;
+            }
+
+            index--;
+            break;
+
+        }
+
+        if (lastListItem) { // append to last list item
+
+            if (blankLine !== undefined) {
+                lastListItem.content.push(blankLine);
+            }
+
+            lastListItem.content.push(result[2]);
+
+        }
 
     }
 
-    return [block, index - 1];
+    if (lastListItem) {
+        block.children.push(lastListItem);
+    }
+
+    for (let i = 0, len = block.children.length; i < len; i++) {
+        this.parseBlocks(block.children[i].content, block.children[i]);
+    }
+
+    return [block, index];
 
 }
 
