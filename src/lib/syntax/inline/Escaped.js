@@ -3,7 +3,7 @@ function parse(str, children, renderTree) {
     if (/^\\[\\`\*_{}<>\[\]()#\+.!\-~"=\^]/.test(str)) {
         return [{
             display: 'inline',
-            type: 'String',
+            type: 'Text',
             rawValue: str.at(1)
         }, 2];
     }

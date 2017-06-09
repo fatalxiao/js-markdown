@@ -15,7 +15,9 @@ function parse(line, index, lines, renderTree) {
 
     const prev = getPrev(renderTree);
 
-    if (line === '' || _.trim(line) === '' || line === '#' || _.trim(line) === '#') {
+    if (lines.length === 1) {
+        return;
+    } else if (line === '' || _.trim(line) === '' || line === '#' || _.trim(line) === '#') {
 
         if (prev && prev.type !== 'BlankLine') {
             return [{

@@ -23,9 +23,11 @@ Markdown.parse = function (data) {
 /** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- parse -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 Markdown.prototype.parseBlock = function (line, index, lines, renderTree) {
 
+    let result;
+
     for (let i = 0, len = Syntax.blockTypes.length; i < len; i++) {
 
-        const result = Syntax[Syntax.blockTypes[i]].parse.call(this, line, index, lines, renderTree);
+        result = Syntax[Syntax.blockTypes[i]].parse.call(this, line, index, lines, renderTree);
 
         if (!result) {
             continue;
@@ -34,6 +36,8 @@ Markdown.prototype.parseBlock = function (line, index, lines, renderTree) {
         return result;
 
     }
+
+    return;
 
 };
 
@@ -49,13 +53,16 @@ Markdown.prototype.parseBlocks = function (lines, renderTree) {
         const result = this.parseBlock(line, i, lines, renderTree);
 
         if (result) {
-
             [block, i] = result;
+        } else {
+            block = {
+                type: 'Text',
+                rawValue: line
+            };
+        }
 
-            if (renderTree && renderTree.children && block) {
-                renderTree.children.push(block);
-            }
-
+        if (renderTree && renderTree.children && block) {
+            renderTree.children.push(block);
         }
 
     }
@@ -81,13 +88,13 @@ Markdown.prototype.matchInline = function (str, children) {
     if (!result) {
         return [{
             display: 'inline',
-            type: 'String',
+            type: 'Text',
             rawValue: str
         }, str.length];
     } else if (result[1]) {
         return [{
             display: 'inline',
-            type: 'String',
+            type: 'Text',
             rawValue: result[1]
         }, result[1].length];
     }
@@ -99,7 +106,7 @@ Markdown.prototype.matchInline = function (str, children) {
 
     return res || [{
             display: 'inline',
-            type: 'String',
+            type: 'Text',
             rawValue: result[2]
         }, result[2].length];
 
@@ -127,8 +134,8 @@ Markdown.prototype.parseInline = function (node) {
         node.rawValue = node.rawValue.slice(len);
 
         if (inline) {
-            if (inline.type === 'String'
-                && children && children.length > 0 && children[children.length - 1].type === 'String') {
+            if (inline.type === 'Text'
+                && children && children.length > 0 && children[children.length - 1].type === 'Text') {
                 children[children.length - 1].rawValue += inline.rawValue;
             } else {
                 children.push(inline);
