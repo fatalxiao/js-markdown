@@ -170,8 +170,9 @@ function parse(line, index, lines, renderTree) {
     index++;
     for (let len = lines.length; index < len; index++) {
 
-        if (lines[index] === '' || _.trim(lines[index]) === '') {
-            break;
+        if (lines[index] === '' || _.trim(lines[index]) === '' || _.trim(lines[index], '\t') === '') {
+            appendParagraph(lines[index] + '\n', block);
+            continue;
         }
 
         result = lines[index].match(reg);
