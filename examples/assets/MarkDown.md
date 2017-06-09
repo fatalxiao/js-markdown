@@ -354,11 +354,23 @@ Markdown supports ordered (numbered) and unordered (bulleted) lists.
 Unordered lists use asterisks, pluses, and hyphens -- interchangably
 -- as list markers:
 
+*   Red
+*   Green
+*   Blue
+
+here is the code:
+
     *   Red
     *   Green
     *   Blue
 
 is equivalent to:
+
++   Red
++   Green
++   Blue
+
+here is the code:
 
     +   Red
     +   Green
@@ -366,11 +378,23 @@ is equivalent to:
 
 and:
 
+-   Red
+-   Green
+-   Blue
+
+here is the code:
+
     -   Red
     -   Green
     -   Blue
 
 Ordered lists use numbers followed by periods:
+
+1.  Bird
+2.  McHale
+3.  Parish
+
+here is the code:
 
     1.  Bird
     2.  McHale
@@ -388,11 +412,23 @@ Markdown produces from the above list is:
 
 If you instead wrote the list in Markdown like this:
 
+1.  Bird
+1.  McHale
+1.  Parish
+
+here is the code:
+
     1.  Bird
     1.  McHale
     1.  Parish
 
 or even:
+
+3. Bird
+1. McHale
+8. Parish
+
+here is the code:
 
     3. Bird
     1. McHale
@@ -413,6 +449,14 @@ or a tab.
 
 To make lists look nice, you can wrap items with hanging indents:
 
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+    viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+    Suspendisse id sem consectetuer libero luctus adipiscing.
+
+here is the code:
+
     *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
         Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
         viverra nec, fringilla in, laoreet vitae, risus.
@@ -420,6 +464,14 @@ To make lists look nice, you can wrap items with hanging indents:
         Suspendisse id sem consectetuer libero luctus adipiscing.
 
 But if you want to be lazy, you don't have to:
+
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.
+
+here is the code:
 
     *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
     Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
@@ -429,6 +481,11 @@ But if you want to be lazy, you don't have to:
 
 If list items are separated by blank lines, Markdown will wrap the
 items in `<p>` tags in the HTML output. For example, this input:
+
+*   Bird
+*   Magic
+
+here is the code:
 
     *   Bird
     *   Magic
@@ -441,6 +498,12 @@ will turn into:
     </ul>
 
 But this:
+
+*   Bird
+
+*   Magic
+
+here is the code:
 
     *   Bird
 
@@ -457,6 +520,18 @@ List items may consist of multiple paragraphs. Each subsequent
 paragraph in a list item must be indented by either 4 spaces
 or one tab:
 
+1.  This is a list item with two paragraphs. Lorem ipsum dolor
+    sit amet, consectetuer adipiscing elit. Aliquam hendrerit
+    mi posuere lectus.
+
+    Vestibulum enim wisi, viverra nec, fringilla in, laoreet
+    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
+    sit amet velit.
+
+2.  Suspendisse id sem consectetuer libero luctus adipiscing.
+
+here is the code:
+
     1.  This is a list item with two paragraphs. Lorem ipsum dolor
         sit amet, consectetuer adipiscing elit. Aliquam hendrerit
         mi posuere lectus.
@@ -471,6 +546,16 @@ It looks nice if you indent every line of the subsequent
 paragraphs, but here again, Markdown will allow you to be
 lazy:
 
+*   This is a list item with two paragraphs.
+
+    This is the second paragraph in the list item. You're
+only required to indent the first line. Lorem ipsum dolor
+sit amet, consectetuer adipiscing elit.
+
+*   Another item in the same list.
+
+here is the code:
+
     *   This is a list item with two paragraphs.
 
         This is the second paragraph in the list item. You're
@@ -482,6 +567,13 @@ lazy:
 To put a blockquote within a list item, the blockquote's `>`
 delimiters need to be indented:
 
+*   A list item with a blockquote:
+
+    > This is a blockquote
+    > inside a list item.
+
+here is the code:
+
     *   A list item with a blockquote:
 
         > This is a blockquote
@@ -489,6 +581,12 @@ delimiters need to be indented:
 
 To put a code block within a list item, the code block needs
 to be indented *twice* -- 8 spaces or two tabs:
+
+*   A list item with a code block:
+
+        <code goes here>
+
+here is the code:
 
     *   A list item with a code block:
 

@@ -165,6 +165,7 @@ function parse(line, index, lines, renderTree) {
     }
 
     const block = initListRootNode(result, true);
+    let temp, type;
 
     index++;
     for (let len = lines.length; index < len; index++) {
@@ -175,12 +176,18 @@ function parse(line, index, lines, renderTree) {
 
         result = lines[index].match(reg);
         if (!result) {
-            if (this.parseBlock(lines[index], 0, lines.slice(index))[0].type === 'Paragraph') {
+
+            temp = _.trimStart(lines[index]);
+            temp = _.trimStart(temp, '\t');
+            type = this.parseBlock(temp, 0, [temp])[0].type;
+
+            if (type === 'Paragraph' || type === 'BlankLine') {
                 appendParagraph(lines[index] + '\n', block);
                 continue;
             } else {
                 break;
             }
+
         }
 
         addListItem(result, block);

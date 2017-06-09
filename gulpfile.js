@@ -42,5 +42,5 @@ gulp.task('build', gulpSequence('es', 'copyFiles'));
  * watch components src files
  */
 gulp.task('watch', function () {
-    gulp.watch('./src/**/*.js', ['build']);
+    gulp.watch('./src/**/*.js', ['es']);
 });
