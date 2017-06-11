@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import Util from '../../utils/Util';
 
 function generateTableTree(head, separator) {
     return {
@@ -44,8 +44,7 @@ function generateTableRowNode(line, separator) {
 
 function calRow(str) {
 
-    str = _.trim(str);
-    str = _.trim(str, '|');
+    str = Util.trim(str, ' \t|');
 
     return str.split(/\s*\|\s*/);
 

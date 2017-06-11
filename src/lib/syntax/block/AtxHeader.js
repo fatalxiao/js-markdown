@@ -1,10 +1,10 @@
-import _ from 'lodash';
+import Util from '../../utils/Util';
 
 function parse(line, index, lines, renderTree) {
 
     const result = line.match(/^(#{1,6})\s*(.*?)\s*(?:#{1,6})?(?:\n|$)/);
 
-    if (!result || _.trim(result[2]) === '') {
+    if (!result || Util.trim(result[2], ' \t') === '') {
         return;
     }
 

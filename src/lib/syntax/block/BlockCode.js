@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import Util from '../../utils/Util';
 
 function isInlineMatch(line) {
@@ -24,13 +23,13 @@ function parse(line, index, lines, renderTree) {
         index++;
 
         for (let len = lines.length; index < len; index++) {
-            if (_.trim(lines[index]) !== '' && !lines[index].startsWith(result[1])) {
+            if (Util.trim(lines[index], ' \t') !== '' && !lines[index].startsWith(result[1])) {
                 break;
             }
             codeContent.push(lines[index].slice(indentLen));
         }
 
-        while (_.trim(codeContent[codeContent.length - 1]) === '') {
+        while (Util.trim(codeContent[codeContent.length - 1], ' \t') === '') {
             codeContent.pop();
         }
 
@@ -44,7 +43,7 @@ function parse(line, index, lines, renderTree) {
         let codeContent = [];
         index++;
         for (let len = lines.length; index < len; index++) {
-            if (_.trimEnd(lines[index]) === result[1]) {
+            if (Util.trimEnd(lines[index], ' \t') === result[1]) {
                 break;
             }
             codeContent.push(lines[index]);

@@ -31,7 +31,6 @@ module.exports = function () {
                 license: data.license,
                 homepage: data.homepage,
                 dependencies: {
-                    'lodash': data.dependencies['lodash'],
                     'string.prototype.at': data.dependencies['string.prototype.at']
                 }
             };

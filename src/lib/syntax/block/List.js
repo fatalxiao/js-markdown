@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import Util from '../../utils/Util';
 
 function generateListItem(result) {
     return {
@@ -32,7 +32,7 @@ function parse(line, index, lines, renderTree) {
     index++;
     for (let len = lines.length; index < len; index++) {
 
-        if (lines[index] === '' || _.trim(lines[index]) === '' || _.trim(lines[index], '\t') === '') {
+        if (Util.isBlankLine(lines[index])) {
             blankLine = lines[index];
             continue;
         }

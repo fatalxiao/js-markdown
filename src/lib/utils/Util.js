@@ -1,4 +1,32 @@
-import _ from 'lodash';
+function isArray(obj) {
+    return ({}).toString.call(obj) === '[object Array]';
+}
+
+function trimHandle(str, chars = ' ', position) {
+
+    let cs = chars;
+
+    if (isArray(chars)) {
+        cs = chars.join('');
+    }
+
+    cs = new RegExp(`${position === 'start' ? '^' : ''}[${cs}]*${position === 'end' ? '$' : ''}`, 'g');
+
+    return str.replace(cs, '');
+
+}
+
+function trimStart(str, chars = ' ') {
+    return trimHandle(str, chars, 'start');
+}
+
+function trimEnd(str, chars = ' ') {
+    return trimHandle(str, chars, 'end');
+}
+
+function trim(str, chars = ' ') {
+    return trimHandle(str, chars);
+}
 
 function formatCRLF(str) {
     return str.replace(/\r\n?/g, '\n');
@@ -37,7 +65,7 @@ function trimEndBlankLines(array) {
         return array;
     }
 
-    while (_.trim(array[array.length - 1]) === '') {
+    while (trim(array[array.length - 1], ' \t') === '') {
         array.pop();
     }
 
@@ -51,10 +79,15 @@ function matchUrl(str) {
 }
 
 function isBlankLine(line) {
-    return line === '' || _.trim(line) === '' || _.trim(line, '\t') === '';
+    return line === '' || trim(line, ' \t') === '';
 }
 
 export default {
+    isArray,
+    trimHandle,
+    trimStart,
+    trimEnd,
+    trim,
     formatCRLF,
     countLines,
     postOrderTraverse,

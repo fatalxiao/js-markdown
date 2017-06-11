@@ -1,3 +1,5 @@
+import Util from '../../utils/Util';
+
 function handleData(data) {
     return data.startsWith(' ') ? data.slice(1) : data;
 }
@@ -23,7 +25,7 @@ function parse(line, index, lines, renderTree) {
     index++;
     for (let len = lines.length; index < len; index++) {
 
-        if (lines[index] === '' || _.trim(lines[index]) === '' || _.trim(lines[index], '\t') === '') {
+        if (Util.isBlankLine(lines[index])) {
 
             blankLineFlag = true;
 

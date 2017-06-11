@@ -1,8 +1,8 @@
-import _ from 'lodash';
+import Util from '../../utils/Util';
 
 function parse(line, index, lines, renderTree) {
 
-    if (line === '' || _.trim(line) === '' || index >= lines.length - 1) {
+    if (line === '' || Util.trim(line, ' \t') === '' || index >= lines.length - 1) {
         return;
     }
 

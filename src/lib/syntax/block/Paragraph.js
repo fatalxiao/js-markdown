@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import Util from '../../utils/Util';
 
 function getPrev(renderTree) {
