@@ -21,6 +21,7 @@ export default class MarkDownEditor extends Component {
         this.state = {
 
             data: MarkDownData,
+            markdownHTML: Markdown.parse(MarkDownData),
 
             fullWidth: window.innerWidth,
             editorWidthPerCent: .5,
@@ -54,9 +55,12 @@ export default class MarkDownEditor extends Component {
     }
 
     changeHandle(data) {
-        this.setState({
-            data
-        });
+        if (data !== this.state.data) {
+            this.setState({
+                data,
+                markdownHTML: Markdown.parse(data)
+            });
+        }
     }
 
     markdownBodyScrollHandle() {
@@ -120,8 +124,8 @@ export default class MarkDownEditor extends Component {
 
     render() {
 
-        const {data, editorWidthPerCent, editorHeight, isResizing, editorScrollPerCent} = this.state,
-            html = {__html: Markdown.parse(data)},
+        const {data, markdownHTML, editorWidthPerCent, editorHeight, isResizing, editorScrollPerCent} = this.state,
+            html = {__html: markdownHTML},
             markdownBodyWidth = window.innerWidth * (1 - editorWidthPerCent),
             markdownBodyStyle = {
                 width: markdownBodyWidth

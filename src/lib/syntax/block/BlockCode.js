@@ -6,7 +6,7 @@ function isInlineMatch(line) {
 
 function parse(line, index, lines, renderTree) {
 
-    let result = line.match(/^([`~]{3,}|\t| {4})\s*(.*?)(?:\n|$)/);
+    let result = line.match(/^([`~]{3,}| {4}|\t| {0,3}\t)\s*(.*?)(?:\n|$)/);
 
     if (!result) {
         return;
@@ -16,7 +16,7 @@ function parse(line, index, lines, renderTree) {
         return;
     }
 
-    if (result[1] === '\t' || result[1] === '    ') {
+    if (result[1].includes('\t') || result[1].includes(' ')) { // space or tab
 
         const indentLen = result[1].length;
         let codeContent = [result[2]];
@@ -38,7 +38,7 @@ function parse(line, index, lines, renderTree) {
             rawValue: Util.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n')) + '\n'
         }, index - 1];
 
-    } else {
+    } else { // ``` or ~~~
 
         let codeContent = [];
         index++;

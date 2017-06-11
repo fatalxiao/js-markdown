@@ -8,6 +8,11 @@ if (!String.prototype.at) {
     }());
 }
 
+/**
+ * Markdown constructor
+ * @param data
+ * @constructor
+ */
 function Markdown(data = '') {
 
     this.initData = data;
@@ -16,18 +21,24 @@ function Markdown(data = '') {
 
 }
 
+/**
+ * static method
+ * @param data
+ */
 Markdown.parse = function (data) {
-
-    if (data === this.initData) {
-        return this.result;
-    }
-
-    let md = new Markdown(data);
-    return md.render();
-
+    return new Markdown(data).render();
 };
 
 /** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- parse -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+/**
+ * traverse block types to identify line syntax
+ * @param line
+ * @param index
+ * @param lines
+ * @param renderTree
+ * @returns {*}
+ */
 Markdown.prototype.parseBlock = function (line, index, lines, renderTree) {
 
     let result;
@@ -48,6 +59,11 @@ Markdown.prototype.parseBlock = function (line, index, lines, renderTree) {
 
 };
 
+/**
+ * split markdown file to block nodes according to lines, and append to renderTree
+ * @param lines
+ * @param renderTree
+ */
 Markdown.prototype.parseBlocks = function (lines, renderTree) {
 
     let line,
@@ -76,6 +92,12 @@ Markdown.prototype.parseBlocks = function (lines, renderTree) {
 
 };
 
+/**
+ * match inline syntax
+ * @param str
+ * @param children
+ * @returns {*}
+ */
 Markdown.prototype.matchInline = function (str, children) {
 
     const reg = /([\s\S]*?)(\\|(?:!\[)|(?:\[\^)|\[|<|`|(  \n)|(?:\*\*)|(?:__)|\*\*|__|\*|_|\s)/;
@@ -115,6 +137,10 @@ Markdown.prototype.matchInline = function (str, children) {
 
 };
 
+/**
+ * split line to several inline nodes
+ * @param node
+ */
 Markdown.prototype.parseInline = function (node) {
 
     if (!node.rawValue || node.type === 'BlockCode' || node.type === 'InlineCode') {
@@ -159,10 +185,17 @@ Markdown.prototype.parseInline = function (node) {
 
 };
 
+/**
+ * traverse renderTree to parse inline syntax
+ * @param renderTree
+ */
 Markdown.prototype.parseInlines = function (renderTree) {
-    Util.postOrderTraverse.call(this, renderTree, this.parseInline);
+    Util.traverse.call(this, renderTree, this.parseInline);
 };
 
+/**
+ * first time format footnotes after parsed blocks
+ */
 Markdown.prototype.formatFootnotes = function () {
 
     const footnotes = this.renderTree.footnotes;
@@ -189,10 +222,17 @@ Markdown.prototype.formatFootnotes = function () {
 
 };
 
+/**
+ * second time format footnotes after parsed parse inline
+ * in order to filter some footnotes not used
+ */
 Markdown.prototype.reformatFootnotes = function () {
     this.renderTree.footnotes = this.renderTree.footnotes.filter(item => item.activated);
 };
 
+/**
+ * generate the render tree from the input markdown data
+ */
 Markdown.prototype.parseTree = function () {
 
     const data = Util.formatCRLF(this.initData),

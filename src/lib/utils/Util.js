@@ -63,11 +63,11 @@ function countLines(str) {
     return str.split('\n').length - 1;
 };
 
-function postOrderTraverse(node, callback, deep = 0) {
+function traverse(node, callback, deep = 0) {
 
     if (node.children && node.children.length > 0) {
         for (let i = 0, len = node.children.length; i < len; i++) {
-            postOrderTraverse.call(this, node.children[i], callback, deep + 1);
+            traverse.call(this, node.children[i], callback, deep + 1);
         }
     }
 
@@ -118,7 +118,7 @@ export default {
     trim,
     formatCRLF,
     countLines,
-    postOrderTraverse,
+    traverse,
     encodeHTML,
     trimEndBlankLines,
     matchUrl,
