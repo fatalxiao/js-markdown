@@ -48,6 +48,13 @@ function parse(line, index, lines, renderTree) {
         }, index];
     }
 
+    if (renderTree && renderTree.isRoot) {
+        return [{
+            type: 'Paragraph',
+            rawValue: line
+        }, index];
+    }
+
     // single line will be Text
     return [{
         type: 'Text',

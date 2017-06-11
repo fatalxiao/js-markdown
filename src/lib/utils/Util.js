@@ -37,9 +37,16 @@ function trimHandle(str, chars = ' ', position) {
         cs = chars.join('');
     }
 
-    cs = new RegExp(`${position === 'start' ? '^' : ''}[${cs}]*${position === 'end' ? '$' : ''}`, 'g');
+    const startReg = new RegExp(`^[${cs}]*`, 'g'),
+        endReg = new RegExp(`[${cs}]*$`, 'g');
 
-    return str.replace(cs, '');
+    if (position === 'start') {
+        return str.replace(startReg, '');
+    } else if (position === 'end') {
+        return str.replace(endReg, '');
+    }
+
+    return str.replace(startReg, '').replace(endReg, '');
 
 }
 
