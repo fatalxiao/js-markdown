@@ -1,3 +1,5 @@
+'use strict';
+
 function parse(str, children, renderTree) {
     return [{
         type: 'BreakRow',

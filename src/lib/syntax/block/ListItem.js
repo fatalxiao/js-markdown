@@ -1,3 +1,5 @@
+'use strict';
+
 function render(data = '', node) {
 
     const checkbox = node.checked !== undefined ?

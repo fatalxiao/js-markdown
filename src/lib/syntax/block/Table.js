@@ -1,3 +1,9 @@
+/**
+ *
+ */
+
+'use strict';
+
 import Util from '../../utils/Util';
 
 function generateTableTree(head, separator) {

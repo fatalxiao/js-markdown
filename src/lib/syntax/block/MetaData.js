@@ -1,3 +1,5 @@
+'use strict';
+
 function parse(line, index, lines, renderTree) {
 
     if (index > 0) {

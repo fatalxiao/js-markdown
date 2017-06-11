@@ -1,3 +1,5 @@
+'use strict';
+
 function parse(str, children, renderTree) {
 
     const result = str.match(/^<(?:((https?|ftp|mailto):[^>]+)|(.*?@.*?\.[a-zA-Z]+))>/);

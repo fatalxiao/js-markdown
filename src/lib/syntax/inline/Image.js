@@ -1,3 +1,5 @@
+'use strict';
+
 function parse(str, children, renderTree) {
 
     let result = str.match(/^!\[(.*?)\][ \t]*\([ \t]*([^")]*?)(?:[ \t]+(["'])(.*?)\3)?[ \t]*\)/);

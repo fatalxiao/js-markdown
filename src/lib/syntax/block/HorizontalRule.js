@@ -1,3 +1,5 @@
+'use strict';
+
 function parse(line, index, lines, renderTree) {
 
     const result = line.match(/^([\*\-])([ \t]?\1)([ \t]?\1)+.*(?:\n|$)/);

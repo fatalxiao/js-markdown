@@ -1,3 +1,5 @@
+'use strict';
+
 function parse(line, index, lines, renderTree) {
 
     const reg = /^\s*\[\^([^\[\]]+)\]:\s*(.+)(?:\n|$)/;

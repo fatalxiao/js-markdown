@@ -1,3 +1,5 @@
+'use strict';
+
 import Util from '../../utils/Util';
 
 function parse(line, index, lines, renderTree) {

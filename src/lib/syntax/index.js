@@ -1,3 +1,5 @@
+'use strict';
+
 import MetaData from './block/MetaData';
 import AtxHeader from './block/AtxHeader';
 import SetextHeader from './block/SetextHeader';

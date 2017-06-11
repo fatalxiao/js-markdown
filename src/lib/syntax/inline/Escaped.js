@@ -1,3 +1,5 @@
+'use strict';
+
 function parse(str, children, renderTree) {
 
     if (/^\\[\\`\*_{}<>\[\]()#\+.!\-~"=\^]/.test(str)) {

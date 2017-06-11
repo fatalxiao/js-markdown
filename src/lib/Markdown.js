@@ -1,3 +1,5 @@
+'use strict';
+
 import Util from './utils/Util';
 import Syntax from './syntax';
 
