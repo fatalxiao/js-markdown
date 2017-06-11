@@ -30,7 +30,7 @@ import Emphasize from './inline/Emphasize';
 export default {
 
     blockTypes: [
-        'AtxHeader', 'BlockCode', 'SetextHeader', 'HorizontalRule', 'List', 'Blockquote', 'Table',
+        'AtxHeader', 'BlockCode', 'SetextHeader', 'HorizontalRule', 'Table', 'List', 'Blockquote',
         'Footnote', 'ReferenceDefine', 'MetaData', 'Paragraph'
     ],
     inlineTypes: {
