@@ -31,10 +31,6 @@ function parse(line, index, lines, renderTree) {
             codeContent.push(lines[index].slice(indentLen));
         }
 
-        while (Util.trim(codeContent[codeContent.length - 1], ' \t') === '') {
-            codeContent.pop();
-        }
-
         return [{
             type: 'BlockCode',
             rawValue: Util.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n')) + '\n'
