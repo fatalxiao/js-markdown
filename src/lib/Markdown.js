@@ -1,6 +1,7 @@
 import Util from './utils/Util';
 import Syntax from './syntax';
 
+// String at method polyfill
 if (!String.prototype.at) {
     (function () {
         'use strict';
@@ -257,6 +258,12 @@ Markdown.prototype.parseTree = function () {
 };
 
 /** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- render -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+/**
+ * render tree to html string
+ * @param node
+ * @returns {*}
+ */
 Markdown.prototype.toHTML = function (node = this.renderTree) {
 
     let string = '';
@@ -277,6 +284,10 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
 
 };
 
+/**
+ * footnotes to html string
+ * @returns {*}
+ */
 Markdown.prototype.renderFootnotes = function () {
 
     if (!this.renderTree.footnotes || this.renderTree.footnotes.length < 1) {
@@ -303,6 +314,9 @@ Markdown.prototype.renderFootnotes = function () {
 
 };
 
+/**
+ * render html string for result
+ */
 Markdown.prototype.renderHTML = function () {
 
     this.result = this.toHTML(this.renderTree);
@@ -311,6 +325,11 @@ Markdown.prototype.renderHTML = function () {
 };
 
 /** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- main -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+/**
+ * markdown render main method
+ * @returns {*|string}
+ */
 Markdown.prototype.render = function () {
 
     this.parseTree();
