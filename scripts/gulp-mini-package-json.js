@@ -29,10 +29,7 @@ module.exports = function () {
                 keywords: data.keywords,
                 repository: data.repository,
                 license: data.license,
-                homepage: data.homepage,
-                dependencies: {
-                    'string.prototype.at': data.dependencies['string.prototype.at']
-                }
+                homepage: data.homepage
             };
 
             chunk.contents = new Buffer(JSON.stringify(miniData, null, 2));

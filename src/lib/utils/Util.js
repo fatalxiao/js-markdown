@@ -2,6 +2,33 @@ function isArray(obj) {
     return ({}).toString.call(obj) === '[object Array]';
 }
 
+function at(index) {
+
+    if (!this) {
+        throw TypeError();
+    }
+
+    const str = '' + this,
+        len = str.length;
+
+    if (index >= len) {
+        return;
+    }
+    if (index < 0) {
+        index = len - index;
+    }
+
+    let i = 0;
+    for (let item of str) {
+        if (i === index) {
+            return item;
+        }
+    }
+
+    return;
+
+}
+
 function trimHandle(str, chars = ' ', position) {
 
     let cs = chars;
@@ -84,6 +111,7 @@ function isBlankLine(line) {
 
 export default {
     isArray,
+    at,
     trimHandle,
     trimStart,
     trimEnd,

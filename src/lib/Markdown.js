@@ -1,6 +1,13 @@
 import Util from './utils/Util';
 import Syntax from './syntax';
 
+if (!String.prototype.at) {
+    (function () {
+        'use strict';
+        String.prototype.at = Util.at;
+    }());
+}
+
 function Markdown(data = '') {
 
     this.initData = data;
