@@ -1,7 +1,18 @@
+/**
+ * match text and paragraph
+ *
+ * If one string does not match any syntax, it will be a text or paragraph.
+ * String will render as a text preferentially.
+ * Adjacent text will combine as a paragraph.
+ * Only if parent is render tree root node, string will render as a paragraph.
+ *
+ */
+
 'use strict';
 
 import Util from '../../utils/Util';
 
+// get prev node in render tree
 function getPrev(renderTree) {
 
     if (!renderTree || !renderTree.children || renderTree.children.length < 1
@@ -50,6 +61,7 @@ function parse(line, index, lines, renderTree) {
         }, index];
     }
 
+    // render as a paragraph when parent is render tree root node
     if (renderTree && renderTree.isRoot) {
         return [{
             type: 'Paragraph',
