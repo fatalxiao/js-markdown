@@ -1,3 +1,20 @@
+/**
+ * match a footnote
+ *
+ * use an id or number for footnote, syntax like this:
+ *
+ *  [^footnote1]: this is a footnote.
+ *  [^2]: this is the second footnote.
+ *
+ * you can write it anywhere.
+ *
+ * if you want to quote one footnote, you can write like this:
+ *
+ *  footnote1 [^footnote1]
+ *  see footnote No.2 [^2]
+ *
+ */
+
 'use strict';
 
 function parse(line, index, lines, renderTree) {
