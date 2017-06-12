@@ -81,30 +81,16 @@ function parse(line, index, lines, renderTree) {
         // calculate this line type
         lineType = this.parseBlock(lines[index], 0, lines.slice(index))[0].type;
 
-        // only
-        // (1) no blank line
-        // (2) continuous blockquote or text
-        // is valid
-        if (
-            (lineType !== 'Blockquote' && lineType !== 'Paragraph' && lineType !== 'Text')
-            ||
-            (blankLineFlag && (lineType === 'Paragraph' || lineType === 'Text'))
-        ) {
+        if (blankLineFlag && lineType !== 'Blockquote') {
             index--;
             break;
-        }
-
-        // append text to blockquote content
-        if (lineType === 'Paragraph' || lineType === 'Text') {
-            content.push(lines[index]);
-            continue;
         }
 
         result = lines[index].match(reg);
 
         if (!result) {
-            index--;
-            break;
+            content.push(lines[index]);
+            continue;
         }
 
         content.push(handleData(result[1]));
