@@ -1,3 +1,18 @@
+/**
+ * match a strong
+ *
+ * syntax like this:
+ *
+ *  **strong**
+ *
+ * or
+ *
+ *  __strong__
+ *
+ * strong can be nested
+ *
+ */
+
 'use strict';
 
 function parse(str, children, renderTree) {
@@ -16,8 +31,10 @@ function parse(str, children, renderTree) {
         resultStr = '',
         result;
 
+    // find the closing identifier
     while (restStr.length > 0) {
 
+        // find closing identifier
         if (count === 0 && restStr.startsWith(flag + flag)) {
             break;
         }
@@ -45,11 +62,12 @@ function parse(str, children, renderTree) {
 
     if (resultStr.length > 0) {
 
-        const node = {
+        const node = { // strong root node
             type: 'Strong',
             rawValue: resultStr
         };
 
+        // parse recursively
         this.parseInline(node);
 
         return [node, resultStr.length + 4];
