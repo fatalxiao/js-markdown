@@ -1,11 +1,78 @@
+/**
+ * match ordered(numbered) / unordered(bulleted) list
+ *
+ * (1) unordered list syntax like this:
+ *
+ *  * Red
+ *  * Green
+ *  * Blue
+ *
+ * also you can use "+" or "-" instead of "*" above.
+ *
+ * (2) ordered list syntax like this:
+ *
+ *  1. One
+ *  2. Two
+ *  3. Three
+ *
+ * the number of list will be ignored, you can write like this:
+ *
+ *  1. One
+ *  1. Two
+ *  1. Three
+ *
+ * even like this:
+ *
+ *  12. One
+ *  3456. Two
+ *  7890. Three
+ *
+ * they all will be generated like this:
+ *
+ *  <ol>
+ *      <li>One</li>
+ *      <li>Two</li>
+ *      <li>Three</li>
+ *  </ol>
+ *
+ * (3) list also can be nested, like this:
+ *
+ *  *   This is a list item with two paragraphs.
+ *
+ *      This is the second paragraph in the list item. You're
+ *  only required to indent the first line. Lorem ipsum dolor
+ *  sit amet, consectetuer adipiscing elit.
+ *
+ *  *   A list item with a blockquote:
+ *
+ *      > This is a blockquote
+ *      > inside a list item.
+ *
+ * (4) list also can includes checkbox, syntax like this:
+ *
+ *  1. [x] I can render checkbox list syntax
+ *      * [x] I support nesting
+ *      * [x] I support ordered *and* unordered lists
+ *  2. [ ] I don't support clicking checkboxes directly in the html window
+ *
+ * [x]: checked = true
+ * [ ]: checked = false
+ *
+ */
+
 'use strict';
 
 import Util from '../../utils/Util';
 
+/**
+ * generate a list item node according to match result
+ * @param result
+ * @returns {{type: string, checked: boolean, content: [*], children: Array}}
+ */
 function generateListItem(result) {
     return {
         type: 'ListItem',
-        checked: result[2] === '[x]' ? true : (result[2] === '[ ]' ? false : undefined),
+        checked: result[2] === '[x]' ? true : (result[2] === '[ ]' ? false : undefined), // true / false / undefined
         content: [result[3]],
         children: []
     };
@@ -22,7 +89,7 @@ function parse(line, index, lines, renderTree) {
         return;
     }
 
-    const block = {
+    const block = { // list root node
         type: 'List',
         isOrder: result[1].includes('.'),
         children: []
@@ -97,6 +164,7 @@ function parse(line, index, lines, renderTree) {
 
     }
 
+    // parse recursively
     for (let i = 0, len = block.children.length; i < len; i++) {
         this.parseBlocks(block.children[i].content, block.children[i]);
     }

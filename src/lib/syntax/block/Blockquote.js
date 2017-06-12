@@ -1,13 +1,13 @@
 /**
  * match a multi lines quote block
  *
- * syntax like this:
+ * (1) basic, syntax like this:
  *
  *  > This is a blockquote with two paragraphs.
  *  >
  *  > Paragraph two.
  *
- * Technically not every line needs to start with a `>`
+ * (2) Technically not every line needs to start with a `>`
  * as long as there are no empty lines between paragraphs, like this:
  *
  *  > This is a blockquote
@@ -16,7 +16,7 @@
  *
  *  > another paragraph.
  *
- * blockquotes can be nested, like this:
+ * (3) blockquotes can be nested, like this:
  *
  *  > blockquote
  *  >
