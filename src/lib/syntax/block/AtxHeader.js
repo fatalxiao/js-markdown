@@ -3,20 +3,20 @@
  *
  * syntax like this:
  *
- * # header 1 (<H1>)
- * ## header 2 (<H2>)
- * ### header 3 (<H3>)
- * #### header 4 (<H4>)
- * ##### header 5 (<H5>)
- * ###### header 6 (<H6>)
+ *  # header 1 (<H1>)
+ *  ## header 2 (<H2>)
+ *  ### header 3 (<H3>)
+ *  #### header 4 (<H4>)
+ *  ##### header 5 (<H5>)
+ *  ###### header 6 (<H6>)
  *
  * use 1-6 "#" characters at the start of the line, corresponding to header levels 1-6
  *
  * Optionally, you may "close" atx-style headers, like this:
  *
- * # This is an H1 #
- * ## This is an H2 ##
- * ### This is an H3 ######
+ *  # This is an H1 #
+ *  ## This is an H2 ##
+ *  ### This is an H3 ######
  *
  */
 

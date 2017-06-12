@@ -3,23 +3,23 @@
  *
  * syntax like this:
  *
- * First Header  | Second Header
- * ------------- | -------------
- * Content Cell  | Content Cell
- * Content Cell  | Content Cell
+ *  First Header  | Second Header
+ *  ------------- | -------------
+ *  Content Cell  | Content Cell
+ *  Content Cell  | Content Cell
  *
  * or
  *
- * | First Header  | Second Header |
- * | ------------- | ------------- |
- * | Content Cell  | Content Cell |
- * | Content Cell  | Content Cell |
+ *  | First Header  | Second Header |
+ *  | ------------- | ------------- |
+ *  | Content Cell  | Content Cell |
+ *  | Content Cell  | Content Cell |
  *
  * and the separator line may control align, like this:
  *
- * | Left Aligned  | Center Aligned  | Right Aligned |
- * |:------------- |:---------------:| -------------:|
- * | left          |      center     |         right |
+ *  | Left Aligned  | Center Aligned  | Right Aligned |
+ *  |:------------- |:---------------:| -------------:|
+ *  | left          |      center     |         right |
  *
  */
 

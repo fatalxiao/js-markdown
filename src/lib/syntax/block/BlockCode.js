@@ -8,7 +8,7 @@
  *  multi lines
  *  ```
  *
- *  or
+ * or
  *
  *  ~~~
  *  another example
