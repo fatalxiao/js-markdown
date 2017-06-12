@@ -13,7 +13,7 @@
 function parse(line, index, lines, renderTree) {
 
     // if not first line
-    if (index > 0) {
+    if (index > 0 || !renderTree) {
         return;
     }
 
@@ -23,6 +23,10 @@ function parse(line, index, lines, renderTree) {
 
     if (!result) {
         return;
+    }
+
+    if (!renderTree.metaData) {
+        renderTree.metaData = {};
     }
 
     // save it in renderTree.metaData
