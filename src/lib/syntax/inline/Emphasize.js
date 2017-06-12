@@ -1,3 +1,18 @@
+/**
+ * match a emphasize
+ *
+ * syntax like this:
+ *
+ *  *emphasized*
+ *
+ * or
+ *
+ *  _emphasized_
+ *
+ * emphasize can be nested
+ *
+ */
+
 'use strict';
 
 function parse(str, children, renderTree) {
@@ -16,6 +31,7 @@ function parse(str, children, renderTree) {
         resultStr = '',
         result;
 
+    // find the closing identifier
     while (restStr.length > 0) {
 
         result = restStr.match(reg);
@@ -34,6 +50,7 @@ function parse(str, children, renderTree) {
             break;
         }
 
+        // if there is a Strong syntax
         if (restStr.startsWith(flag + flag)) {
             restStr = restStr.slice(2);
             resultStr += flag + flag;
@@ -45,11 +62,12 @@ function parse(str, children, renderTree) {
 
     if (resultStr.length > 0) {
 
-        const node = {
+        const node = { // emphasize root node
             type: 'Emphasize',
             rawValue: resultStr
         };
 
+        // parse recursively
         this.parseInline(node);
 
         return [node, resultStr.length + 2];
