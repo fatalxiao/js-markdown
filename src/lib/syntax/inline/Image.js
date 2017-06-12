@@ -1,9 +1,24 @@
+/**
+ * match a image
+ *
+ * (1) basic syntax like this:
+ *
+ *  ![alt text](/path/to/img.jpg "optional title")
+ *
+ * (2) use a reference define
+ *
+ *  ![alt text][reference define]
+ *  [reference define]: url/to/image "optional title attribute"
+ *
+ */
+
 'use strict';
 
 function parse(str, children, renderTree) {
 
     let result = str.match(/^!\[(.*?)\][ \t]*\([ \t]*([^")]*?)(?:[ \t]+(["'])(.*?)\3)?[ \t]*\)/);
 
+    // basic usage
     if (result) {
 
         const node = {
@@ -21,6 +36,7 @@ function parse(str, children, renderTree) {
 
     result = str.match(/^!\[(.*?)\][ \t]*\[(.*?)\]/);
 
+    // use reference define
     if (result) {
 
         let ref = renderTree.referenceDefine[result[2].toLowerCase()];
