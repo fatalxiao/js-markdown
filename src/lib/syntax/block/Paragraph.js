@@ -16,7 +16,7 @@ function getPrev(renderTree) {
 function parse(line, index, lines, renderTree) {
 
     const prev = getPrev(renderTree),
-        isBlankLine = Util.isBlankLine(line);
+        isBlankLine = Util.isBlank(line);
 
     if (prev) {
 

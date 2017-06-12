@@ -34,7 +34,7 @@ function parse(line, index, lines, renderTree) {
     index++;
     for (let len = lines.length; index < len; index++) {
 
-        if (Util.isBlankLine(lines[index])) {
+        if (Util.isBlank(lines[index])) {
             blankLine = lines[index];
             continue;
         }

@@ -192,8 +192,8 @@ function matchUrl(str) {
  * @param line
  * @returns {boolean}
  */
-function isBlankLine(line) {
-    return line === '' || trim(line, ' \t') === '';
+function isBlank(str) {
+    return str === '' || trim(str, ' \t') === '';
 }
 
 export default {
@@ -209,5 +209,5 @@ export default {
     encodeHTML,
     trimEndBlankLines,
     matchUrl,
-    isBlankLine
+    isBlank
 };

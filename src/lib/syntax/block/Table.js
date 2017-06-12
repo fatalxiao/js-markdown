@@ -15,7 +15,7 @@
  * | Content Cell  | Content Cell |
  * | Content Cell  | Content Cell |
  *
- * , and the separator line may control align, like this:
+ * and the separator line may control align, like this:
  *
  * | Left Aligned  | Center Aligned  | Right Aligned |
  * |:------------- |:---------------:| -------------:|
