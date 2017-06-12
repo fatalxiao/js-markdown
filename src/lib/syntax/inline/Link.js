@@ -1,9 +1,29 @@
+/**
+ * match a link
+ *
+ * (1) basic syntax like this:
+ *
+ *  [about](/about/)
+ *
+ * (2) use a reference define
+ *
+ *  [an example][reference define]
+ *  [reference define]: /example/ "optional title attribute"
+ *
+ * (3) use a reference define as text directly
+ *
+ *  [Google][]
+ *  [Google]: http://google.com/
+ *
+ */
+
 'use strict';
 
 function parse(str, children, renderTree) {
 
     let result = str.match(/^\[(.*?)\][ \t]*\([ \t]*([^")]*?)(?:[ \t]+(["'])(.*?)\3)?[ \t]*\)/);
 
+    // basic usage
     if (result) {
 
         const node = {
@@ -24,6 +44,7 @@ function parse(str, children, renderTree) {
 
     result = str.match(/^\[(.*?)\][ \t]*\[(.*?)\]/);
 
+    // use a reference define
     if (result) {
 
         let ref = result[2];
