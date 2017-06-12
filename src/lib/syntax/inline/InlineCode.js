@@ -1,3 +1,19 @@
+/**
+ * match a inline style code
+ *
+ * All text in code block will be escaped.
+ *
+ * (1) basic syntax like this:
+ *
+ *  `code`
+ *
+ * (2) if you want to display "`"s in code, you can write like this
+ *
+ *  `` `code` ``
+ *  ``` ``code`` ```
+ *
+ */
+
 'use strict';
 
 import Util from '../../utils/Util';
@@ -6,6 +22,7 @@ function parse(str, children, renderTree) {
 
     const result = str.match(/^(`+)(([\s\S]*?)\1)/);
 
+    // there must be a closing identifier
     if (result && result[2]) {
         return [{
             type: 'InlineCode',

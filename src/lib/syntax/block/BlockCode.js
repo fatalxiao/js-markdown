@@ -1,6 +1,8 @@
 /**
  * match a multi lines code block
  *
+ * All text in code block will be escaped.
+ *
  * (1) use 3 or more "`" or "~" for the first line, syntax like this:
  *
  *  ```
