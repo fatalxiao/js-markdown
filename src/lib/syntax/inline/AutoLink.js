@@ -1,3 +1,14 @@
+/**
+ * match a auto link
+ *
+ * String between "<" and ">" must be a valid url.
+ *
+ * syntax like this:
+ *
+ *  <http://hello.world>
+ *
+ */
+
 'use strict';
 
 function parse(str, children, renderTree) {
