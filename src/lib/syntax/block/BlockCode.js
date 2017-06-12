@@ -1,7 +1,34 @@
+/**
+ * match a multi lines code block
+ *
+ * (1) use 3 or more "`" or "~" for the first line, syntax like this:
+ *
+ *  ```
+ *  here is the code
+ *  multi lines
+ *  ```
+ *
+ *  or
+ *
+ *  ~~~
+ *  another example
+ *  ~~~
+ *
+ * (2) use a tab or 4 space or 1~3 spaces plus a tab for line start, syntax like this:
+ *
+ *      here is the code
+ *      multi lines
+ *
+ */
+
 'use strict';
 
 import Util from '../../utils/Util';
 
+/**
+ * exclude the condition that if there is a same identifier in the same line
+ * @param line
+ */
 function isInlineMatch(line) {
     return line.match(/^([`~]{3,}).*\1/);
 }
@@ -14,6 +41,7 @@ function parse(line, index, lines, renderTree) {
         return;
     }
 
+    // exclude inline code
     if (isInlineMatch(line)) {
         return;
     }
@@ -58,7 +86,7 @@ function parse(line, index, lines, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<pre><code>${node.rawValue || ''}${data}</code></pre>`;
+    return `<pre><code ${node.language ? `lang="${node.language}"` : ''}>${node.rawValue || ''}${data}</code></pre>`;
 }
 
 export default {
