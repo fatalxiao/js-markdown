@@ -1,3 +1,13 @@
+/**
+ * match a superscript to display footnote number
+ *
+ * syntax like this:
+ *
+ *  see footnote1 [^footnote1]
+ *  [^footnote1]: this is a footnote.
+ *
+ */
+
 'use strict';
 
 function parse(str, children, renderTree) {
@@ -9,8 +19,10 @@ function parse(str, children, renderTree) {
     }
 
     for (let i = 0, len = renderTree.footnotes.length; i < len; i++) {
+
         if (renderTree.footnotes[i].key === result[1]) {
 
+            // if one footnote is not used, it will be ignored and not rendered
             renderTree.footnotes[i].activated = true;
 
             return [{
@@ -20,6 +32,7 @@ function parse(str, children, renderTree) {
             }, result[0].length];
 
         }
+
     }
 
     return;

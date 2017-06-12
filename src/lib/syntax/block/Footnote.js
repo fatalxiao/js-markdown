@@ -8,11 +8,6 @@
  *
  * you can write it anywhere.
  *
- * if you want to quote one footnote, you can write like this:
- *
- *  footnote1 [^footnote1]
- *  see footnote No.2 [^2]
- *
  */
 
 'use strict';
