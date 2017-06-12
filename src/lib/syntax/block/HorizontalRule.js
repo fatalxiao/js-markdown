@@ -1,3 +1,18 @@
+/**
+ * match a horizontal rule
+ *
+ * syntax like this:
+ *
+ *  * * *
+ *  ***
+ *  *****
+ *  - - -
+ *  ---------------------------------------
+ *
+ *  above are all valid.
+ *
+ */
+
 'use strict';
 
 function parse(line, index, lines, renderTree) {
