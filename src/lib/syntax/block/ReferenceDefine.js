@@ -1,3 +1,14 @@
+/**
+ * match reference defines
+ *
+ * It can be used in Link or Image.
+ *
+ * syntax like this:
+ *
+ *  [reference]: Hello World
+ *
+ */
+
 'use strict';
 
 function parse(line, index, lines, renderTree) {

@@ -7,7 +7,7 @@ function parse(str, children, renderTree) {
     if (result) {
 
         const node = {
-            type: 'Anchor',
+            type: 'Link',
             href: result[2],
             rawValue: result[1]
         };
@@ -40,7 +40,7 @@ function parse(str, children, renderTree) {
         ref = renderTree.referenceDefine[ref];
 
         const node = {
-            type: 'Anchor',
+            type: 'Link',
             href: ref.href,
             rawValue: result[1]
         };

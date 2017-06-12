@@ -9,7 +9,7 @@ function parse(str, children, renderTree) {
     }
 
     return [{
-        type: 'AutoAnchor',
+        type: 'AutoLink',
         href: result[3] ? 'mailto:' + result[3] : result[1],
         rawValue: result[3] ? result[3] : result[1]
     }, result[0].length];
