@@ -1,3 +1,12 @@
+/**
+ * match a escaped identifier
+ * 
+ * valid escaped identifier:
+ * 
+ *  \ , ` , * , _ , { , } , < , > , [ , ] , ( , ), # , + , . , ! , - , ~ , " , = , ^
+ * 
+ */
+
 'use strict';
 
 function parse(str, children, renderTree) {
