@@ -1,7 +1,18 @@
+/**
+ * match meta data
+ *
+ * meta data must be written at the beginning of file, syntax like this:
+ *
+ *  metadata: Hello World!
+ *  key:      value
+ *
+ */
+
 'use strict';
 
 function parse(line, index, lines, renderTree) {
 
+    // if not first line
     if (index > 0) {
         return;
     }
@@ -14,6 +25,7 @@ function parse(line, index, lines, renderTree) {
         return;
     }
 
+    // save it in renderTree.metaData
     renderTree.metaData[result[1]] = result[2];
 
     index++;
