@@ -1,3 +1,10 @@
+/**
+ * match a break row
+ *
+ * Input two space at the end of line which will render a "<br/>".
+ *
+ */
+
 'use strict';
 
 function parse(str, children, renderTree) {
