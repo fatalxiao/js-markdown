@@ -42,7 +42,7 @@ function parse(str, children, renderTree) {
 
     }
 
-    result = str.match(/^\[(.*?)\][ \t]*\[(.*?)\]/);
+    result = str.match(/^\[(.*)\][ \t]*\[(.*?)\]/);
 
     // use a reference define
     if (result) {
