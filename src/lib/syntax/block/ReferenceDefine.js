@@ -13,7 +13,7 @@
 
 function parse(line, index, lines, renderTree) {
 
-    const result = line.match(/^\s*\[([^\[\]]+)\]:\s*(.+)(?:[ \t]+(["'])(.*?)\3)?(?:\n|$)/);
+    const result = line.match(/^\s*\[(.+)\]:\s*(.+)(?:[ \t]+(["'])(.*?)\3)?(?:\n|$)/);
 
     if (!result) {
         return;
