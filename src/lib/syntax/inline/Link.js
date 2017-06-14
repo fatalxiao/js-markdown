@@ -94,7 +94,7 @@ function parse(str, children, renderTree) {
 
         // if there is a image in a link, like this:
         // [![alt text][/path/to/img.jpg]][/path/to/link]
-        if (result[1].includes('[')) {
+        if (result[1].includes('[') || result[2].includes('[')) {
 
             let tempStr = str.slice(1),
                 index = getContent(tempStr);
