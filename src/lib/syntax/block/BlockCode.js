@@ -88,7 +88,7 @@ function parse(line, index, lines, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<pre><code ${node.language ? `lang="${node.language}"` : ''}>${node.rawValue || ''}${data}</code></pre>`;
+    return `<pre><code${node.language ? ` lang="${node.language}"` : ''}>${node.rawValue || ''}${data}</code></pre>`;
 }
 
 export default {

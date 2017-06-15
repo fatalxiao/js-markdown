@@ -16,7 +16,7 @@ describe('BlockCode Test', () => {
             + 'code\n'
             + '```';
 
-        expect(Markdown.parse(md)).to.be.equal('<pre><code >here\nis\nthe\ncode</code></pre>');
+        expect(Markdown.parse(md)).to.be.equal('<pre><code>here\nis\nthe\ncode</code></pre>');
 
     });
 
@@ -42,7 +42,7 @@ describe('BlockCode Test', () => {
             + 'code\n'
             + '```';
 
-        expect(Markdown.parse(md)).to.be.equal('<p><code>js</code>\nhere\nis\nthe\ncode</p><pre><code ></code></pre>');
+        expect(Markdown.parse(md)).to.be.equal('<p><code>js</code>\nhere\nis\nthe\ncode</p><pre><code></code></pre>');
 
     });
 

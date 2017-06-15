@@ -69,13 +69,21 @@ import Util from '../../utils/Util';
  * @param result
  * @returns {{type: string, checked: boolean, content: [*], children: Array}}
  */
-function generateListItem(result) {
+function generateListItem(result, hasBlankLine) {
+
+    const content = [result[3]];
+
+    if (hasBlankLine !== undefined) {
+        content.unshift('\n');
+    }
+
     return {
         type: 'ListItem',
         checked: result[2] === '[x]' ? true : (result[2] === '[ ]' ? false : undefined), // true / false / undefined
-        content: [result[3]],
+        content,
         children: []
     };
+
 }
 
 function parse(line, index, lines, renderTree) {
@@ -114,14 +122,15 @@ function parse(line, index, lines, renderTree) {
 
                 if (blankLine !== undefined) {
                     lastListItem.content.push(blankLine);
-                    blankLine = undefined;
                 }
 
                 block.children.push(lastListItem);
 
             }
 
-            lastListItem = generateListItem(result);
+            lastListItem = generateListItem(result, blankLine);
+
+            blankLine = undefined;
 
             continue;
 

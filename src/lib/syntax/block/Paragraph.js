@@ -77,7 +77,7 @@ function parse(line, index, lines, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<p>${node.rawValue || ''}${data}</p>`;
+    return `<p>${node.rawValue || ''}${Util.trim(data, ' \n')}</p>`;
 }
 
 export default {
