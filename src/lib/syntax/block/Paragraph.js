@@ -61,17 +61,16 @@ function parse(line, index, lines, renderTree) {
         }, index];
     }
 
-    // render as a paragraph when parent is render tree root node
-    if (renderTree && renderTree.isRoot) {
+    // render as a single line text when parent is a list
+    if (renderTree && renderTree.type === 'ListItem') {
         return [{
-            type: 'Paragraph',
+            type: 'Text',
             rawValue: line
         }, index];
     }
 
-    // single line will be Text
     return [{
-        type: 'Text',
+        type: 'Paragraph',
         rawValue: line
     }, index];
 

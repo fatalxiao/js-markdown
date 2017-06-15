@@ -7,7 +7,7 @@ const expect = chai.expect;
 
 describe('BlockCode Test', () => {
 
-    it('BlockCode default', () => {
+    it('default', () => {
 
         const md = '```\n'
             + 'here\n'
@@ -20,7 +20,7 @@ describe('BlockCode Test', () => {
 
     });
 
-    it('BlockCode with language', () => {
+    it('with language', () => {
 
         const md = '```js\n'
             + 'here\n'
@@ -33,7 +33,7 @@ describe('BlockCode Test', () => {
 
     });
 
-    it('BlockCode meet InlineCode', () => {
+    it('meet InlineCode', () => {
 
         const md = '```js```\n'
             + 'here\n'
