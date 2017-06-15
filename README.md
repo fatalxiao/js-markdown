@@ -1,8 +1,11 @@
 # JS-MarkDown
 
+[![CircleCI Status][circleci-image]][circleci-url]
 [![NPM Version][npm-image]][npm-url]
 [![License][license-image]][npm-url]
 
+[circleci-image]: https://circleci.com/gh/fatalxiao/js-markdown.svg?style=shield&circle-token=:circle-token
+[circleci-url]: https://circleci.com/gh/fatalxiao/js-markdown
 [npm-image]: https://img.shields.io/npm/v/js-markdown.svg
 [npm-url]: https://npmjs.org/package/js-markdown
 [license-image]: https://img.shields.io/npm/l/js-markdown.svg
