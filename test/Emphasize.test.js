@@ -5,7 +5,7 @@ import chai from 'chai';
 
 const expect = chai.expect;
 
-describe('BreakRow Test', () => {
+describe('Emphasize Test', () => {
 
     it('default', () => {
 

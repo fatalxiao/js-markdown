@@ -5,7 +5,7 @@ import chai from 'chai';
 
 const expect = chai.expect;
 
-describe('AtxHeader Test', () => {
+describe('SetextHeader Test', () => {
 
     it('level 1', () => {
 
