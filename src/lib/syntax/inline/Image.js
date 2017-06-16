@@ -61,7 +61,7 @@ function parse(str, children, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<img ${node.alt ? `alt="${node.alt}"` : ''} ${node.title ? `title="${node.title}"` : ''} src="${node.src}"/>`;
+    return `<img${node.alt ? ` alt="${node.alt}"` : ''}${node.title ? ` title="${node.title}"` : ''} src="${node.src}"/>`;
 }
 
 export default {

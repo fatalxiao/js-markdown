@@ -164,7 +164,7 @@ function parse(str, children, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<a href="${node.href}" ${node.title ? `title="${node.title}"` : ''}>${node.rawValue || ''}${data}</a>`;
+    return `<a href="${node.href}"${node.title ? ` title="${node.title}"` : ''}>${node.rawValue || ''}${data}</a>`;
 }
 
 export default {
