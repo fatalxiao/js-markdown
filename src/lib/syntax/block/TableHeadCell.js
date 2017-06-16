@@ -1,7 +1,7 @@
 'use strict';
 
 function render(data = '', node) {
-    return `<th align="${node.align}">${node.rawValue || ''}${data}</th>`;
+    return `<th${node.align ? ` align="${node.align}"` : ''}>${node.rawValue || ''}${data}</th>`;
 }
 
 export default {
