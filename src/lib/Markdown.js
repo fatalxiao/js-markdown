@@ -20,7 +20,7 @@ function Markdown(data = '') {
 
     this.initData = data;
     this.renderTree = null;
-    this.result = '';
+    this.html = '';
 
 }
 
@@ -326,8 +326,8 @@ Markdown.prototype.renderFootnotes = function () {
  */
 Markdown.prototype.renderHTML = function () {
 
-    this.result = this.toHTML(this.renderTree);
-    this.result += this.renderFootnotes();
+    this.html = this.toHTML(this.renderTree);
+    this.html += this.renderFootnotes();
 
 };
 
@@ -343,7 +343,10 @@ Markdown.prototype.render = function () {
 
     this.renderHTML();
 
-    return this.result;
+    return {
+        html: this.html,
+        renderTree: this.renderTree
+    };
 
 };
 

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Markdown from 'dist';
 import 'github-markdown-css';
 
 import ReactTextEdit from 'react-text-edit';
@@ -21,7 +20,7 @@ export default class MarkDownEditor extends Component {
         this.state = {
 
             data: MarkDownData,
-            markdownHTML: Markdown.parse(MarkDownData),
+            markdownHTML: '', // Markdown.parse(data).html
 
             fullWidth: window.innerWidth,
             editorWidthPerCent: .5,
@@ -33,6 +32,7 @@ export default class MarkDownEditor extends Component {
 
         };
 
+        this.parse = this::this.parse;
         this.setNextState = this::this.setNextState;
         this.changeHandle = this::this.changeHandle;
         this.markdownBodyScrollHandle = this::this.markdownBodyScrollHandle;
@@ -41,6 +41,24 @@ export default class MarkDownEditor extends Component {
         this.mouseDownHandle = this::this.mouseDownHandle;
         this.mouseMoveHandle = this::this.mouseMoveHandle;
         this.mouseUpHandle = this::this.mouseUpHandle;
+
+    }
+
+    parse(data) {
+
+        const self = this,
+            MyWorker = require('worker-loader!./markdownWorker.js'),
+            worker = new MyWorker();
+
+        worker.onmessage = function (event) {
+
+            self.setState({
+                markdownHTML: event.data
+            });
+
+        };
+
+        worker.postMessage(data);
 
     }
 
@@ -57,8 +75,10 @@ export default class MarkDownEditor extends Component {
     changeHandle(data) {
         if (data !== this.state.data) {
             this.setState({
-                data,
-                markdownHTML: Markdown.parse(data)
+                data
+                // markdownHTML: Markdown.parse(data).html
+            }, () => {
+                this.parse(data);
             });
         }
     }
@@ -111,9 +131,13 @@ export default class MarkDownEditor extends Component {
     }
 
     componentDidMount() {
+
         Event.addEvent(window, 'resize', this.resizeHandle);
         Event.addEvent(document, 'mousemove', this.mouseMoveHandle);
         Event.addEvent(document, 'mouseup', this.mouseUpHandle);
+
+        this.parse(MarkDownData);
+
     }
 
     componentWillUnmount() {
