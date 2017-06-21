@@ -16,7 +16,7 @@ if (!String.prototype.at) {
  * @param data
  * @constructor
  */
-function Markdown(data = '') {
+function Markdown(data = '', options) {
 
     this.initData = data;
     this.renderTree = null;
@@ -28,8 +28,8 @@ function Markdown(data = '') {
  * static method
  * @param data
  */
-Markdown.parse = function (data) {
-    return new Markdown(data).render();
+Markdown.parse = function (data, options) {
+    return new Markdown(data, options).render();
 };
 
 /** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- parse -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
