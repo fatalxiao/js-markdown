@@ -20,7 +20,7 @@ export default class MarkDownEditor extends Component {
         this.state = {
 
             data: MarkDownData,
-            markdownHTML: '', // Markdown.parse(data).html
+            markdownHTML: '',
 
             fullWidth: window.innerWidth,
             editorWidthPerCent: .5,
@@ -51,11 +51,9 @@ export default class MarkDownEditor extends Component {
             worker = new MyWorker();
 
         worker.onmessage = function (event) {
-
             self.setState({
-                markdownHTML: event.data
+                markdownHTML: event.data.html
             });
-
         };
 
         worker.postMessage(data);
@@ -63,20 +61,22 @@ export default class MarkDownEditor extends Component {
     }
 
     setNextState(state) {
+
         if (this.nextStateAnimationFrameId) {
             cancelAnimationFrame(this.nextStateAnimationFrameId);
         }
+
         this.nextStateAnimationFrameId = requestAnimationFrame(() => {
             this.nextStateAnimationFrameId = null;
             this.setState(state);
         });
+
     }
 
     changeHandle(data) {
         if (data !== this.state.data) {
             this.setState({
                 data
-                // markdownHTML: Markdown.parse(data).html
             }, () => {
                 this.parse(data);
             });

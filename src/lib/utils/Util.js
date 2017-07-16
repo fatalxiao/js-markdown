@@ -2,17 +2,31 @@
 
 import Str from './Str';
 
+function preOrderTraverse(node, callback, deep = 0) {
+
+    if (!callback.call(this, node, deep)) {
+        return;
+    }
+
+    if (node.children && node.children.length > 0) {
+        for (let i = 0, len = node.children.length; i < len; i++) {
+            preOrderTraverse.call(this, node.children[i], callback, deep + 1);
+        }
+    }
+
+}
+
 /**
  * a tree traverse method
  * @param node
  * @param callback
  * @param deep
  */
-function traverse(node, callback, deep = 0) {
+function postOrderTraverse(node, callback, deep = 0) {
 
     if (node.children && node.children.length > 0) {
         for (let i = 0, len = node.children.length; i < len; i++) {
-            traverse.call(this, node.children[i], callback, deep + 1);
+            postOrderTraverse.call(this, node.children[i], callback, deep + 1);
         }
     }
 
@@ -46,6 +60,7 @@ function trimEndBlankLines(array) {
 }
 
 export default {
-    traverse,
+    preOrderTraverse,
+    postOrderTraverse,
     trimEndBlankLines
 };

@@ -1,5 +1,5 @@
 import Markdown from 'dist';
 
 onmessage = function (event) {
-    postMessage(Markdown.parse(event.data).html);
+    postMessage(Markdown.parse(event.data));
 };

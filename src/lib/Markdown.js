@@ -2,6 +2,7 @@
 
 import Util from './utils/Util';
 import Str from './utils/Str';
+import Header from './utils/Header';
 import Syntax from './syntax';
 
 // String at method polyfill
@@ -197,7 +198,7 @@ Markdown.prototype.parseInline = function (node) {
  * @param renderTree
  */
 Markdown.prototype.parseInlines = function (renderTree) {
-    Util.traverse.call(this, renderTree, this.parseInline);
+    Util.postOrderTraverse.call(this, renderTree, this.parseInline);
 };
 
 /**
@@ -249,7 +250,7 @@ Markdown.prototype.parseTree = function () {
         isRoot: true,
         metaData: {},
         referenceDefine: {},
-        headerTree: [],
+        headerTree: Header.initRoot(),
         footnotes: [],
         children: []
     };
@@ -282,7 +283,7 @@ Markdown.prototype.toHTML = function (node = this.renderTree) {
     }
 
     if (node.type && Syntax[node.type] && Syntax[node.type].render) {
-        return Syntax[node.type].render(string, node);
+        return Syntax[node.type].render(string, node, this.renderTree);
     } else {
         return node.rawValue || '' + string;
     }
@@ -325,10 +326,8 @@ Markdown.prototype.renderFootnotes = function () {
  * render html string for result
  */
 Markdown.prototype.renderHTML = function () {
-
     this.html = this.toHTML(this.renderTree);
     this.html += this.renderFootnotes();
-
 };
 
 /** -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- main -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */

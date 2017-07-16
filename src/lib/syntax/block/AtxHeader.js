@@ -23,6 +23,7 @@
 'use strict';
 
 import Valid from '../../utils/Valid';
+import Header from '../../utils/Header';
 
 function parse(line, index, lines, renderTree) {
 
@@ -36,16 +37,6 @@ function parse(line, index, lines, renderTree) {
     const level = result[1].length,
         rawValue = result[2];
 
-    if (renderTree) {
-
-        if (!renderTree.headerTree) {
-            renderTree.headerTree = [];
-        }
-
-
-
-    }
-
     return [{
         type: 'AtxHeader',
         level,
@@ -54,8 +45,23 @@ function parse(line, index, lines, renderTree) {
 
 }
 
-function render(data = '', node) {
-    return `<h${node.level}>${node.rawValue || ''}${data}</h${node.level}>`;
+function render(data = '', node, renderTree) {
+
+    const level = node.level,
+        innerHtml = `${node.rawValue || ''}${data}`;
+
+    if (renderTree) {
+
+        if (!renderTree.headerTree) {
+            renderTree.headerTree = Header.initRoot();
+        }
+
+        Header.addHeaderNode(renderTree.headerTree, level, innerHtml);
+
+    }
+
+    return `<h${level}>${innerHtml}</h${level}>`;
+
 }
 
 export default {
