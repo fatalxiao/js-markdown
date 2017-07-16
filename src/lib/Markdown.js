@@ -104,7 +104,7 @@ Markdown.prototype.matchInline = function (str, children) {
 
     const reg = /([\s\S]*?)(\\|(?:!\[)|(?:\[\^)|\[|<|`|(  \n)|(?:\*\*)|(?:__)|\*\*|__|\*|_|\n|\s)/;
 
-    let result = Util.matchUrl(str);
+    let result = Str.matchUrl(str);
 
     if (result) {
         return [{
