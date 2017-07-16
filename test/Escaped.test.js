@@ -12,7 +12,7 @@ describe('Escaped Test', () => {
         const md = '\\ , \` , \* , \_ , \{ , \} , \< , \> , \[ , \] , \( , \), \# , \+ , \. , \! , \- , \~ , \" , \= , \^',
             result = '<p>\\ , ` , * , _ , { , } , < , > , [ , ] , ( , ), # , + , . , ! , - , ~ , " , = , ^</p>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 

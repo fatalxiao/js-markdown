@@ -22,7 +22,7 @@ describe('BreakRow Test', () => {
                 + 'continou line 3'
                 + '</p>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 

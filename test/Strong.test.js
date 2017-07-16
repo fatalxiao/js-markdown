@@ -12,7 +12,7 @@ describe('Strong Test', () => {
         const md = 'aaa**Strong**bbb   **Strong**   ccc',
             result = '<p>aaa<strong>Strong</strong>bbb   <strong>Strong</strong>   ccc</p>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 
@@ -21,7 +21,7 @@ describe('Strong Test', () => {
         const md = 'aaa **Strong** bbb ***Emphasize and Strong*** ccc',
             result = '<p>aaa <strong>Strong</strong> bbb <strong><em>Emphasize and Strong</em></strong> ccc</p>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 

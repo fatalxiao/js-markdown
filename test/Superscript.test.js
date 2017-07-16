@@ -37,7 +37,7 @@ describe('Superscript Test', () => {
                 + '</ol>'
                 + '</div>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 

@@ -16,7 +16,7 @@ describe('Link Test', () => {
                 + '</a>'
                 + '</p>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 
@@ -29,7 +29,7 @@ describe('Link Test', () => {
                 + '</a>'
                 + '</p>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 
@@ -43,7 +43,7 @@ describe('Link Test', () => {
                 + '</a>'
                 + '</p>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 
@@ -58,7 +58,7 @@ describe('Link Test', () => {
                 + '</a>'
                 + '</p>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 

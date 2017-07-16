@@ -13,7 +13,7 @@ describe('SetextHeader Test', () => {
                 + '========',
             result = '<h1>Header 1</h1>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 
@@ -23,7 +23,7 @@ describe('SetextHeader Test', () => {
                 + '--------',
             result = '<h2>Header 2</h2>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 
@@ -35,7 +35,7 @@ describe('SetextHeader Test', () => {
                 + 'Here is a paragraph.',
             result = '<h2>Header 2</h2><p>Here is a paragraph.</p>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 

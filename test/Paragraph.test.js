@@ -15,7 +15,7 @@ describe('Paragraph Test', () => {
                 + 'paragraph.',
             result = '<p>Here\nis\na\nparagraph.</p>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 
@@ -26,7 +26,7 @@ describe('Paragraph Test', () => {
                 + 'line 3',
             result = '<p>line 1<br/>line 2<br/>line 3</p>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 
@@ -39,7 +39,7 @@ describe('Paragraph Test', () => {
                 + 'Paragraph 3.',
             result = '<p>Paragraph 1.</p><p>Paragraph 2.</p><p>Paragraph 3.</p>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 

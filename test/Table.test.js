@@ -32,7 +32,7 @@ describe('Table Test', () => {
                 + '</tbody>'
                 + '</table>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 
@@ -61,7 +61,7 @@ describe('Table Test', () => {
                 + '</tbody>'
                 + '</table>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 
@@ -90,7 +90,7 @@ describe('Table Test', () => {
                 + '</tbody>'
                 + '</table>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 
@@ -128,7 +128,7 @@ describe('Table Test', () => {
                 + '</tbody>'
                 + '</table>';
 
-        expect(Markdown.parse(md)).to.be.equal(result);
+        expect(Markdown.parse(md).html).to.be.equal(result);
 
     });
 
