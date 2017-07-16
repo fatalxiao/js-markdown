@@ -47,6 +47,10 @@ function parse(line, index, lines, renderTree) {
 
         }
 
+        if (isBlankLine && prev.type === 'BlankLine') {
+            return [null, index];
+        }
+
         if (!isBlankLine && prev.type === 'Paragraph') { // append to prev Paragraph
             prev.rawValue += '\n' + line;
             return [null, index];
