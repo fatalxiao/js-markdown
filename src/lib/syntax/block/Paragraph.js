@@ -10,8 +10,8 @@
 
 'use strict';
 
-import Util from '../../utils/Util';
 import Valid from '../../utils/Valid';
+import Str from '../../utils/Str';
 
 // get prev node in render tree
 function getPrev(renderTree) {
@@ -82,7 +82,7 @@ function parse(line, index, lines, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<p>${node.rawValue || ''}${Util.trim(data, ' \n')}</p>`;
+    return `<p>${node.rawValue || ''}${Str.trim(data, ' \n')}</p>`;
 }
 
 export default {

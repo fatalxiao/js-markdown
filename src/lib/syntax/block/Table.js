@@ -25,7 +25,7 @@
 
 'use strict';
 
-import Util from '../../utils/Util';
+import Str from '../../utils/Str';
 
 /**
  * get the initial table render tree that includes headers
@@ -68,7 +68,7 @@ function generateTableBodyNode() {
  */
 function calRow(str) {
 
-    str = Util.trim(str, ' \t|');
+    str = Str.trim(str, ' \t|');
 
     return str.split(/\s*\|\s*/);
 

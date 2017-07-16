@@ -16,7 +16,7 @@
 
 'use strict';
 
-import Util from '../../utils/Util';
+import Str from '../../utils/Str';
 
 function parse(str, children, renderTree) {
 
@@ -26,7 +26,7 @@ function parse(str, children, renderTree) {
     if (result && result[2]) {
         return [{
             type: 'InlineCode',
-            rawValue: Util.encodeHTML(result[3])
+            rawValue: Str.encodeHTML(result[3])
         }, result[1].length + result[2].length];
     }
 

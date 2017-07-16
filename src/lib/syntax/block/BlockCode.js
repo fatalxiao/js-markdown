@@ -26,6 +26,7 @@
 'use strict';
 
 import Util from '../../utils/Util';
+import Str from '../../utils/Str';
 
 /**
  * exclude the condition that if there is a same identifier in the same line
@@ -55,7 +56,7 @@ function parse(line, index, lines, renderTree) {
         index++;
 
         for (let len = lines.length; index < len; index++) {
-            if (Util.trim(lines[index], ' \t') !== '' && !lines[index].startsWith(result[1])) {
+            if (Str.trim(lines[index], ' \t') !== '' && !lines[index].startsWith(result[1])) {
                 break;
             }
             codeContent.push(lines[index].slice(indentLen));
@@ -63,7 +64,7 @@ function parse(line, index, lines, renderTree) {
 
         return [{
             type: 'BlockCode',
-            rawValue: Util.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n')) + '\n'
+            rawValue: Str.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n')) + '\n'
         }, index - 1];
 
     } else { // ``` or ~~~
@@ -71,7 +72,7 @@ function parse(line, index, lines, renderTree) {
         let codeContent = [];
         index++;
         for (let len = lines.length; index < len; index++) {
-            if (Util.trimEnd(lines[index], ' \t') === result[1]) {
+            if (Str.trimEnd(lines[index], ' \t') === result[1]) {
                 break;
             }
             codeContent.push(lines[index]);
@@ -80,7 +81,7 @@ function parse(line, index, lines, renderTree) {
         return [{
             type: 'BlockCode',
             language: result[2],
-            rawValue: Util.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n'))
+            rawValue: Str.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n'))
         }, index];
 
     }

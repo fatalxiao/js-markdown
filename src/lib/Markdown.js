@@ -1,13 +1,14 @@
 'use strict';
 
 import Util from './utils/Util';
+import Str from './utils/Str';
 import Syntax from './syntax';
 
 // String at method polyfill
 if (!String.prototype.at) {
     (function () {
         'use strict';
-        String.prototype.at = Util.at;
+        String.prototype.at = Str.at;
     }());
 }
 
@@ -17,11 +18,9 @@ if (!String.prototype.at) {
  * @constructor
  */
 function Markdown(data = '', options) {
-
     this.initData = data;
     this.renderTree = null;
     this.html = '';
-
 }
 
 /**
@@ -243,13 +242,14 @@ Markdown.prototype.reformatFootnotes = function () {
  */
 Markdown.prototype.parseTree = function () {
 
-    const data = Util.formatCRLF(this.initData),
+    const data = Str.formatCRLF(this.initData),
         lines = data.split('\n');
 
     this.renderTree = {
         isRoot: true,
         metaData: {},
         referenceDefine: {},
+        headerTree: [],
         footnotes: [],
         children: []
     };

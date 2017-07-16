@@ -1,6 +1,6 @@
 'use strict';
 
-import Util from './Util';
+import Str from './Str';
 
 /**
  * whether a variate is an array
@@ -17,7 +17,7 @@ function isArray(obj) {
  * @returns {boolean}
  */
 function isBlank(str) {
-    return str === '' || Util.trim(str, ' \t') === '';
+    return str === '' || Str.trim(str, ' \t') === '';
 }
 
 export default {
