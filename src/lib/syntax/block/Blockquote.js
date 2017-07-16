@@ -36,7 +36,7 @@
 
 'use strict';
 
-import Util from '../../utils/Util';
+import Valid from '../../utils/Valid';
 
 /**
  * remove space which starts with the blockquote content string
@@ -69,7 +69,7 @@ function parse(line, index, lines, renderTree) {
     for (let len = lines.length; index < len; index++) {
 
         // if this line is blank
-        if (Util.isBlank(lines[index])) {
+        if (Valid.isBlank(lines[index])) {
 
             blankLineFlag = true;
 

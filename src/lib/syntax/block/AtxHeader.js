@@ -22,21 +22,34 @@
 
 'use strict';
 
-import Util from '../../utils/Util';
+import Valid from '../../utils/Valid';
 
 function parse(line, index, lines, renderTree) {
 
     const result = line.match(/^(#{1,6})\s*(.*?)\s*(?:#{1,6})?(?:\n|$)/);
 
     // if no match or no header content
-    if (!result || Util.isBlank(result[2])) {
+    if (!result || Valid.isBlank(result[2])) {
         return;
+    }
+
+    const level = result[1].length,
+        rawValue = result[2];
+
+    if (renderTree) {
+
+        if (!renderTree.headerTree) {
+            renderTree.headerTree = [];
+        }
+
+
+
     }
 
     return [{
         type: 'AtxHeader',
-        level: result[1].length,
-        rawValue: result[2] + '\n'
+        level,
+        rawValue: rawValue + '\n'
     }, index];
 
 }

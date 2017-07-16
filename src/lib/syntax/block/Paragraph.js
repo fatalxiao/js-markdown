@@ -11,6 +11,7 @@
 'use strict';
 
 import Util from '../../utils/Util';
+import Valid from '../../utils/Valid';
 
 // get prev node in render tree
 function getPrev(renderTree) {
@@ -27,7 +28,7 @@ function getPrev(renderTree) {
 function parse(line, index, lines, renderTree) {
 
     const prev = getPrev(renderTree),
-        isBlankLine = Util.isBlank(line);
+        isBlankLine = Valid.isBlank(line);
 
     if (prev) {
 

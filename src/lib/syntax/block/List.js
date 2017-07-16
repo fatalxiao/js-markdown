@@ -62,7 +62,7 @@
 
 'use strict';
 
-import Util from '../../utils/Util';
+import Valid from '../../utils/Valid';
 
 /**
  * generate a list item node according to match result
@@ -109,7 +109,7 @@ function parse(line, index, lines, renderTree) {
     index++;
     for (let len = lines.length; index < len; index++) {
 
-        if (Util.isBlank(lines[index])) {
+        if (Valid.isBlank(lines[index])) {
             blankLine = lines[index];
             continue;
         }

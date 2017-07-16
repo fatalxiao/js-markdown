@@ -15,12 +15,12 @@
 
 'use strict';
 
-import Util from '../../utils/Util';
+import Valid from '../../utils/Valid';
 
 function parse(line, index, lines, renderTree) {
 
     // blank line or last line
-    if (Util.isBlank(line) || index >= lines.length - 1) {
+    if (Valid.isBlank(line) || index >= lines.length - 1) {
         return;
     }
 

@@ -1,13 +1,6 @@
 'use strict';
 
-/**
- * whether a variate is an array
- * @param obj
- * @returns {boolean}
- */
-function isArray(obj) {
-    return ({}).toString.call(obj) === '[object Array]';
-}
+import Valid from './Valid';
 
 /**
  * String.at polyfill
@@ -55,7 +48,7 @@ function trimHandle(str, chars = ' ', position) {
 
     let cs = chars;
 
-    if (isArray(chars)) {
+    if (Valid.isArray(chars)) {
         cs = chars.join('');
     }
 
@@ -187,17 +180,7 @@ function matchUrl(str) {
     return str.match(reg);
 }
 
-/**
- * whether a string is blank(or only includes space and tab)
- * @param line
- * @returns {boolean}
- */
-function isBlank(str) {
-    return str === '' || trim(str, ' \t') === '';
-}
-
 export default {
-    isArray,
     at,
     trimHandle,
     trimStart,
@@ -208,6 +191,5 @@ export default {
     traverse,
     encodeHTML,
     trimEndBlankLines,
-    matchUrl,
-    isBlank
+    matchUrl
 };
