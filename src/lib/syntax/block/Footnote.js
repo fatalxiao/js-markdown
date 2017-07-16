@@ -21,11 +21,19 @@ function parse(line, index, lines, renderTree) {
         return;
     }
 
-    renderTree.footnotes.push({
-        type: 'Footnote',
-        key: result[1],
-        rawValue: result[2]
-    });
+    if (renderTree) {
+
+        if (!renderTree.footnotes) {
+            renderTree.footnotes = [];
+        }
+
+        renderTree.footnotes.push({
+            type: 'Footnote',
+            key: result[1],
+            rawValue: result[2]
+        });
+
+    }
 
     return [null, index];
 

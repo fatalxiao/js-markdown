@@ -25,24 +25,28 @@ function parse(line, index, lines, renderTree) {
         return;
     }
 
-    if (!renderTree.metaData) {
-        renderTree.metaData = {};
-    }
+    if (renderTree) {
 
-    // save it in renderTree.metaData
-    renderTree.metaData[result[1]] = result[2];
-
-    index++;
-    for (let len = lines.length; index < len; index++) {
-
-        result = lines[index].match(reg);
-
-        if (!result) {
-            index--;
-            break;
+        if (!renderTree.metaData) {
+            renderTree.metaData = {};
         }
 
+        // save it in renderTree.metaData
         renderTree.metaData[result[1]] = result[2];
+
+        index++;
+        for (let len = lines.length; index < len; index++) {
+
+            result = lines[index].match(reg);
+
+            if (!result) {
+                index--;
+                break;
+            }
+
+            renderTree.metaData[result[1]] = result[2];
+
+        }
 
     }
 

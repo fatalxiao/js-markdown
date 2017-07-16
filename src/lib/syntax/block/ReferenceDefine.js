@@ -19,10 +19,18 @@ function parse(line, index, lines, renderTree) {
         return;
     }
 
-    renderTree.referenceDefine[result[1].toLowerCase()] = {
-        href: result[2],
-        title: result[4]
-    };
+    if (renderTree) {
+
+        if (!renderTree.referenceDefine) {
+            renderTree.referenceDefine = {};
+        }
+
+        renderTree.referenceDefine[result[1].toLowerCase()] = {
+            href: result[2],
+            title: result[4]
+        };
+
+    }
 
     return [null, index];
 
