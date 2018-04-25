@@ -18,7 +18,7 @@ if (!String.prototype.at) {
  * @param data
  * @constructor
  */
-function Markdown(data = '', options) {
+function Markdown(data = '', options = {}) {
 
     this.initData = data;
     this.renderTree = null;
