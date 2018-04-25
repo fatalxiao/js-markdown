@@ -19,7 +19,7 @@ class MarkDownEditor extends Component {
         this.state = {
 
             data: MarkDownData,
-            markdownHTML: Markdown.parse(MarkDownData).html,
+            markdownHTML: Markdown.parse(MarkDownData),
 
             editorWidthPerCent: .5,
 
@@ -39,7 +39,7 @@ class MarkDownEditor extends Component {
         if (data !== this.state.data) {
             this.setState({
                 data,
-                markdownHTML: Markdown.parse(data).html
+                markdownHTML: Markdown.parse(data)
             });
         }
     }
