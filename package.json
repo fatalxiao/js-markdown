@@ -19,7 +19,9 @@
         "url": "git+https://github.com/fatalxiao/js-markdown"
     },
     "keywords": [
-        "markdown"
+        "javascript",
+        "markdown",
+        "paser"
     ],
     "license": "MIT",
     "bugs": {
