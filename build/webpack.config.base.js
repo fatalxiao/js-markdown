@@ -80,6 +80,9 @@ module.exports = {
         }, {
             test: /\.ht?ml/,
             loader: 'html-loader'
+        }, {
+            test: /\.md/,
+            loader: 'raw-loader'
         }]
     }
 };
