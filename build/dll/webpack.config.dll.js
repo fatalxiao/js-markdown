@@ -13,9 +13,8 @@ module.exports = {
 
     entry: {
         'polyfill': ['babel-polyfill'],
-        'react': ['react', 'react-dom', 'react-redux', 'react-router', 'react-router-config', 'react-router-dom',
-            'react-router-redux', 'redux', 'redux-thunk', 'react-tap-event-plugin', 'react-transition-group'],
-        'tools': ['classnames', 'history', 'moment']
+        'react': ['react', 'react-dom', 'react-tap-event-plugin'],
+        'editor': ['react-ace', 'brace', 'github-markdown-css']
     },
 
     output: {

@@ -65,13 +65,13 @@ module.exports = merge(baseWebpackConfig, {
         }),
         new webpack.DllReferencePlugin({
             context: __dirname,
-            manifest: require(utils.assetsVendorsAbsolutePath('tools-manifest.json'))
+            manifest: require(utils.assetsVendorsAbsolutePath('editor-manifest.json'))
         }),
 
         new HtmlPlugin({
             filename: config.build.index,
             template: './examples/index.html',
-            favicon: './examples/assets/images/favicon.ico',
+            // favicon: './examples/assets/images/favicon.ico',
             inject: true,
             minify: {
                 removeComments: true,
