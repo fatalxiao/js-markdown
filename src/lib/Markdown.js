@@ -19,9 +19,13 @@ if (!String.prototype.at) {
  * @constructor
  */
 function Markdown(data = '', options) {
+
     this.initData = data;
     this.renderTree = null;
     this.html = '';
+
+    this.fullInfo = !!options.fullInfo;
+
 }
 
 /**
@@ -139,9 +143,9 @@ Markdown.prototype.matchInline = function (str, children) {
     }
 
     return res || [{
-            type: 'Text',
-            rawValue: result[2]
-        }, result[2].length];
+        type: 'Text',
+        rawValue: result[2]
+    }, result[2].length];
 
 };
 
@@ -342,10 +346,13 @@ Markdown.prototype.render = function () {
 
     this.renderHTML();
 
-    return {
-        html: this.html,
-        renderTree: this.renderTree
-    };
+    return this.fullInfo ?
+        {
+            html: this.html,
+            renderTree: this.renderTree
+        }
+        :
+        this.html;
 
 };
 
