@@ -63,9 +63,13 @@ class MarkDownEditor extends Component {
 
     }
 
-    editorScrollHandler({topPerCent}) {
+    editorScrollHandler(editor) {
+        console.log(editor.renderer);
+        // console.log('scrollTop::', editor.renderer.scrollTop);
+        // console.log('maxHeight::', editor.renderer.layerConfig.maxHeight);
         const el = this.refs.markdownBody;
-        el.scrollTop = (el.scrollHeight - window.innerHeight) * topPerCent;
+        el.scrollTop = (el.scrollHeight - window.innerHeight) *
+            ((editor.renderer.scrollTop) / (editor.renderer.layerConfig.maxHeight - editor.renderer.layerConfig.height));
     }
 
     resizeHandler() {
@@ -147,11 +151,11 @@ class MarkDownEditor extends Component {
                            showGutter={false}
                            highlightActiveLine={true}
                            setOptions={{
-                               $blockScrolling: true,
                                enableBasicAutocompletion: false,
                                enableLiveAutocompletion: false,
                                enableSnippets: false,
                                showLineNumbers: false,
+                               scrollPastEnd: .4,
                                tabSize: 4
                            }}
                            value={data}
