@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
+import AceEditor from 'react-ace';
 import 'github-markdown-css';
-
-import ReactTextEdit from 'react-text-edit';
 
 import Event from 'vendors/Event';
 
@@ -169,17 +168,15 @@ export default class MarkDownEditor extends Component {
                      dangerouslySetInnerHTML={html}
                      onScroll={this.markdownBodyScrollHandle}></div>
 
-                <ReactTextEdit className="mark-down-editor"
-                               style={markDownEditorStyle}
-                               data={data}
-                               width={window.innerWidth * editorWidthPerCent}
-                               height={editorHeight}
-                               scrollTopPerCent={editorScrollPerCent}
-                               options={{
-                                   scrollBottomBlankHeight: 20
-                               }}
-                               onChange={this.changeHandle}
-                               onScroll={this.editorScrollHandle}/>
+                <AceEditor className="mark-down-editor"
+                           style={markDownEditorStyle}
+                           mode="markdown"
+                           theme="github"
+                           width={`calc(100% - ${markdownBodyWidth}px)`}
+                           height="100%"
+                           editorProps={{$blockScrolling: true}}
+                           value={data}
+                           onChange={this.changeHandle}/>
 
                 <div className="drag-edge"
                      style={dragEdgeStyle}
