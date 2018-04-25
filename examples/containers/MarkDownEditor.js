@@ -91,8 +91,9 @@ class MarkDownEditor extends Component {
     render() {
 
         const {data, markdownHTML, editorWidthPerCent, isResizing} = this.state,
-            html = {__html: markdownHTML},
+
             markdownBodyWidth = window.innerWidth * (1 - editorWidthPerCent),
+
             markdownBodyStyle = {
                 width: markdownBodyWidth
             },
@@ -100,7 +101,7 @@ class MarkDownEditor extends Component {
                 left: markdownBodyWidth
             },
             dragEdgeStyle = {
-                left: markdownBodyWidth - 1
+                left: markdownBodyWidth - 4
             };
 
         return (
@@ -109,7 +110,7 @@ class MarkDownEditor extends Component {
                 <div ref="markdownBody"
                      className="markdown-body"
                      style={markdownBodyStyle}
-                     dangerouslySetInnerHTML={html}></div>
+                     dangerouslySetInnerHTML={{__html: markdownHTML}}></div>
 
                 <AceEditor className="mark-down-editor"
                            style={markDownEditorStyle}
