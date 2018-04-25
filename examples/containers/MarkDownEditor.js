@@ -3,10 +3,9 @@ import 'github-markdown-css';
 
 import ReactTextEdit from 'react-text-edit';
 
-import Event from 'utils/Event';
+import Event from 'vendors/Event';
 
 import MarkDownData from 'assets/MarkDown.md';
-
 import 'assets/sass/MarkDownEditor.scss';
 
 export default class MarkDownEditor extends Component {
