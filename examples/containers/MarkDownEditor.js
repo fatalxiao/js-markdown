@@ -2,23 +2,26 @@ import React, {Component} from 'react';
 import AceEditor from 'react-ace';
 import 'github-markdown-css';
 
+import Markdown from 'src';
+
 import Event from 'vendors/Event';
 
 import MarkDownData from 'assets/MarkDown.md';
+
+import 'brace/mode/markdown';
+import 'brace/theme/monokai';
 import 'assets/sass/MarkDownEditor.scss';
 
-export default class MarkDownEditor extends Component {
+class MarkDownEditor extends Component {
 
     constructor(props) {
 
         super(props);
 
-        this.nextStateAnimationFrameId = null;
-
         this.state = {
 
             data: MarkDownData,
-            markdownHTML: '',
+            markdownHTML: Markdown.parse(MarkDownData).html,
 
             fullWidth: window.innerWidth,
             editorWidthPerCent: .5,
@@ -30,53 +33,21 @@ export default class MarkDownEditor extends Component {
 
         };
 
-        this.parse = this::this.parse;
-        this.setNextState = this::this.setNextState;
-        this.changeHandle = this::this.changeHandle;
-        this.markdownBodyScrollHandle = this::this.markdownBodyScrollHandle;
-        this.editorScrollHandle = this::this.editorScrollHandle;
-        this.resizeHandle = this::this.resizeHandle;
-        this.mouseDownHandle = this::this.mouseDownHandle;
-        this.mouseMoveHandle = this::this.mouseMoveHandle;
-        this.mouseUpHandle = this::this.mouseUpHandle;
+        this.changeHandler = ::this.changeHandler;
+        this.markdownBodyScrollHandle = ::this.markdownBodyScrollHandle;
+        this.editorScrollHandler = ::this.editorScrollHandler;
+        this.resizeHandler = ::this.resizeHandler;
+        this.mouseDownHandler = ::this.mouseDownHandler;
+        this.mouseMoveHandler = ::this.mouseMoveHandler;
+        this.mouseUpHandler = ::this.mouseUpHandler;
 
     }
 
-    parse(data) {
-
-        const self = this,
-            MyWorker = require('worker-loader!./markdownWorker.js'),
-            worker = new MyWorker();
-
-        worker.onmessage = function (event) {
-            self.setState({
-                markdownHTML: event.data.html
-            });
-        };
-
-        worker.postMessage(data);
-
-    }
-
-    setNextState(state) {
-
-        if (this.nextStateAnimationFrameId) {
-            cancelAnimationFrame(this.nextStateAnimationFrameId);
-        }
-
-        this.nextStateAnimationFrameId = requestAnimationFrame(() => {
-            this.nextStateAnimationFrameId = null;
-            this.setState(state);
-        });
-
-    }
-
-    changeHandle(data) {
+    changeHandler(data) {
         if (data !== this.state.data) {
             this.setState({
-                data
-            }, () => {
-                this.parse(data);
+                data,
+                markdownHTML: Markdown.parse(data).html
             });
         }
     }
@@ -92,56 +63,52 @@ export default class MarkDownEditor extends Component {
 
     }
 
-    editorScrollHandle({topPerCent}) {
+    editorScrollHandler({topPerCent}) {
         const el = this.refs.markdownBody;
         el.scrollTop = (el.scrollHeight - window.innerHeight) * topPerCent;
     }
 
-    resizeHandle() {
-        this.setNextState({
+    resizeHandler() {
+        this.setState({
             fullWidth: window.innerWidth
         });
     }
 
-    mouseDownHandle() {
+    mouseDownHandler() {
         this.setState({
             isResizing: true
         });
     }
 
-    mouseMoveHandle(e) {
+    mouseMoveHandler(e) {
 
         if (!this.state.isResizing) {
             return;
         }
 
-        this.setNextState({
+        this.setState({
             editorWidthPerCent: (window.innerWidth - e.clientX) / window.innerWidth,
             editorHeight: window.innerHeight
         });
 
     }
 
-    mouseUpHandle() {
+    mouseUpHandler() {
         this.setState({
             isResizing: false
         });
     }
 
     componentDidMount() {
-
-        Event.addEvent(window, 'resize', this.resizeHandle);
-        Event.addEvent(document, 'mousemove', this.mouseMoveHandle);
-        Event.addEvent(document, 'mouseup', this.mouseUpHandle);
-
-        this.parse(MarkDownData);
-
+        Event.addEvent(window, 'resize', this.resizeHandler);
+        Event.addEvent(document, 'mousemove', this.mouseMoveHandler);
+        Event.addEvent(document, 'mouseup', this.mouseUpHandler);
     }
 
     componentWillUnmount() {
-        Event.removeEvent(window, 'resize', this.resizeHandle);
-        Event.removeEvent(document, 'mousemove', this.mouseMoveHandle);
-        Event.removeEvent(document, 'mouseup', this.mouseUpHandle);
+        Event.removeEvent(window, 'resize', this.resizeHandler);
+        Event.removeEvent(document, 'mousemove', this.mouseMoveHandler);
+        Event.removeEvent(document, 'mouseup', this.mouseUpHandler);
     }
 
     render() {
@@ -170,19 +137,34 @@ export default class MarkDownEditor extends Component {
 
                 <AceEditor className="mark-down-editor"
                            style={markDownEditorStyle}
-                           mode="markdown"
-                           theme="github"
                            width={`calc(100% - ${markdownBodyWidth}px)`}
                            height="100%"
-                           editorProps={{$blockScrolling: true}}
+                           mode="markdown"
+                           theme="monokai"
+                           focus={true}
+                           fontSize={14}
+                           showPrintMargin={false}
+                           showGutter={false}
+                           highlightActiveLine={true}
+                           setOptions={{
+                               $blockScrolling: true,
+                               enableBasicAutocompletion: false,
+                               enableLiveAutocompletion: false,
+                               enableSnippets: false,
+                               showLineNumbers: false,
+                               tabSize: 4
+                           }}
                            value={data}
-                           onChange={this.changeHandle}/>
+                           onChange={this.changeHandler}
+                           onScroll={this.editorScrollHandler}/>
 
                 <div className="drag-edge"
                      style={dragEdgeStyle}
-                     onMouseDown={this.mouseDownHandle}></div>
+                     onMouseDown={this.mouseDownHandler}></div>
 
             </div>
         );
     }
 }
+
+export default MarkDownEditor;
