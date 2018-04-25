@@ -84,7 +84,7 @@ module.exports = merge(baseWebpackConfig, {
             assets: [
                 vendorsAssets['polyfill'].js,
                 vendorsAssets['react'].js,
-                vendorsAssets['tools'].js
+                vendorsAssets['editor'].js
             ],
             append: false
         }),
