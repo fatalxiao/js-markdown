@@ -23,20 +23,14 @@ class MarkDownEditor extends Component {
             data: MarkDownData,
             markdownHTML: Markdown.parse(MarkDownData).html,
 
-            fullWidth: window.innerWidth,
             editorWidthPerCent: .5,
-            editorHeight: window.innerHeight,
-
-            editorScrollPerCent: 0,
 
             isResizing: false
 
         };
 
         this.changeHandler = ::this.changeHandler;
-        this.markdownBodyScrollHandle = ::this.markdownBodyScrollHandle;
         this.editorScrollHandler = ::this.editorScrollHandler;
-        this.resizeHandler = ::this.resizeHandler;
         this.mouseDownHandler = ::this.mouseDownHandler;
         this.mouseMoveHandler = ::this.mouseMoveHandler;
         this.mouseUpHandler = ::this.mouseUpHandler;
@@ -52,30 +46,12 @@ class MarkDownEditor extends Component {
         }
     }
 
-    markdownBodyScrollHandle() {
-
-        const el = this.refs.markdownBody,
-            scrollTop = el.scrollTop;
-
-        this.setState({
-            editorScrollPerCent: scrollTop / (el.scrollHeight - window.innerHeight)
-        });
-
-    }
-
     editorScrollHandler(editor) {
-        console.log(editor.renderer);
-        // console.log('scrollTop::', editor.renderer.scrollTop);
-        // console.log('maxHeight::', editor.renderer.layerConfig.maxHeight);
         const el = this.refs.markdownBody;
-        el.scrollTop = (el.scrollHeight - window.innerHeight) *
-            ((editor.renderer.scrollTop) / (editor.renderer.layerConfig.maxHeight - editor.renderer.layerConfig.height));
-    }
-
-    resizeHandler() {
-        this.setState({
-            fullWidth: window.innerWidth
-        });
+        el.scrollTop =
+            (el.scrollHeight - window.innerHeight)
+            *
+            (editor.renderer.scrollTop / (editor.renderer.layerConfig.maxHeight - editor.renderer.layerConfig.height));
     }
 
     mouseDownHandler() {
@@ -91,8 +67,7 @@ class MarkDownEditor extends Component {
         }
 
         this.setState({
-            editorWidthPerCent: (window.innerWidth - e.clientX) / window.innerWidth,
-            editorHeight: window.innerHeight
+            editorWidthPerCent: (window.innerWidth - e.clientX) / window.innerWidth
         });
 
     }
@@ -104,20 +79,18 @@ class MarkDownEditor extends Component {
     }
 
     componentDidMount() {
-        Event.addEvent(window, 'resize', this.resizeHandler);
         Event.addEvent(document, 'mousemove', this.mouseMoveHandler);
         Event.addEvent(document, 'mouseup', this.mouseUpHandler);
     }
 
     componentWillUnmount() {
-        Event.removeEvent(window, 'resize', this.resizeHandler);
         Event.removeEvent(document, 'mousemove', this.mouseMoveHandler);
         Event.removeEvent(document, 'mouseup', this.mouseUpHandler);
     }
 
     render() {
 
-        const {data, markdownHTML, editorWidthPerCent, editorHeight, isResizing, editorScrollPerCent} = this.state,
+        const {data, markdownHTML, editorWidthPerCent, isResizing} = this.state,
             html = {__html: markdownHTML},
             markdownBodyWidth = window.innerWidth * (1 - editorWidthPerCent),
             markdownBodyStyle = {
@@ -136,8 +109,7 @@ class MarkDownEditor extends Component {
                 <div ref="markdownBody"
                      className="markdown-body"
                      style={markdownBodyStyle}
-                     dangerouslySetInnerHTML={html}
-                     onScroll={this.markdownBodyScrollHandle}></div>
+                     dangerouslySetInnerHTML={html}></div>
 
                 <AceEditor className="mark-down-editor"
                            style={markDownEditorStyle}
