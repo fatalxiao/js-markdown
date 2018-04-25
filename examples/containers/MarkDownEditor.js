@@ -1,16 +1,14 @@
 import React, {Component} from 'react';
 import AceEditor from 'react-ace';
-import 'github-markdown-css';
 
 import Markdown from 'src';
-
 import Event from 'vendors/Event';
 
 import MarkDownData from 'assets/MarkDown.md';
-
 import 'brace/mode/markdown';
 import 'brace/theme/monokai';
 import 'assets/sass/MarkDownEditor.scss';
+import 'github-markdown-css';
 
 class MarkDownEditor extends Component {
 
