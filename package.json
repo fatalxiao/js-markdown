@@ -5,13 +5,14 @@
     "description": "A markdown language js compiler.",
     "main": "./src/index.js",
     "scripts": {
-        "build:src": "rimraf dist && gulp build",
-        "watch:src": "npm run build:src && gulp watch",
-        "dev:example": "node build/dev/dev-server.js",
-        "build:example": "rimraf docs && node build/prod/prod.js",
-        "run:demo": "node build/demo/demo-server.js",
-        "demo": "npm run build:src && npm run build:example && npm run run:demo",
-        "test": "mocha test/*.js --compilers js:babel-core/register"
+        "pre-publish": "rimraf dist && gulp copy",
+        "dev": "npm run compile && cross-env NODE_ENV=development node build/dev/dev-server.js",
+        "clean": "rimraf docs",
+        "dll": "cross-env NODE_ENV=production node build/dll/dll.js",
+        "package": "cross-env NODE_ENV=production node build/prod/prod.js",
+        "build": "npm run clean && npm run compile && npm run dll && npm run package",
+        "demo": "cross-env NODE_ENV=production node build/demo/demo-server.js",
+        "start": "npm run build && npm run demo"
     },
     "repository": {
         "type": "git",
