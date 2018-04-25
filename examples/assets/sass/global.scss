@@ -1,12 +1,6 @@
-@import './common.scss';
-
 * {
     font-family: 'helvetica neue', 'hiragino sans gb', 'stheiti',
     'microsoft yahei', \5FAE\8F6F\96C5\9ED1, tahoma, sans-serif;
-    transition: color $transition-duration ease-in-out,
-    background $transition-duration ease-in-out,
-    background-color $transition-duration ease-in-out,
-    border-color $transition-duration ease-in-out;
 }
 
 body {
