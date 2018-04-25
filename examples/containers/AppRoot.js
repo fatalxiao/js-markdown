@@ -83,8 +83,6 @@ class AppRoot extends Component {
         Event.addEvent(document, 'mousemove', this.mouseMoveHandler);
         Event.addEvent(document, 'mouseup', this.mouseUpHandler);
 
-        this.markdownBodyEl = this.refs.markdownBody;
-
     }
 
     componentWillUnmount() {
@@ -111,7 +109,7 @@ class AppRoot extends Component {
         return (
             <div className={`mark-down-editor-wrapper ${isResizing ? 'resizing' : ''}`}>
 
-                <div ref="markdownBody"
+                <div ref={el => this.markdownBodyEl = el}
                      className="markdown-body"
                      style={markdownBodyStyle}
                      dangerouslySetInnerHTML={{__html: markdownHTML}}></div>
