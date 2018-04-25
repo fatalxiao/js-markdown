@@ -13,7 +13,7 @@ module.exports = {
 
     entry: {
         'polyfill': ['babel-polyfill'],
-        'react': ['react', 'react-dom', 'react-tap-event-plugin'],
+        'react': ['react', 'react-dom'],
         'brace': ['brace'],
         'editor': ['react-ace']
     },
