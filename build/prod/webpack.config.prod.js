@@ -65,6 +65,10 @@ module.exports = merge(baseWebpackConfig, {
         }),
         new webpack.DllReferencePlugin({
             context: __dirname,
+            manifest: require(utils.assetsVendorsAbsolutePath('brace-manifest.json'))
+        }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
             manifest: require(utils.assetsVendorsAbsolutePath('editor-manifest.json'))
         }),
 
@@ -84,6 +88,7 @@ module.exports = merge(baseWebpackConfig, {
             assets: [
                 vendorsAssets['polyfill'].js,
                 vendorsAssets['react'].js,
+                vendorsAssets['brace'].js,
                 vendorsAssets['editor'].js
             ],
             append: false
