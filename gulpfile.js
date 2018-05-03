@@ -5,7 +5,6 @@ const gulp = require('gulp'),
 
 gulp.task('copyES', () => gulp.src('./src/**/*.js')
     .pipe(babel({
-        presets: ['env'],
         plugins: ['transform-runtime']
     })).pipe(gulp.dest('./dist'))
 );
