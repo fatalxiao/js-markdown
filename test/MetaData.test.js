@@ -16,7 +16,7 @@ describe('MetaData Test', () => {
                 + 'Here is a paragraph.',
             result = '<p>Here is a paragraph.</p>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
