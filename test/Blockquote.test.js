@@ -27,7 +27,7 @@ describe('Blockquote Test', () => {
                 + '</p>'
                 + '</blockquote>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -51,7 +51,7 @@ describe('Blockquote Test', () => {
                 + '</p>'
                 + '</blockquote>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -76,7 +76,7 @@ describe('Blockquote Test', () => {
                 + '</p>'
                 + '</blockquote>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -100,7 +100,7 @@ describe('Blockquote Test', () => {
                 + '<pre><code>return shell_exec(&quot;echo $input | $markdown_script&quot;);\n</code></pre>'
                 + '</blockquote>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
