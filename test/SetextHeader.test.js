@@ -11,7 +11,7 @@ describe('SetextHeader Test', () => {
 
         const md = 'Header 1\n'
                 + '========',
-            result = '<h1>Header 1</h1>';
+            result = '<h1><a id="Header 1" href="#Header 1"></a>Header 1</h1>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
 
@@ -21,7 +21,7 @@ describe('SetextHeader Test', () => {
 
         const md = 'Header 2\n'
                 + '--------',
-            result = '<h2>Header 2</h2>';
+            result = '<h2><a id="Header 2" href="#Header 2"></a>Header 2</h2>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
 
@@ -33,7 +33,7 @@ describe('SetextHeader Test', () => {
                 + '--------'
                 + '\n'
                 + 'Here is a paragraph.',
-            result = '<h2>Header 2</h2><p>Here is a paragraph.</p>';
+            result = '<h2><a id="Header 2" href="#Header 2"></a>Header 2</h2><p>Here is a paragraph.</p>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
 
