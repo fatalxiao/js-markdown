@@ -16,7 +16,7 @@ describe('AutoLink Test', () => {
                 + '</a>'
                 + '</p>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -25,7 +25,7 @@ describe('AutoLink Test', () => {
         const md = '<github.com/fatalxiao/js-markdown>',
             result = '<p><github.com/fatalxiao/js-markdown></p>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
