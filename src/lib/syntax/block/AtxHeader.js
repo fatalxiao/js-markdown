@@ -60,7 +60,7 @@ function render(data = '', node, renderTree) {
 
     }
 
-    return `<h${level}>${innerHtml}</h${level}>`;
+    return `<a id="${innerHtml}" href="#${innerHtml}"><h${level}>${innerHtml}</h${level}></a>`;
 
 }
 
