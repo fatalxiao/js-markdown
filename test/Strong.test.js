@@ -19,7 +19,7 @@ describe('Strong Test', () => {
     it('with escape character', () => {
 
         const md = '**\*Strong**',
-            result = '<p><strong>*Strong</strong></p>';
+            result = '<p>*<strong>Strong</strong></p>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
 
