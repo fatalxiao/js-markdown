@@ -91,7 +91,7 @@ describe('Blockquote Test', () => {
                 + '>\n'
                 + '>     return shell_exec("echo $input | $markdown_script");',
             result = '<blockquote>'
-                + '<h2>This is a header.</h2>'
+                + '<h2><a id="This is a header." href="#This is a header."></a>This is a header.</h2>'
                 + '<ol>'
                 + '<li>This is the first list item.</li>'
                 + '<li>This is the second list item.</li>'
