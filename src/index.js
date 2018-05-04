@@ -1,1 +1,1 @@
-export default from './lib/Markdown';
+module.exports = require('./lib/Markdown');
