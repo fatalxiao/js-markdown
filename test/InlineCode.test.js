@@ -12,7 +12,7 @@ describe('InlineCode Test', () => {
         const md = '`Inline Code`',
             result = '<p><code>Inline Code</code></p>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -21,7 +21,7 @@ describe('InlineCode Test', () => {
         const md = '`` `Inline Code` ``',
             result = '<p><code> `Inline Code` </code></p>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -30,7 +30,7 @@ describe('InlineCode Test', () => {
         const md = '``` `` `Inline Code` `` ```',
             result = '<p><code> `` `Inline Code` `` </code></p>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
