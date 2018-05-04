@@ -18,7 +18,7 @@ describe('Unordered List Test', () => {
                 + '<li>Blue</li>'
                 + '</ul>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -33,7 +33,7 @@ describe('Unordered List Test', () => {
                 + '<li>Blue</li>'
                 + '</ul>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -48,7 +48,7 @@ describe('Unordered List Test', () => {
                 + '<li>Blue</li>'
                 + '</ul>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -75,7 +75,7 @@ describe('Unordered List Test', () => {
                 + '</li>'
                 + '</ul>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -102,7 +102,7 @@ describe('Unordered List Test', () => {
                 + '</li>'
                 + '</ul>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -133,7 +133,7 @@ describe('Unordered List Test', () => {
                 + '</li>'
                 + '</ul>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -150,7 +150,7 @@ describe('Unordered List Test', () => {
                 + '<li><p>Blue</p></li>'
                 + '</ul>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -169,7 +169,7 @@ describe('Unordered List Test', () => {
                 + '</li>'
                 + '</ul>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -188,7 +188,7 @@ describe('Ordered List Test', () => {
                 + '<li>Parish</li>'
                 + '</ol>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -203,7 +203,7 @@ describe('Ordered List Test', () => {
                 + '<li>Parish</li>'
                 + '</ol>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -238,7 +238,7 @@ describe('Ordered List Test', () => {
                 + '</li>'
                 + '</ol>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
