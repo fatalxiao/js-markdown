@@ -14,7 +14,7 @@ describe('Image Test', () => {
                 + '<img alt="NPM Version" src="https://img.shields.io/npm/v/js-markdown.svg"/>'
                 + '</p>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -25,7 +25,7 @@ describe('Image Test', () => {
                 + '<img alt="NPM Version" title="NPM Version" src="https://img.shields.io/npm/v/js-markdown.svg"/>'
                 + '</p>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -37,7 +37,7 @@ describe('Image Test', () => {
                 + '<img alt="NPM Version" src="https://img.shields.io/npm/v/js-markdown.svg"/>'
                 + '</p>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
@@ -52,7 +52,7 @@ describe('Image Test', () => {
                 + '</a>'
                 + '</p>';
 
-        expect(Markdown.parse(md).html).to.be.equal(result);
+        expect(Markdown.parse(md)).to.be.equal(result);
 
     });
 
