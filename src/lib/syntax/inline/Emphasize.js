@@ -14,14 +14,32 @@
  */
 
 const EmphasizeType = {
-    STRONG: 'strong',
-    WEAK: 'em'
+    DOUBLE: Symbol('DOUBLE'),
+    STRONG: Symbol('STRONG'),
+    WEAK: Symbol('WEAK')
 };
 
 function parse(str, children, renderTree) {
 
-    const regStrong = /^([\*\_]{2})([^\*\_]*?)(\1)/,
+    const regDouble = /^([\*\_]{3})([^\*\_]*?)(\1)/,
+        regStrong = /^([\*\_]{2})([^\*\_]*?)(\1)/,
         regWeak = /^([\*\_]{1})([^\*\_]*?)(\1)/;
+
+    const resultDouble = str.match(regDouble);
+    if (resultDouble && resultDouble[2]) {
+
+        const node = { // strong root node
+            type: 'Emphasize',
+            emphasizeType: EmphasizeType.DOUBLE,
+            rawValue: resultDouble[2]
+        };
+
+        // parse recursively
+        this.parseInline(node);
+
+        return [node, resultDouble[2].length + 6];
+
+    }
 
     const resultStrong = str.match(regStrong);
     if (resultStrong && resultStrong[2]) {
@@ -59,8 +77,20 @@ function parse(str, children, renderTree) {
 
 }
 
+function getTag(emphasizeType) {
+    switch (emphasizeType) {
+        case EmphasizeType.DOUBLE:
+            return ['<strong><em>', '</em></strong>'];
+        case EmphasizeType.STRONG:
+            return ['<strong>', '</strong>'];
+        default:
+            return ['<em>', '</em>'];
+    }
+}
+
 function render(data = '', node) {
-    return `<${node.emphasizeType}>${node.rawValue || ''}${data}</${node.emphasizeType}>`;
+    const tag = getTag(node.emphasizeType);
+    return `${tag[0]}${node.rawValue || ''}${data}${tag[1]}`;
 }
 
 export default {
