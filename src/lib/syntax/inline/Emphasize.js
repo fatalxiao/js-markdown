@@ -13,91 +13,45 @@
  *
  */
 
-'use strict';
+const EmphasizeType = {
+    STRONG: 'strong',
+    WEAK: 'em'
+};
 
 function parse(str, children, renderTree) {
 
-    // const flag = str.at(0),
-    //     reg = new RegExp(`([\\s\\S]*?)(\\${flag})`);
-    //
-    // let restStr = str.slice(1);
-    //
-    // if (!restStr.includes(flag)) {
-    //     return;
-    // }
-    //
-    // let count = 0,
-    //     pn = 1,
-    //     resultStr = '',
-    //     result;
-    //
-    // // find the closing identifier
-    // while (restStr.length > 0) {
-    //
-    //     result = restStr.match(reg);
-    //
-    //     if (!result) {
-    //         break;
-    //     }
-    //
-    //     if (result[1]) {
-    //         restStr = restStr.slice(result[1].length);
-    //         resultStr += result[1];
-    //         continue;
-    //     }
-    //
-    //     if (count === 0 && result[2]) {
-    //         break;
-    //     }
-    //
-    //     // if there is a Strong syntax
-    //     if (restStr.startsWith(flag + flag)) {
-    //         restStr = restStr.slice(2);
-    //         resultStr += flag + flag;
-    //         count += pn;
-    //         pn = -pn;
-    //     }
-    //
-    // }
-    //
-    // if (resultStr.length > 0) {
-    //
-    //     const node = { // emphasize root node
-    //         type: 'Emphasize',
-    //         rawValue: resultStr
-    //     };
-    //
-    //     // parse recursively
-    //     this.parseInline(node);
-    //
-    //     return [node, resultStr.length + 2];
-    //
-    // }
-    //
-    // return;
+    const regStrong = /^([\*\_]{2})([^\*\_]*?)(\1)/,
+        regWeak = /^([\*\_]{1})([^\*\_]*?)(\1)/;
 
-    const flag = str.at(0),
-        reg = new RegExp(`([\\s\\S]*?)(\\${flag})`),
-
-        restStr = str.slice(1),
-
-        result = restStr.match(reg);
-
-    if (!result) {
-        return;
-    }
-
-    if (result[1].length > 0) {
+    const resultStrong = str.match(regStrong);
+    if (resultStrong && resultStrong[2]) {
 
         const node = { // strong root node
             type: 'Emphasize',
-            rawValue: result[1]
+            emphasizeType: EmphasizeType.STRONG,
+            rawValue: resultStrong[2]
         };
 
         // parse recursively
         this.parseInline(node);
 
-        return [node, result[1].length + 2];
+        return [node, resultStrong[2].length + 4];
+
+    }
+
+    const resultWeak = str.match(regWeak);
+    if (resultWeak && resultWeak[2]) {
+
+        const node = { // strong root node
+            type: 'Emphasize',
+            emphasizeType: EmphasizeType.WEAK,
+            rawValue: resultWeak[2]
+        };
+
+        // parse recursively
+        this.parseInline(node);
+
+        return [node, resultWeak[2].length + 2];
 
     }
 
@@ -106,7 +60,7 @@ function parse(str, children, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<em>${node.rawValue || ''}${data}</em>`;
+    return `<${node.emphasizeType}>${node.rawValue || ''}${data}</${node.emphasizeType}>`;
 }
 
 export default {
