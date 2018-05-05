@@ -3,13 +3,15 @@
  *
  * syntax like this:
  *
- *  *emphasized*
+ *  **strong emphasized**
+ *  __strong emphasized__
  *
  * or
  *
- *  _emphasized_
+ *  *weak emphasized*
+ *  _weak emphasized_
  *
- * emphasize can be nested
+ * and emphasize can be nested
  *
  */
 
