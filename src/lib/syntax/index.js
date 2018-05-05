@@ -26,7 +26,6 @@ import Link from './inline/Link';
 import AutoLink from './inline/AutoLink';
 import InlineCode from './inline/InlineCode';
 import BreakRow from './inline/BreakRow';
-import Strong from './inline/Strong';
 import Emphasize from './inline/Emphasize';
 
 export default {
@@ -43,8 +42,6 @@ export default {
         '<': 'AutoLink',
         '`': 'InlineCode',
         '  \n': 'BreakRow',
-        '**': 'Strong',
-        '__': 'Strong',
         '*': 'Emphasize',
         '_': 'Emphasize'
     },
@@ -77,7 +74,6 @@ export default {
     AutoLink,
     InlineCode,
     BreakRow,
-    Strong,
     Emphasize
 
 };
