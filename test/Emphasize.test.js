@@ -27,8 +27,8 @@ describe('Emphasize Test', () => {
 
     it('weak and strong', () => {
 
-        const md = 'aaa *Weak Emphasize* bbb ***Weak and Strong Emphasize*** ccc',
-            result = '<p>aaa <em>Weak Emphasize</em> bbb <strong><em>Weak and Strong Emphasize</em></strong> ccc</p>';
+        const md = 'aaa *Weak Emphasize* bbb ***Strong and Weak Emphasize*** ccc',
+            result = '<p>aaa <em>Weak Emphasize</em> bbb <strong><em>Strong and Weak Emphasize</em></strong> ccc</p>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
 
@@ -38,6 +38,15 @@ describe('Emphasize Test', () => {
 
         const md = '**\*Strong**',
             result = '<p>*<strong>Strong</strong></p>';
+
+        expect(Markdown.parse(md)).to.be.equal(result);
+
+    });
+
+    it('mixing syntax', () => {
+
+        const md = 'aaa **_Strong and Weak Emphasize_** bbb __*Strong and Weak Emphasize*__ ccc',
+            result = '<p>aaa <strong><em>Strong and Weak Emphasize</em></strong> bbb <strong><em>Strong and Weak Emphasize</em></strong> ccc</p>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
 
