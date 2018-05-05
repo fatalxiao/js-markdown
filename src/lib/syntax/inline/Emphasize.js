@@ -19,13 +19,15 @@ const EmphasizeType = {
     WEAK: Symbol('WEAK')
 };
 
+function generateRegExp(flag, count) {
+    return new RegExp(`^([\\${flag}]{${count}})([^\\${flag}]*?)(\\1)`);
+}
+
 function parse(str, children, renderTree) {
 
-    const regDouble = /^([\*\_]{3})([^\*\_]*?)(\1)/,
-        regStrong = /^([\*\_]{2})([^\*\_]*?)(\1)/,
-        regWeak = /^([\*\_]{1})([^\*\_]*?)(\1)/;
+    const flag = str.at(0);
 
-    const resultDouble = str.match(regDouble);
+    const resultDouble = str.match(generateRegExp(flag, 3));
     if (resultDouble && resultDouble[2]) {
 
         const node = { // strong root node
@@ -41,7 +43,7 @@ function parse(str, children, renderTree) {
 
     }
 
-    const resultStrong = str.match(regStrong);
+    const resultStrong = str.match(generateRegExp(flag, 2));
     if (resultStrong && resultStrong[2]) {
 
         const node = { // strong root node
@@ -57,7 +59,7 @@ function parse(str, children, renderTree) {
 
     }
 
-    const resultWeak = str.match(regWeak);
+    const resultWeak = str.match(generateRegExp(flag, 1));
     if (resultWeak && resultWeak[2]) {
 
         const node = { // strong root node
