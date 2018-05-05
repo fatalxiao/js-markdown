@@ -52,4 +52,13 @@ describe('Emphasize Test', () => {
 
     });
 
+    it('four *', () => {
+
+        const md = '****Strong and Weak Emphasize****',
+            result = '<p>*<strong><em>Strong and Weak Emphasize</em></strong>*</p>';
+
+        expect(Markdown.parse(md)).to.be.equal(result);
+
+    });
+
 });
