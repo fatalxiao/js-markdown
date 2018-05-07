@@ -54,7 +54,7 @@ describe('Emphasize Test', () => {
 
     it('with escape character', () => {
 
-        const md = '**\*Strong Emphasize**',
+        const md = '**\\*Strong Emphasize**',
             result = '<p><strong>*Strong Emphasize</strong></p>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
