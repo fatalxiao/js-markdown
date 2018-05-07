@@ -221,7 +221,7 @@ describe('Ordered List Test', () => {
             + '    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum\n'
             + '    sit amet velit.\n'
             + '\n'
-            + '2.  Suspendisse id sem consectetuer libero luctus adipiscing.'
+            + '2.  Suspendisse id sem consectetuer libero luctus adipiscing.\n'
             + '\n'
             + '\n'
             + '3.  New Ordered List.',
@@ -246,9 +246,7 @@ describe('Ordered List Test', () => {
                 + '</ol>'
                 + '<ol>'
                 + '<li>'
-                + '<p>'
                 + 'New Ordered List.'
-                + '</p>'
                 + '</li>'
                 + '</ol>';
 
