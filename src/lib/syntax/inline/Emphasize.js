@@ -22,7 +22,7 @@ const EmphasizeType = {
 };
 
 function generateRegExp(flag, count) {
-    return new RegExp(`^([\\${flag}]{${count}})([^\\${flag}]*?)(\\1)`);
+    return new RegExp(`^([${flag}]{${count}})((\\\\\\${flag}|[^${flag}])*?)(\\1)`);
 }
 
 function parse(str, children, renderTree) {
