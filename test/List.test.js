@@ -55,14 +55,18 @@ describe('Unordered List Test', () => {
     it('omit "*"', () => {
 
         const md = '*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n'
+            + '    \n'
             + '    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n'
             + '    viverra nec, fringilla in, laoreet vitae, risus.\n'
+            + '    \n'
             + '*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\n'
             + '    Suspendisse id sem consectetuer libero luctus adipiscing.',
             result = '<ul>'
                 + '<li>'
                 + '<p>'
-                + 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n'
+                + 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+                + '</p>'
+                + '<p>'
                 + 'Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n'
                 + 'viverra nec, fringilla in, laoreet vitae, risus.'
                 + '</p>'
