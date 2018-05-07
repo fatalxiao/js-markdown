@@ -34,10 +34,28 @@ describe('Emphasize Test', () => {
 
     });
 
+    it('3 "*"s', () => {
+
+        const md = '***Strong Emphasize**',
+            result = '<p>*<strong>Strong Emphasize</strong></p>';
+
+        expect(Markdown.parse(md)).to.be.equal(result);
+
+    });
+
+    it('4 "*"s', () => {
+
+        const md = '****Strong and Weak Emphasize****',
+            result = '<p>*<strong><em>Strong and Weak Emphasize</em></strong>*</p>';
+
+        expect(Markdown.parse(md)).to.be.equal(result);
+
+    });
+
     it('with escape character', () => {
 
-        const md = '**\*Strong**',
-            result = '<p>*<strong>Strong</strong></p>';
+        const md = '**\*Strong Emphasize**',
+            result = '<p><strong>*Strong Emphasize</strong></p>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
 
@@ -47,15 +65,6 @@ describe('Emphasize Test', () => {
 
         const md = 'aaa **_Strong and Weak Emphasize_** bbb __*Strong and Weak Emphasize*__ ccc',
             result = '<p>aaa <strong><em>Strong and Weak Emphasize</em></strong> bbb <strong><em>Strong and Weak Emphasize</em></strong> ccc</p>';
-
-        expect(Markdown.parse(md)).to.be.equal(result);
-
-    });
-
-    it('four *', () => {
-
-        const md = '****Strong and Weak Emphasize****',
-            result = '<p>*<strong><em>Strong and Weak Emphasize</em></strong>*</p>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
 
