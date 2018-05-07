@@ -10,8 +10,8 @@ describe('Unordered List Test', () => {
     it('use "*"', () => {
 
         const md = '* Red\n'
-                + '* Green\n'
-                + '* Blue',
+            + '* Green\n'
+            + '* Blue',
             result = '<ul>'
                 + '<li>Red</li>'
                 + '<li>Green</li>'
@@ -25,8 +25,8 @@ describe('Unordered List Test', () => {
     it('use "+"', () => {
 
         const md = '+ Red\n'
-                + '+ Green\n'
-                + '+ Blue',
+            + '+ Green\n'
+            + '+ Blue',
             result = '<ul>'
                 + '<li>Red</li>'
                 + '<li>Green</li>'
@@ -40,8 +40,8 @@ describe('Unordered List Test', () => {
     it('use "-"', () => {
 
         const md = '- Red\n'
-                + '- Green\n'
-                + '- Blue',
+            + '- Green\n'
+            + '- Blue',
             result = '<ul>'
                 + '<li>Red</li>'
                 + '<li>Green</li>'
@@ -55,10 +55,10 @@ describe('Unordered List Test', () => {
     it('omit "*"', () => {
 
         const md = '*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n'
-                + '    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n'
-                + '    viverra nec, fringilla in, laoreet vitae, risus.\n'
-                + '*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\n'
-                + '    Suspendisse id sem consectetuer libero luctus adipiscing.',
+            + '    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n'
+            + '    viverra nec, fringilla in, laoreet vitae, risus.\n'
+            + '*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\n'
+            + '    Suspendisse id sem consectetuer libero luctus adipiscing.',
             result = '<ul>'
                 + '<li>'
                 + '<p>'
@@ -82,10 +82,10 @@ describe('Unordered List Test', () => {
     it('omit "*" and indent 1', () => {
 
         const md = '* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n'
-                + 'Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n'
-                + 'viverra nec, fringilla in, laoreet vitae, risus.\n'
-                + '* Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\n'
-                + 'Suspendisse id sem consectetuer libero luctus adipiscing.',
+            + 'Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n'
+            + 'viverra nec, fringilla in, laoreet vitae, risus.\n'
+            + '* Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\n'
+            + 'Suspendisse id sem consectetuer libero luctus adipiscing.',
             result = '<ul>'
                 + '<li>'
                 + '<p>'
@@ -109,12 +109,12 @@ describe('Unordered List Test', () => {
     it('omit "*" and indent 2', () => {
 
         const md = '*   This is a list item with two paragraphs.\n'
-                + '\n'
-                + '    This is the second paragraph in the list item. You\'re\n'
-                + 'only required to indent the first line. Lorem ipsum dolor\n'
-                + 'sit amet, consectetuer adipiscing elit.\n'
-                + '\n'
-                + '*   Another item in the same list.',
+            + '\n'
+            + '    This is the second paragraph in the list item. You\'re\n'
+            + 'only required to indent the first line. Lorem ipsum dolor\n'
+            + 'sit amet, consectetuer adipiscing elit.\n'
+            + '\n'
+            + '*   Another item in the same list.',
             result = '<ul>'
                 + '<li>'
                 + '<p>'
@@ -140,10 +140,10 @@ describe('Unordered List Test', () => {
     it('with blank line', () => {
 
         const md = '* Red\n'
-                + '\n'
-                + '* Green\n'
-                + '\n'
-                + '* Blue',
+            + '\n'
+            + '* Green\n'
+            + '\n'
+            + '* Blue',
             result = '<ul>'
                 + '<li><p>Red</p></li>'
                 + '<li><p>Green</p></li>'
@@ -157,9 +157,9 @@ describe('Unordered List Test', () => {
     it('nested', () => {
 
         const md = '*   A list item with a blockquote:\n'
-                + '\n'
-                + '    > This is a blockquote\n'
-                + '    > inside a list item.',
+            + '\n'
+            + '    > This is a blockquote\n'
+            + '    > inside a list item.',
             result = '<ul>'
                 + '<li>'
                 + '<p>A list item with a blockquote:</p>'
@@ -180,8 +180,8 @@ describe('Ordered List Test', () => {
     it('default', () => {
 
         const md = '1.  Bird\n'
-                + '2.  McHale\n'
-                + '3.  Parish',
+            + '2.  McHale\n'
+            + '3.  Parish',
             result = '<ol>'
                 + '<li>Bird</li>'
                 + '<li>McHale</li>'
@@ -195,8 +195,8 @@ describe('Ordered List Test', () => {
     it('with wrong number', () => {
 
         const md = '3.  Bird\n'
-                + '1.  McHale\n'
-                + '8.  Parish',
+            + '1.  McHale\n'
+            + '8.  Parish',
             result = '<ol>'
                 + '<li>Bird</li>'
                 + '<li>McHale</li>'
@@ -210,14 +210,14 @@ describe('Ordered List Test', () => {
     it('consist of paragraphs', () => {
 
         const md = '1.  This is a list item with two paragraphs. Lorem ipsum dolor\n'
-                + '    sit amet, consectetuer adipiscing elit. Aliquam hendrerit\n'
-                + '    mi posuere lectus.\n'
-                + '\n'
-                + '    Vestibulum enim wisi, viverra nec, fringilla in, laoreet\n'
-                + '    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum\n'
-                + '    sit amet velit.\n'
-                + '\n'
-                + '2.  Suspendisse id sem consectetuer libero luctus adipiscing.',
+            + '    sit amet, consectetuer adipiscing elit. Aliquam hendrerit\n'
+            + '    mi posuere lectus.\n'
+            + '\n'
+            + '    Vestibulum enim wisi, viverra nec, fringilla in, laoreet\n'
+            + '    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum\n'
+            + '    sit amet velit.\n'
+            + '\n'
+            + '2.  Suspendisse id sem consectetuer libero luctus adipiscing.',
             result = '<ol>'
                 + '<li>'
                 + '<p>'
@@ -234,6 +234,25 @@ describe('Ordered List Test', () => {
                 + '<li>'
                 + '<p>'
                 + 'Suspendisse id sem consectetuer libero luctus adipiscing.'
+                + '</p>'
+                + '</li>'
+                + '</ol>';
+
+        expect(Markdown.parse(md)).to.be.equal(result);
+
+    });
+
+    it('with strong emphasize', () => {
+
+        const md = '1. **a**: aaaaaaaaaaa:  \n'
+            + '   **a1**: a1.  \n'
+            + '   **a2**: a2.',
+            result = '<ol>'
+                + '<li>'
+                + '<p>'
+                + '<strong>a</strong>: aaaaaaaaaaa:<br/>'
+                + '   <strong>a1</strong>: a1.<br/>'
+                + '   <strong>a2</strong>: a2.'
                 + '</p>'
                 + '</li>'
                 + '</ol>';
