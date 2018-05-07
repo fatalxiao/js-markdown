@@ -109,9 +109,21 @@ function parse(line, index, lines, renderTree) {
     index++;
     for (let len = lines.length; index < len; index++) {
 
-        if (Valid.isBlank(lines[index])) {
+        // two blank line break list
+        // if (Valid.isBlank(lines[index])) {
+        //     blankLine = lines[index];
+        //     continue;
+        // }
+        if (lines[index] === '') {
+
+            if (blankLine !== undefined) {
+                index--;
+                break;
+            }
+
             blankLine = lines[index];
             continue;
+
         }
 
         result = lines[index].match(reg);
