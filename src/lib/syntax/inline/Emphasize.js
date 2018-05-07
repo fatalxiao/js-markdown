@@ -21,6 +21,14 @@ const EmphasizeType = {
     WEAK: Symbol('WEAK')
 };
 
+/**
+ * reg like:
+ *  /^([*]{2})((\\\*|[^*])*?)(\1)/
+ *
+ * @param flag
+ * @param count
+ * @returns {RegExp}
+ */
 function generateRegExp(flag, count) {
     return new RegExp(`^([${flag}]{${count}})((\\\\\\${flag}|[^${flag}])*?)(\\1)`);
 }
