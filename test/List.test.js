@@ -245,12 +245,14 @@ describe('Ordered List Test', () => {
     it('with strong emphasize', () => {
 
         const md = '1. **a**: aaaaaaaaaaa:  \n'
+            + '   ![image](./images/image.png)'
             + '   **a1**: a1.  \n'
             + '   **a2**: a2.',
             result = '<ol>'
                 + '<li>'
                 + '<p>'
                 + '<strong>a</strong>: aaaaaaaaaaa:<br/>'
+                + '   <img alt="image" src="./images/image.png"/>'
                 + '   <strong>a1</strong>: a1.<br/>'
                 + '   <strong>a2</strong>: a2.'
                 + '</p>'
