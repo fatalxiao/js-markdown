@@ -120,7 +120,7 @@ function calSeparator(str) {
 function parse(line, index, lines, renderTree) {
 
     const reg = /^ {0,3}(\S(?:\\.|[^\\|])*\|.*)(?:\n|$)/,
-        separatorReg = /^ {0,3}\|?(\s*:?\-{3,}:?\s*\|)+\s*:?\-{3,}:?\s*\|?(?:\n|$)/,
+        separatorReg = /^ {0,3}\|?(\s*((\-{3,})|(:\-{2,})|(\-{2,}:)|(:\-{1,}:))\s*\|)+\s*((\-{3,})|(:\-{2,})|(\-{2,}:)|(:\-{1,}:))\s*\|?(?:\n|$)/,
         linesLen = lines.length;
 
     // if the line is the last line
