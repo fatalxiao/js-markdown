@@ -121,20 +121,14 @@ describe('Unordered List Test', () => {
             + '*   Another item in the same list.',
             result = '<ul>'
                 + '<li>'
-                + '<p>'
-                + 'This is a list item with two paragraphs.'
-                + '</p>'
+                + '<p>This is a list item with two paragraphs.</p>'
                 + '<p>'
                 + 'This is the second paragraph in the list item. You\'re\n'
                 + 'only required to indent the first line. Lorem ipsum dolor\n'
                 + 'sit amet, consectetuer adipiscing elit.'
                 + '</p>'
                 + '</li>'
-                + '<li>'
-                + '<p>'
-                + 'Another item in the same list.'
-                + '</p>'
-                + '</li>'
+                + '<li><p>Another item in the same list.</p></li>'
                 + '</ul>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
@@ -152,6 +146,26 @@ describe('Unordered List Test', () => {
                 + '<li><p>Red</p></li>'
                 + '<li><p>Green</p></li>'
                 + '<li><p>Blue</p></li>'
+                + '</ul>';
+
+        expect(Markdown.parse(md)).to.be.equal(result);
+
+    });
+
+    it('nested unordered list', () => {
+
+        const md = '*   A list item with a blockquote:\n'
+            + '\n'
+            + '    * sub list 1\n'
+            + '    * sub list 2',
+            result = '<ul>'
+                + '<li>'
+                + '<p>A list item with a blockquote:</p>'
+                + '<ul>'
+                + '<li><p>sub list 1</p></li>'
+                + '<li><p>sub list 2</p></li>'
+                + '</ul>'
+                + '</li>'
                 + '</ul>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
