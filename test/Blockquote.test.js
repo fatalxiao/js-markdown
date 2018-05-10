@@ -10,11 +10,11 @@ describe('Blockquote Test', () => {
     it('default', () => {
 
         const md = '> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,\n'
-                + '> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.\n'
-                + '> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.\n'
-                + '>\n'
-                + '> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse\n'
-                + '> id sem consectetuer libero luctus adipiscing.',
+            + '> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.\n'
+            + '> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.\n'
+            + '>\n'
+            + '> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse\n'
+            + '> id sem consectetuer libero luctus adipiscing.',
             result = '<blockquote>'
                 + '<p>'
                 + 'This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,\n'
@@ -34,11 +34,11 @@ describe('Blockquote Test', () => {
     it('omit ">"', () => {
 
         const md = '> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,\n'
-                + '> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.\n'
-                + '> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.\n'
-                + '\n'
-                + '> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse\n'
-                + '> id sem consectetuer libero luctus adipiscing.',
+            + '> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.\n'
+            + '> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.\n'
+            + '\n'
+            + '> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse\n'
+            + '> id sem consectetuer libero luctus adipiscing.',
             result = '<blockquote>'
                 + '<p>'
                 + 'This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,\n'
@@ -58,10 +58,10 @@ describe('Blockquote Test', () => {
     it('nested', () => {
 
         const md = '> This is the first level of quoting.\n'
-                + '>\n'
-                + '> > This is nested blockquote.\n'
-                + '>\n'
-                + '> Back to the first level.',
+            + '>\n'
+            + '> > This is nested blockquote.\n'
+            + '>\n'
+            + '> Back to the first level.',
             result = '<blockquote>'
                 + '<p>'
                 + 'This is the first level of quoting.'
@@ -83,18 +83,18 @@ describe('Blockquote Test', () => {
     it('complicated nested', () => {
 
         const md = '> ## This is a header.\n'
-                + '>\n'
-                + '> 1.   This is the first list item.\n'
-                + '> 2.   This is the second list item.\n'
-                + '>\n'
-                + '> Here\'s some example code:\n'
-                + '>\n'
-                + '>     return shell_exec("echo $input | $markdown_script");',
+            + '>\n'
+            + '> 1.   This is the first list item.\n'
+            + '> 2.   This is the second list item.\n'
+            + '>\n'
+            + '> Here\'s some example code:\n'
+            + '>\n'
+            + '>     return shell_exec("echo $input | $markdown_script");',
             result = '<blockquote>'
                 + '<h2><a id="This is a header." href="#This is a header."></a>This is a header.</h2>'
                 + '<ol>'
-                + '<li>This is the first list item.</li>'
-                + '<li>This is the second list item.</li>'
+                + '<li><p>This is the first list item.</p></li>'
+                + '<li><p>This is the second list item.</p></li>'
                 + '</ol>'
                 + '<p>Here\'s some example code:</p>'
                 + '<pre><code>return shell_exec(&quot;echo $input | $markdown_script&quot;);\n</code></pre>'
