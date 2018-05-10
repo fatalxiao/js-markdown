@@ -158,7 +158,7 @@ describe('Unordered List Test', () => {
 
     });
 
-    it('nested', () => {
+    it('nested blockquote', () => {
 
         const md = '*   A list item with a blockquote:\n'
             + '\n'
