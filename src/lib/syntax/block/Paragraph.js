@@ -67,12 +67,12 @@ function parse(line, index, lines, renderTree) {
     }
 
     // render as a single line text when parent is a list
-    if (renderTree && renderTree.type === 'ListItem') {
-        return [{
-            type: 'Text',
-            rawValue: line
-        }, index];
-    }
+    // if (renderTree && renderTree.type === 'ListItem') {
+    //     return [{
+    //         type: 'Text',
+    //         rawValue: line
+    //     }, index];
+    // }
 
     return [{
         type: 'Paragraph',
