@@ -13,9 +13,9 @@ describe('Unordered List Test', () => {
             + '* Green\n'
             + '* Blue',
             result = '<ul>'
-                + '<li>Red</li>'
-                + '<li>Green</li>'
-                + '<li>Blue</li>'
+                + '<li><p>Red</p></li>'
+                + '<li><p>Green</p></li>'
+                + '<li><p>Blue</p></li>'
                 + '</ul>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
@@ -28,9 +28,9 @@ describe('Unordered List Test', () => {
             + '+ Green\n'
             + '+ Blue',
             result = '<ul>'
-                + '<li>Red</li>'
-                + '<li>Green</li>'
-                + '<li>Blue</li>'
+                + '<li><p>Red</p></li>'
+                + '<li><p>Green</p></li>'
+                + '<li><p>Blue</p></li>'
                 + '</ul>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
@@ -43,9 +43,9 @@ describe('Unordered List Test', () => {
             + '- Green\n'
             + '- Blue',
             result = '<ul>'
-                + '<li>Red</li>'
-                + '<li>Green</li>'
-                + '<li>Blue</li>'
+                + '<li><p>Red</p></li>'
+                + '<li><p>Green</p></li>'
+                + '<li><p>Blue</p></li>'
                 + '</ul>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
@@ -187,9 +187,9 @@ describe('Ordered List Test', () => {
             + '2.  McHale\n'
             + '3.  Parish',
             result = '<ol>'
-                + '<li>Bird</li>'
-                + '<li>McHale</li>'
-                + '<li>Parish</li>'
+                + '<li><p>Bird</p></li>'
+                + '<li><p>McHale</p></li>'
+                + '<li><p>Parish</p></li>'
                 + '</ol>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
@@ -202,9 +202,9 @@ describe('Ordered List Test', () => {
             + '1.  McHale\n'
             + '8.  Parish',
             result = '<ol>'
-                + '<li>Bird</li>'
-                + '<li>McHale</li>'
-                + '<li>Parish</li>'
+                + '<li><p>Bird</p></li>'
+                + '<li><p>McHale</p></li>'
+                + '<li><p>Parish</p></li>'
                 + '</ol>';
 
         expect(Markdown.parse(md)).to.be.equal(result);
@@ -243,10 +243,10 @@ describe('Ordered List Test', () => {
                 + 'Suspendisse id sem consectetuer libero luctus adipiscing.'
                 + '</p>'
                 + '</li>'
-                + '</ol>'
-                + '<ol>'
                 + '<li>'
+                + '<p>'
                 + 'New Ordered List.'
+                + '</p>'
                 + '</li>'
                 + '</ol>';
 
