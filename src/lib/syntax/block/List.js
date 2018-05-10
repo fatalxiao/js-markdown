@@ -73,7 +73,7 @@ function generateListItem(result, hasBlankLine) {
 
     const content = [result[3]];
 
-    if (hasBlankLine !== undefined) {
+    if (hasBlankLine) {
         content.unshift('\n');
     }
 
@@ -89,9 +89,9 @@ function generateListItem(result, hasBlankLine) {
 function parse(line, index, lines, renderTree) {
 
     const reg = /^([\*\-\+]|\d+\.)\s+(\[[x| ]\])?(.*?)(?:\n|$)/,
-        indentReg = /^( {0,3}\t| {4}|\t)*(.*?)(?:\n|$)/;
+        indentReg = /^( {0,3}\t| {4}|\t)*(.*?)(?:\n|$)/,
 
-    let result = line.match(reg);
+        result = line.match(reg);
 
     if (!result) {
         return;
@@ -104,53 +104,39 @@ function parse(line, index, lines, renderTree) {
     };
 
     let lastListItem = generateListItem(result),
-        blankLine = undefined;
+        hasBlankLine = false;
 
     index++;
     for (let len = lines.length; index < len; index++) {
 
-        // two blank line break list
-        // if (Valid.isBlank(lines[index])) {
-        //     blankLine = lines[index];
-        //     continue;
-        // }
-        if (lines[index] === '') {
-
-            if (blankLine !== undefined) {
-                index--;
-                break;
-            }
-
-            blankLine = lines[index];
+        if (Valid.isBlank(lines[index])) {
+            hasBlankLine = true;
             continue;
-
         }
 
-        result = lines[index].match(reg);
-
-        if (result) { // matched next list item
+        const lineResult = lines[index].match(reg);
+        if (lineResult) { // matched next list item
 
             if (lastListItem) {
 
-                if (blankLine !== undefined) {
-                    lastListItem.content.push(blankLine);
+                if (hasBlankLine) {
+                    lastListItem.content.push('');
                 }
 
                 block.children.push(lastListItem);
 
             }
 
-            lastListItem = generateListItem(result, blankLine);
+            lastListItem = generateListItem(lineResult, hasBlankLine);
 
-            blankLine = undefined;
+            hasBlankLine = false;
 
             continue;
 
         }
 
-        result = lines[index].match(indentReg);
-
-        if (blankLine !== undefined && (!result || !result[1])) { // end of list
+        const indentResult = lines[index].match(indentReg);
+        if (hasBlankLine && (!indentResult || !indentResult[1])) { // end of list
 
             if (lastListItem) {
                 block.children.push(lastListItem);
@@ -164,12 +150,12 @@ function parse(line, index, lines, renderTree) {
 
         if (lastListItem) { // append to last list item
 
-            if (blankLine !== undefined) {
-                lastListItem.content.push(blankLine);
-                blankLine = undefined;
+            if (hasBlankLine) {
+                lastListItem.content.push('');
+                hasBlankLine = false;
             }
 
-            lastListItem.content.push(result[2]);
+            lastListItem.content.push(indentResult[2]);
 
         }
 
@@ -177,8 +163,8 @@ function parse(line, index, lines, renderTree) {
 
     if (lastListItem) {
 
-        if (blankLine !== undefined) {
-            lastListItem.content.push(blankLine);
+        if (hasBlankLine) {
+            lastListItem.content.push('');
         }
 
         block.children.push(lastListItem);
