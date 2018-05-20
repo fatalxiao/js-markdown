@@ -7,7 +7,7 @@ const expect = chai.expect;
 
 describe('Unordered List Test', () => {
 
-    it('use "*"', () => {
+    it('use "*"', () =>
         expect(Markdown.parse(
             '* Red\n'
             + '* Green\n'
@@ -18,10 +18,10 @@ describe('Unordered List Test', () => {
             + '<li><p>Green</p></li>'
             + '<li><p>Blue</p></li>'
             + '</ul>'
-        );
-    });
+        )
+    );
 
-    it('use "+"', () => {
+    it('use "+"', () =>
         expect(Markdown.parse(
             '+ Red\n'
             + '+ Green\n'
@@ -32,10 +32,10 @@ describe('Unordered List Test', () => {
             + '<li><p>Green</p></li>'
             + '<li><p>Blue</p></li>'
             + '</ul>'
-        );
-    });
+        )
+    );
 
-    it('use "-"', () => {
+    it('use "-"', () =>
         expect(Markdown.parse(
             '- Red\n'
             + '- Green\n'
@@ -46,10 +46,10 @@ describe('Unordered List Test', () => {
             + '<li><p>Green</p></li>'
             + '<li><p>Blue</p></li>'
             + '</ul>'
-        );
-    });
+        )
+    );
 
-    it('omit "*"', () => {
+    it('omit "*"', () =>
         expect(Markdown.parse(
             '* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n'
             + '    \n'
@@ -76,10 +76,10 @@ describe('Unordered List Test', () => {
             + '</p>'
             + '</li>'
             + '</ul>'
-        );
-    });
+        )
+    );
 
-    it('omit "*" and indent 1', () => {
+    it('omit "*" and indent 1', () =>
         expect(Markdown.parse(
             '* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n'
             + 'Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n'
@@ -102,10 +102,10 @@ describe('Unordered List Test', () => {
             + '</p>'
             + '</li>'
             + '</ul>'
-        );
-    });
+        )
+    );
 
-    it('omit "*" and indent 2', () => {
+    it('omit "*" and indent 2', () =>
         expect(Markdown.parse(
             '* This is a list item with two paragraphs.\n'
             + '\n'
@@ -126,10 +126,10 @@ describe('Unordered List Test', () => {
             + '</li>'
             + '<li><p>Another item in the same list.</p></li>'
             + '</ul>'
-        );
-    });
+        )
+    );
 
-    it('with blank line', () => {
+    it('with blank line', () =>
         expect(Markdown.parse(
             '* Red\n'
             + '\n'
@@ -142,8 +142,8 @@ describe('Unordered List Test', () => {
             + '<li><p>Green</p></li>'
             + '<li><p>Blue</p></li>'
             + '</ul>'
-        );
-    });
+        )
+    );
 
     // it('nested', () => {
     //     expect(Markdown.parse(
@@ -164,7 +164,7 @@ describe('Unordered List Test', () => {
     //     );
     // });
 
-    it('nested unordered list', () => {
+    it('nested unordered list', () =>
         expect(Markdown.parse(
             '* A list item with a blockquote:\n'
             + '\n'
@@ -180,10 +180,10 @@ describe('Unordered List Test', () => {
             + '</ul>'
             + '</li>'
             + '</ul>'
-        );
-    });
+        )
+    );
 
-    it('nested blockquote', () => {
+    it('nested blockquote', () =>
         expect(Markdown.parse(
             '* A list item with a blockquote:\n'
             + '\n'
@@ -198,10 +198,10 @@ describe('Unordered List Test', () => {
             + '</blockquote>'
             + '</li>'
             + '</ul>'
-        );
-    });
+        )
+    );
 
-    it('break list', () => {
+    it('break list', () =>
         expect(Markdown.parse(
             '* List\n'
             + '\n'
@@ -213,14 +213,14 @@ describe('Unordered List Test', () => {
             + '</li>'
             + '</ul>'
             + '<p>Paragraph</p>'
-        );
-    });
+        )
+    );
 
 });
 
 describe('Ordered List Test', () => {
 
-    it('default', () => {
+    it('default', () =>
         expect(Markdown.parse(
             '1. Bird\n'
             + '2. McHale\n'
@@ -231,10 +231,10 @@ describe('Ordered List Test', () => {
             + '<li><p>McHale</p></li>'
             + '<li><p>Parish</p></li>'
             + '</ol>'
-        );
-    });
+        )
+    );
 
-    it('with wrong number', () => {
+    it('with wrong number', () =>
         expect(Markdown.parse(
             '3. Bird\n'
             + '1. McHale\n'
@@ -245,10 +245,10 @@ describe('Ordered List Test', () => {
             + '<li><p>McHale</p></li>'
             + '<li><p>Parish</p></li>'
             + '</ol>'
-        );
-    });
+        )
+    );
 
-    it('consist of paragraphs', () => {
+    it('consist of paragraphs', () =>
         expect(Markdown.parse(
             '1. This is a list item with two paragraphs. Lorem ipsum dolor\n'
             + '    sit amet, consectetuer adipiscing elit. Aliquam hendrerit\n'
@@ -287,10 +287,10 @@ describe('Ordered List Test', () => {
             + '</p>'
             + '</li>'
             + '</ol>'
-        );
-    });
+        )
+    );
 
-    it('with strong emphasize', () => {
+    it('with strong emphasize', () =>
         expect(Markdown.parse(
             '1. **a**: aaaaaaaaaaa:  \n'
             + '   ![image](./images/image.png)'
@@ -307,7 +307,7 @@ describe('Ordered List Test', () => {
             + '</p>'
             + '</li>'
             + '</ol>'
-        );
-    });
+        )
+    );
 
 });
