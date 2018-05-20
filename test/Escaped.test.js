@@ -7,13 +7,12 @@ const expect = chai.expect;
 
 describe('Escaped Test', () => {
 
-    it('default', () => {
-
-        const md = '\\ , \` , \* , \_ , \{ , \} , \< , \> , \[ , \] , \( , \), \# , \+ , \. , \! , \- , \~ , \" , \= , \^',
-            result = '<p>\\ , ` , * , _ , { , } , < , > , [ , ] , ( , ), # , + , . , ! , - , ~ , " , = , ^</p>';
-
-        expect(Markdown.parse(md)).to.be.equal(result);
-
-    });
+    it('default', () =>
+        expect(Markdown.parse(
+            '\\ , \` , \* , \_ , \{ , \} , \< , \> , \[ , \] , \( , \), \# , \+ , \. , \! , \- , \~ , \" , \= , \^'
+        )).to.be.equal(
+            '<p>\\ , ` , * , _ , { , } , < , > , [ , ] , ( , ), # , + , . , ! , - , ~ , " , = , ^</p>'
+        )
+    );
 
 });
