@@ -7,28 +7,28 @@ const expect = chai.expect;
 
 describe('HorizontalRule Test', () => {
 
-    it('use "*"', () => {
-        expect(Markdown.parse('***')).to.be.equal('<hr/>');
-    });
+    it('use "*"', () =>
+        expect(Markdown.parse('***')).to.be.equal('<hr/>')
+    );
 
-    it('use "*" with spaces', () => {
-        expect(Markdown.parse('* * *')).to.be.equal('<hr/>');
-    });
+    it('use "*" with spaces', () =>
+        expect(Markdown.parse('* * *')).to.be.equal('<hr/>')
+    );
 
-    it('use "*" more than three chars', () => {
-        expect(Markdown.parse('*****')).to.be.equal('<hr/>');
-    });
+    it('use "*" more than three chars', () =>
+        expect(Markdown.parse('*****')).to.be.equal('<hr/>')
+    );
 
-    it('use "-"', () => {
-        expect(Markdown.parse('---')).to.be.equal('<hr/>');
-    });
+    it('use "-"', () =>
+        expect(Markdown.parse('---')).to.be.equal('<hr/>')
+    );
 
-    it('use "-" with spaces', () => {
-        expect(Markdown.parse('- - -')).to.be.equal('<hr/>');
-    });
+    it('use "-" with spaces', () =>
+        expect(Markdown.parse('- - -')).to.be.equal('<hr/>')
+    );
 
-    it('use "-" more than three chars', () => {
-        expect(Markdown.parse('---------------------------------------')).to.be.equal('<hr/>');
-    });
+    it('use "-" more than three chars', () =>
+        expect(Markdown.parse('---------------------------------------')).to.be.equal('<hr/>')
+    );
 
 });
