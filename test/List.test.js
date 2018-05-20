@@ -54,12 +54,12 @@ describe('Unordered List Test', () => {
 
     it('omit "*"', () => {
 
-        const md = '*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n'
+        const md = '* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n'
             + '    \n'
             + '    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n'
             + '    viverra nec, fringilla in, laoreet vitae, risus.\n'
             + '    \n'
-            + '*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\n'
+            + '* Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\n'
             + '    Suspendisse id sem consectetuer libero luctus adipiscing.',
             result = '<ul>'
                 + '<li>'
@@ -112,7 +112,7 @@ describe('Unordered List Test', () => {
 
     it('omit "*" and indent 2', () => {
 
-        const md = '*   This is a list item with two paragraphs.\n'
+        const md = '* This is a list item with two paragraphs.\n'
             + '\n'
             + '    This is the second paragraph in the list item. You\'re\n'
             + 'only required to indent the first line. Lorem ipsum dolor\n'
@@ -154,7 +154,7 @@ describe('Unordered List Test', () => {
 
     it('nested unordered list', () => {
 
-        const md = '*   A list item with a blockquote:\n'
+        const md = '* A list item with a blockquote:\n'
             + '\n'
             + '    * sub list 1\n'
             + '    * sub list 2',
@@ -174,7 +174,7 @@ describe('Unordered List Test', () => {
 
     it('nested blockquote', () => {
 
-        const md = '*   A list item with a blockquote:\n'
+        const md = '* A list item with a blockquote:\n'
             + '\n'
             + '    > This is a blockquote\n'
             + '    > inside a list item.',
@@ -197,9 +197,9 @@ describe('Ordered List Test', () => {
 
     it('default', () => {
 
-        const md = '1.  Bird\n'
-            + '2.  McHale\n'
-            + '3.  Parish',
+        const md = '1. Bird\n'
+            + '2. McHale\n'
+            + '3. Parish',
             result = '<ol>'
                 + '<li><p>Bird</p></li>'
                 + '<li><p>McHale</p></li>'
@@ -212,9 +212,9 @@ describe('Ordered List Test', () => {
 
     it('with wrong number', () => {
 
-        const md = '3.  Bird\n'
-            + '1.  McHale\n'
-            + '8.  Parish',
+        const md = '3. Bird\n'
+            + '1. McHale\n'
+            + '8. Parish',
             result = '<ol>'
                 + '<li><p>Bird</p></li>'
                 + '<li><p>McHale</p></li>'
@@ -227,7 +227,7 @@ describe('Ordered List Test', () => {
 
     it('consist of paragraphs', () => {
 
-        const md = '1.  This is a list item with two paragraphs. Lorem ipsum dolor\n'
+        const md = '1. This is a list item with two paragraphs. Lorem ipsum dolor\n'
             + '    sit amet, consectetuer adipiscing elit. Aliquam hendrerit\n'
             + '    mi posuere lectus.\n'
             + '\n'
@@ -235,10 +235,10 @@ describe('Ordered List Test', () => {
             + '    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum\n'
             + '    sit amet velit.\n'
             + '\n'
-            + '2.  Suspendisse id sem consectetuer libero luctus adipiscing.\n'
+            + '2. Suspendisse id sem consectetuer libero luctus adipiscing.\n'
             + '\n'
             + '\n'
-            + '3.  New Ordered List.',
+            + '3. New Ordered List.',
             result = '<ol>'
                 + '<li>'
                 + '<p>'
