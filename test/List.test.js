@@ -191,6 +191,22 @@ describe('Unordered List Test', () => {
 
     });
 
+    it('break list', () => {
+
+        const md = '* List\n'
+            + '\n'
+            + 'Paragraph',
+            result = '<ul>'
+                + '<li>'
+                + '<p>List</p>'
+                + '</li>'
+                + '</ul>'
+                + '<p>Paragraph</p>';
+
+        expect(Markdown.parse(md)).to.be.equal(result);
+
+    });
+
 });
 
 describe('Ordered List Test', () => {
