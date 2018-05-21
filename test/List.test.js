@@ -52,10 +52,10 @@ describe('Unordered List Test', () => {
     it('omit "*"', () =>
         expect(Markdown.parse(
             '* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n'
-            + '    \n'
+            + '\n'
             + '    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n'
             + '    viverra nec, fringilla in, laoreet vitae, risus.\n'
-            + '    \n'
+            + '\n'
             + '* Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\n'
             + '    Suspendisse id sem consectetuer libero luctus adipiscing.'
         )).to.be.equal(
