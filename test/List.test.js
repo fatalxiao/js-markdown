@@ -145,25 +145,6 @@ describe('Unordered List Test', () => {
         )
     );
 
-    // it('nested', () => {
-    //     expect(Markdown.parse(
-    //         '* A list item with a blockquote:\n'
-    //         + '\n'
-    //         + '    * sub list 1\n'
-    //         + '    * sub list 2'
-    //     )).to.be.equal(
-    //         '<ul>'
-    //         + '<li>'
-    //         + '<p>A list item with a blockquote:</p>'
-    //         + '<ul>'
-    //         + '<li><p>sub list 1</p></li>'
-    //         + '<li><p>sub list 2</p></li>'
-    //         + '</ul>'
-    //         + '</li>'
-    //         + '</ul>'
-    //     );
-    // });
-
     it('nested unordered list', () =>
         expect(Markdown.parse(
             '* A list item with a blockquote:\n'
@@ -309,5 +290,39 @@ describe('Ordered List Test', () => {
             + '</ol>'
         )
     );
+
+    it('nested', () => {
+        expect(Markdown.parse(
+            '1. Ordered list item\n'
+            + '    * **Unordered list item1**\n'
+            + '        * **Unordered list item1 - child1**\n'
+            + '        * **Unordered list item1 - child2**\n'
+            + '    * **Unordered list item2**\n'
+            + '        * **Unordered list item2 - child1**\n'
+            + '        * **Unordered list item2 - child2**\n'
+        )).to.be.equal(
+            '<ol>'
+            + '<li>'
+            + '<p>Ordered list item</p>'
+            + '<ul>'
+            + '<li>'
+            + '<p><strong>Unordered list item1</strong></p>'
+            + '<ul>'
+            + '<li><p><strong>Unordered list item1 - child1</strong></p></li>'
+            + '<li><p><strong>Unordered list item1 - child2</strong></p></li>'
+            + '</ul>'
+            + '</li>'
+            + '<li>'
+            + '<p><strong>Unordered list item2</strong></p>'
+            + '<ul>'
+            + '<li><p><strong>Unordered list item2 - child1</strong></p></li>'
+            + '<li><p><strong>Unordered list item2 - child2</strong></p></li>'
+            + '</ul>'
+            + '</li>'
+            + '</ul>'
+            + '</li>'
+            + '</ol>'
+        );
+    });
 
 });
