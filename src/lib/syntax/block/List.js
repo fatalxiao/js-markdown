@@ -89,7 +89,7 @@ function generateListItem(result, hasBlankLine) {
 function parse(line, index, lines, renderTree) {
 
     const reg = /^([\*\-\+]|\d+\.)\s+(\[[x| ]\])?(.*?)(?:\n|$)/,
-        indentReg = /^( {0,3}\t| {4}|\t)*(.*?)(?:\n|$)/,
+        indentReg = /^( {0,3}\t| {4}|\t)?(.*?)(?:\n|$)/,
 
         result = line.match(reg);
 
