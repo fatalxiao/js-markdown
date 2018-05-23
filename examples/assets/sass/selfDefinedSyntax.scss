@@ -8,9 +8,13 @@
         overflow: auto;
         font-size: 85%;
         line-height: 1.45;
-        padding: 16px 16px 0 16px;
+        padding: 16px;
         border-radius: 3px;
         margin-bottom: 16px;
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
     }
 
     info {
