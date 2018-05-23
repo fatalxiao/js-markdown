@@ -25,7 +25,6 @@
 
 'use strict';
 
-import Util from '../../utils/Util';
 import Str from '../../utils/Str';
 
 /**
