@@ -2,6 +2,7 @@
 
 import MetaData from './block/MetaData';
 import AtxHeader from './block/AtxHeader';
+import MsgBox from './block/MsgBox';
 import SetextHeader from './block/SetextHeader';
 import BlockCode from './block/BlockCode';
 import HorizontalRule from './block/HorizontalRule';
@@ -69,6 +70,7 @@ export default {
     // block
     MetaData,
     AtxHeader,
+    MsgBox,
     SetextHeader,
     BlockCode,
     HorizontalRule,
