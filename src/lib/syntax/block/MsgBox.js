@@ -38,7 +38,7 @@ function isInlineMatch(line) {
 
 function parse(line, index, lines, renderTree) {
 
-    let result = line.match(/^([`~]{3,}| {4}|\t| {0,3}\t)\s*((info|warning|success|error)??)(?:\n|$)/);
+    let result = line.match(/^([`~]{3,})\s*((info|warning|success|error)??)(?:\n|$)/);
 
     if (!result) {
         return;
@@ -49,47 +49,25 @@ function parse(line, index, lines, renderTree) {
         return;
     }
 
-    if (result[1].includes('\t') || result[1].includes(' ')) { // space or tab
-
-        const indentLen = result[1].length;
-        let codeContent = [result[2]];
-        index++;
-
-        for (let len = lines.length; index < len; index++) {
-            if (Str.trim(lines[index], ' \t') !== '' && !lines[index].startsWith(result[1])) {
-                break;
-            }
-            codeContent.push(lines[index].slice(indentLen));
+    let codeContent = [];
+    index++;
+    for (let len = lines.length; index < len; index++) {
+        if (Str.trimEnd(lines[index], ' \t') === result[1]) {
+            break;
         }
-
-        return [{
-            type: 'MsgBox',
-            rawValue: Str.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n')) + '\n'
-        }, index - 1];
-
-    } else { // ``` or ~~~
-
-        let codeContent = [];
-        index++;
-        for (let len = lines.length; index < len; index++) {
-            if (Str.trimEnd(lines[index], ' \t') === result[1]) {
-                break;
-            }
-            codeContent.push(lines[index]);
-        }
-
-        return [{
-            type: 'MsgBox',
-            language: result[2],
-            rawValue: Str.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n'))
-        }, index];
-
+        codeContent.push(lines[index]);
     }
+
+    return [{
+        type: 'MsgBox',
+        msgType: result[2],
+        rawValue: Str.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n'))
+    }, index];
 
 }
 
 function render(data = '', node) {
-    return `<pre><code${node.language ? ` lang="${node.language}"` : ''}>${node.rawValue || ''}${data}</code></pre>`;
+    return `<${node.msgType}>${node.rawValue || ''}${data}</${node.msgType}>`;
 }
 
 export default {
