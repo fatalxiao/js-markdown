@@ -7,6 +7,7 @@ import Markdown from 'src';
 import Event from 'vendors/Event';
 import MarkDownData from 'assets/MarkDown.md';
 
+import 'assets/font-awesome/css/fontawesome-all.min.css';
 import 'sass/global.scss';
 import 'assets/sass/MarkDownEditor.scss';
 import 'github-markdown-css';
