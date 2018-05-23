@@ -1256,6 +1256,26 @@ Markdown provides backslash escapes for the following characters:
     .   dot
     !   exclamation mark
     
+    
+
+### Message Box
+
+```info
+info
+```
+
+```warning
+warning
+```
+
+```success
+success
+```
+
+```error
+error
+```
+
 
 
 [^footnote1]: footnote1
