@@ -13,6 +13,11 @@ if (!String.prototype.at) {
     }());
 }
 
+Markdown.Dialect = {
+    DEFAULT: 'DEFAULT',
+    DERBY: 'DERBY'
+};
+
 /**
  * Markdown constructor
  * @param data
@@ -25,6 +30,7 @@ function Markdown(data = '', options = {}) {
     this.html = '';
 
     this.fullInfo = !!options.fullInfo;
+    this.dialect = options.dialect || Markdown.Dialect.DEFAULT;
 
 }
 
@@ -50,9 +56,9 @@ Markdown.prototype.parseBlock = function (line, index, lines, renderTree) {
 
     let result;
 
-    for (let i = 0, len = Syntax.blockTypes.length; i < len; i++) {
+    for (let i = 0, len = Syntax[this.dialect].blockTypes.length; i < len; i++) {
 
-        result = Syntax[Syntax.blockTypes[i]].parse.call(this, line, index, lines, renderTree);
+        result = Syntax[Syntax[this.dialect].blockTypes[i]].parse.call(this, line, index, lines, renderTree);
 
         if (!result) {
             continue;
@@ -133,8 +139,8 @@ Markdown.prototype.matchInline = function (str, children) {
     }
 
     let res;
-    if (result[2] in Syntax.inlineTypes) {
-        res = Syntax[Syntax.inlineTypes[result[2]]].parse.call(this, str, children, this.renderTree);
+    if (result[2] in Syntax[this.dialect].inlineTypes) {
+        res = Syntax[Syntax[this.dialect].inlineTypes[result[2]]].parse.call(this, str, children, this.renderTree);
     } else if (result[2] === '\n' && str === '\n') {
         return [{
             type: 'Text',

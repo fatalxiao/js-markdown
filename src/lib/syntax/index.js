@@ -30,20 +30,40 @@ import Emphasize from './inline/Emphasize';
 
 export default {
 
-    blockTypes: [
-        'AtxHeader', 'BlockCode', 'SetextHeader', 'HorizontalRule', 'Table', 'List', 'Blockquote',
-        'Footnote', 'ReferenceDefine', 'MetaData', 'Paragraph'
-    ],
-    inlineTypes: {
-        '\\': 'Escaped',
-        '![': 'Image',
-        '[^': 'Superscript',
-        '[': 'Link',
-        '<': 'AutoLink',
-        '`': 'InlineCode',
-        '  \n': 'BreakRow',
-        '*': 'Emphasize',
-        '_': 'Emphasize'
+    DEFAULT: {
+        blockTypes: [
+            'AtxHeader', 'BlockCode', 'SetextHeader', 'HorizontalRule', 'Table', 'List', 'Blockquote',
+            'Footnote', 'ReferenceDefine', 'MetaData', 'Paragraph'
+        ],
+        inlineTypes: {
+            '\\': 'Escaped',
+            '![': 'Image',
+            '[^': 'Superscript',
+            '[': 'Link',
+            '<': 'AutoLink',
+            '`': 'InlineCode',
+            '  \n': 'BreakRow',
+            '*': 'Emphasize',
+            '_': 'Emphasize'
+        }
+    },
+
+    DERBY: {
+        blockTypes: [
+            'AtxHeader', 'MsgBox', 'BlockCode', 'SetextHeader', 'HorizontalRule', 'Table', 'List', 'Blockquote',
+            'Footnote', 'ReferenceDefine', 'MetaData', 'Paragraph'
+        ],
+        inlineTypes: {
+            '\\': 'Escaped',
+            '![': 'Image',
+            '[^': 'Superscript',
+            '[': 'Link',
+            '<': 'AutoLink',
+            '`': 'InlineCode',
+            '  \n': 'BreakRow',
+            '*': 'Emphasize',
+            '_': 'Emphasize'
+        }
     },
 
     // block
