@@ -3,7 +3,7 @@
  *
  * All text in block will be escaped.
  *
- * (1) use 3 or more "`" or "~" for the first line, and add use, syntax like this:
+ * Use 3 or more "`" or "~" for the first line, and use info|warning|success|error, syntax like this:
  *
  *  ```info
  *  here is the code
@@ -12,14 +12,9 @@
  *
  * or
  *
- *  ~~~
+ *  ~~~warning
  *  another example
  *  ~~~
- *
- * (2) use a tab or 4 space or 1~3 spaces plus a tab for line start, syntax like this:
- *
- *      here is the code
- *      multi lines
  *
  */
 
