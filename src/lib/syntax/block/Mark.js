@@ -1,7 +1,5 @@
 /**
- * match a message box
- *
- * All text in block will be escaped.
+ * match a mark
  *
  * Use 3 or more "`" or "~" for the first line, and use info|warning|success|error, syntax like this:
  *
@@ -44,7 +42,7 @@ function parse(line, index, lines, renderTree) {
     }
 
     const block = { // blockquote root node
-            type: 'MsgBox',
+            type: 'Mark',
             msgType: result[2],
             children: []
         },
@@ -65,7 +63,7 @@ function parse(line, index, lines, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<${node.msgType}>${node.rawValue || ''}${data}</${node.msgType}>`;
+    return `<mark ${node.msgType}>${node.rawValue || ''}${data}</mark>`;
 }
 
 export default {
