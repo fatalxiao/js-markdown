@@ -67,7 +67,7 @@ function parse(line, index, lines, renderTree) {
 }
 
 function render(data = '', node) {
-    return `<${node.msgType}>${node.rawValue || ''}${data}</${node.msgType}>`;
+    return `<pre ${node.msgType}><code>${node.rawValue || ''}${data}</code></pre>`;
 }
 
 export default {
