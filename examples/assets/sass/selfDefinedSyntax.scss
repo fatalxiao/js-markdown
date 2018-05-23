@@ -1,24 +1,35 @@
 .markdown-body {
-    pre {
 
-        &[info] {
-            background-color: #eaf8fe;
-            border: 1px solid #beecfd;
-        }
+    info,
+    warning,
+    success,
+    error {
+        display: block;
+        overflow: auto;
+        font-size: 85%;
+        line-height: 1.45;
+        padding: 16px 16px 0 16px;
+        border-radius: 3px;
+        margin-bottom: 16px;
+    }
 
-        &[warning] {
-            background-color: #fff7e6;
-            border: 1px solid #f8dfad;
-        }
+    info {
+        background-color: #eaf8fe;
+        border: 1px solid #beecfd;
+    }
 
-        &[success] {
-            background-color: #f3faf0;
-            border: 1px solid #dff4d6;
-        }
+    warning {
+        background-color: #fff7e6;
+        border: 1px solid #f8dfad;
+    }
 
-        &[error] {
-            background-color: #ffeee6;
-            border: 1px solid #fbd4c0;
-        }
+    success {
+        background-color: #f3faf0;
+        border: 1px solid #dff4d6;
+    }
+
+    error {
+        background-color: #ffeee6;
+        border: 1px solid #fbd4c0;
     }
 }
