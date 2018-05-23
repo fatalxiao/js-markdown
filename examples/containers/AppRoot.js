@@ -10,6 +10,7 @@ import MarkDownData from 'assets/MarkDown.md';
 import 'sass/global.scss';
 import 'assets/sass/MarkDownEditor.scss';
 import 'github-markdown-css';
+import 'assets/sass/selfDefinedSyntax.scss';
 
 class AppRoot extends Component {
 
