@@ -1,9 +1,6 @@
 .markdown-body {
 
-    info,
-    warning,
-    success,
-    error {
+    mark {
         display: block;
         overflow: auto;
         font-size: 85%;
@@ -15,25 +12,25 @@
         & > :last-child {
             margin-bottom: 0;
         }
-    }
 
-    info {
-        background-color: #eaf8fe;
-        border: 1px solid #beecfd;
-    }
+        &[info] {
+            background-color: #eaf8fe;
+            border: 1px solid #beecfd;
+        }
 
-    warning {
-        background-color: #fff7e6;
-        border: 1px solid #f8dfad;
-    }
+        &[warning] {
+            background-color: #fff7e6;
+            border: 1px solid #f8dfad;
+        }
 
-    success {
-        background-color: #f3faf0;
-        border: 1px solid #dff4d6;
-    }
+        &[success] {
+            background-color: #f3faf0;
+            border: 1px solid #dff4d6;
+        }
 
-    error {
-        background-color: #ffeee6;
-        border: 1px solid #fbd4c0;
+        &[error] {
+            background-color: #ffeee6;
+            border: 1px solid #fbd4c0;
+        }
     }
 }
