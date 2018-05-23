@@ -18,10 +18,14 @@ class AppRoot extends Component {
 
         super(props);
 
+        this.parseOption = {
+            dialect: Markdown.Dialect.DERBY
+        };
+
         this.state = {
 
             data: MarkDownData,
-            markdownHTML: Markdown.parse(MarkDownData),
+            markdownHTML: Markdown.parse(MarkDownData, this.parseOption),
 
             editorWidthPerCent: .5,
 
@@ -41,7 +45,7 @@ class AppRoot extends Component {
         if (data !== this.state.data) {
             this.setState({
                 data,
-                markdownHTML: Markdown.parse(data)
+                markdownHTML: Markdown.parse(data, this.parseOption)
             });
         }
     }
