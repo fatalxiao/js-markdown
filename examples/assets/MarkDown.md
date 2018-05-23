@@ -1261,19 +1261,23 @@ Markdown provides backslash escapes for the following characters:
 ### Message Box
 
 ```info
-info
+**Info**  
+This is an info message box.
 ```
 
 ```warning
-warning
+**Warning**  
+This is a warning message box.
 ```
 
 ```success
-success
+**Success**  
+This is a success message box.
 ```
 
 ```error
-error
+**Error**  
+This is a error message box.
 ```
 
 
