@@ -2,7 +2,7 @@
 
 import MetaData from './block/MetaData';
 import AtxHeader from './block/AtxHeader';
-import MsgBox from './block/MsgBox';
+import Mark from './block/Mark';
 import SetextHeader from './block/SetextHeader';
 import BlockCode from './block/BlockCode';
 import HorizontalRule from './block/HorizontalRule';
@@ -51,7 +51,7 @@ export default {
 
     DERBY: {
         blockTypes: [
-            'AtxHeader', 'MsgBox', 'BlockCode', 'SetextHeader', 'HorizontalRule', 'Table', 'List', 'Blockquote',
+            'AtxHeader', 'Mark', 'BlockCode', 'SetextHeader', 'HorizontalRule', 'Table', 'List', 'Blockquote',
             'Footnote', 'ReferenceDefine', 'MetaData', 'Paragraph'
         ],
         inlineTypes: {
@@ -70,7 +70,7 @@ export default {
     // block
     MetaData,
     AtxHeader,
-    MsgBox,
+    Mark,
     SetextHeader,
     BlockCode,
     HorizontalRule,
