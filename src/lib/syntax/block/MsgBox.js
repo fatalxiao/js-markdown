@@ -49,25 +49,29 @@ function parse(line, index, lines, renderTree) {
         return;
     }
 
-    let codeContent = [];
+    const block = { // blockquote root node
+            type: 'MsgBox',
+            msgType: result[2],
+            children: []
+        },
+        content = [];
     index++;
     for (let len = lines.length; index < len; index++) {
         if (Str.trimEnd(lines[index], ' \t') === result[1]) {
             break;
         }
-        codeContent.push(lines[index]);
+        content.push(lines[index]);
     }
 
-    return [{
-        type: 'MsgBox',
-        msgType: result[2],
-        rawValue: Str.encodeHTML(Util.trimEndBlankLines(codeContent).join('\n'))
-    }, index];
+    // parse recursively
+    this.parseBlocks(content, block);
+
+    return [block, index];
 
 }
 
 function render(data = '', node) {
-    return `<pre ${node.msgType}><code>${node.rawValue || ''}${data}</code></pre>`;
+    return `<${node.msgType}>${node.rawValue || ''}${data}</${node.msgType}>`;
 }
 
 export default {
