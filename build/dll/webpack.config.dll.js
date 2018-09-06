@@ -12,7 +12,7 @@ module.exports = {
     mode: 'production',
 
     entry: {
-        'polyfill': ['babel-polyfill'],
+        'polyfill': ['@babel/polyfill'],
         'react': ['react', 'react-dom'],
         'brace': ['brace'],
         'editor': ['react-ace']
