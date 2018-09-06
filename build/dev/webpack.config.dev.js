@@ -3,7 +3,6 @@ const webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin'),
 
-    config = require('../config.js'),
     baseWebpackConfig = require('../webpack.config.base.js'),
 
     env = process.env.NODE_ENV;
@@ -33,7 +32,6 @@ module.exports = merge(baseWebpackConfig, {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './examples/index.html',
-            // favicon: './examples/assets/images/favicon.ico',
             inject: true
         }),
 
