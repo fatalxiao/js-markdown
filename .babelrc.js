@@ -59,7 +59,7 @@ const presets = [
 module.exports = {
     'env': {
 
-        // 开发环境
+        // dev
         'development': {
             presets,
             plugins: [
@@ -68,7 +68,7 @@ module.exports = {
             ]
         },
 
-        // 测试用例专用
+        // test unit
         'test': {
             'presets': [
                 '@babel/preset-env',
@@ -76,7 +76,7 @@ module.exports = {
             ]
         },
 
-        // production 打包环境
+        // production
         'production': packageConfig
 
     }
