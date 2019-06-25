@@ -30,7 +30,7 @@ function isInlineMatch(line) {
 
 function parse(line, index, lines, renderTree) {
 
-    let result = line.match(/^([`~]{3,})\s*((info|warning|success|error)??)(?:\n|$)/);
+    let result = line.match(/^([`~]{3,})\s*(info|warning|success|error)(?:\n|$)/);
 
     if (!result) {
         return;
