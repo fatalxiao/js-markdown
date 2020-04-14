@@ -1179,6 +1179,8 @@ As of this writing, Markdown has no syntax for specifying the
 dimensions of an image; if this is important to you, you can simply
 use regular HTML `<img>` tags.
 
+![Alcedo-UI LOGO](https://raw.githubusercontent.com/alcedo-ui/alcedo-ui/master/assets/alcedo-logo.png)
+
 
 * * *
 
