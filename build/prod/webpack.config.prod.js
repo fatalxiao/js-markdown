@@ -3,8 +3,8 @@ const path = require('path'),
     merge = require('webpack-merge'),
     CopyPlugin = require('copy-webpack-plugin'),
     HtmlPlugin = require('html-webpack-plugin'),
-    HtmlIncludeAssetsPlugin = require('html-webpack-include-assets-plugin'),
-    CompressionPlugin = require('compression-webpack-plugin'),
+    HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin'),
+    // CompressionPlugin = require('compression-webpack-plugin'),
 
     config = require('../config.js'),
     baseWebpackConfig = require('../webpack.config.base.js'),
@@ -79,28 +79,27 @@ module.exports = merge(baseWebpackConfig, {
             minify: {
                 removeComments: true,
                 collapseWhitespace: true
-            },
-            chunksSortMode: 'dependency'
+            }
         }),
 
-        new HtmlIncludeAssetsPlugin({
-            assets: [
+        new HtmlWebpackTagsPlugin({
+            tags: [
                 vendorsAssets['polyfill'].js,
                 vendorsAssets['react'].js,
                 vendorsAssets['brace'].js,
                 vendorsAssets['editor'].js
             ],
             append: false
-        }),
-
-        new CompressionPlugin({
-            test: new RegExp('\\.(' + config.productionGzipExtensions.join('|') + ')$'),
-            cache: true,
-            filename: '[path].gz[query]',
-            algorithm: 'gzip',
-            threshold: 1,
-            minRatio: 0.8
         })
+
+        // new CompressionPlugin({
+        //     test: new RegExp('\\.(' + config.productionGzipExtensions.join('|') + ')$'),
+        //     cache: true,
+        //     filename: '[path].gz[query]',
+        //     algorithm: 'gzip',
+        //     threshold: 1,
+        //     minRatio: 0.8
+        // })
 
     ]
 
