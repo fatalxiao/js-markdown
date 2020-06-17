@@ -1,3 +1,13 @@
+/**
+ * @file Event.js
+ */
+
+/**
+ * bind new event
+ * @param el
+ * @param type
+ * @param cb
+ */
 function addEvent(el, type, cb) {
     if (typeof window.addEventListener === 'function') {
         el.addEventListener(type, cb, false);
@@ -8,6 +18,12 @@ function addEvent(el, type, cb) {
     }
 }
 
+/**
+ * unbind event
+ * @param el
+ * @param type
+ * @param cb
+ */
 function removeEvent(el, type, cb) {
     if (typeof window.removeEventListener === 'function') {
         el.removeEventListener(type, cb, false);

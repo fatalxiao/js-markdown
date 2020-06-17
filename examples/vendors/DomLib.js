@@ -1,3 +1,12 @@
+/**
+ * @file DomLib.js
+ */
+
+/**
+ * get element offset top and offset left
+ * @param el
+ * @returns {{top: number, left: number}}
+ */
 function getOffset(el) {
     let offset = {
         top: el.offsetTop,
