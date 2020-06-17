@@ -2,7 +2,7 @@
  * @file AppRoot.js
  */
 
-import React, {Component} from 'react';
+import React, {useState, useEffect, useCallback, useRef} from 'react';
 
 // Statics
 import MarkDownData from 'assets/MarkDown.md';
@@ -20,126 +20,115 @@ import 'assets/sass/MarkDownEditor.scss';
 import 'github-markdown-css';
 import 'assets/sass/selfDefinedSyntax.scss';
 
-class AppRoot extends Component {
+function AppRoot() {
 
-    constructor(props) {
-
-        super(props);
-
-        this.parseOption = {
+    const PARSE_OPTION = {
             dialect: Markdown.Dialect.DERBY
-        };
+        },
 
-        this.state = {
+        markdownBody = useRef(null),
 
-            data: MarkDownData,
-            markdownHTML: Markdown.parse(MarkDownData, this.parseOption),
+        [data, setData] = useState(MarkDownData),
+        [markdownHTML, setMarkdownHTML] = useState(Markdown.parse(MarkDownData, PARSE_OPTION)),
+        [isResizing, setIsResizing] = useState(false),
+        [editorWidthPerCent, setEditorWidthPerCent] = useState(.5),
 
-            editorWidthPerCent: .5,
+        markdownBodyWidth = window.innerWidth * (1 - editorWidthPerCent),
 
-            isResizing: false
+        /**
+         * handle md text changed
+         */
+        handleChange = useCallback(nextData => {
+            if (nextData !== data) {
+                setData(nextData);
+                setMarkdownHTML(Markdown.parse(nextData, PARSE_OPTION));
+            }
+        }),
 
-        };
+        /**
+         * handle mouse down when start dragging edge
+         */
+        handleMouseDown = useCallback(() => setIsResizing(true)),
 
-    }
+        /**
+         * handle mouse move when dragging edge
+         */
+        handleMouseMove = useCallback(() => {
 
-    componentDidMount() {
+            if (!isResizing) {
+                return;
+            }
 
+            setEditorWidthPerCent((window.innerWidth - e.clientX) / window.innerWidth);
+
+        }),
+
+        /**
+         * handle mouse up to stop dragging
+         */
+        handleMouseUp = useCallback(() => setIsResizing(false)),
+
+        /**
+         * sync html scroll top when editor scrolling
+         */
+        handleScroll = useCallback(editor =>
+            markdownBody.current.scrollTop = (markdownBody.current.scrollHeight - window.innerHeight)
+                * (editor.renderer.scrollTop / (editor.renderer.layerConfig.maxHeight - editor.renderer.layerConfig.height))
+        );
+
+    useEffect(() => {
+
+        // mount
         document.getElementById('loading').style.display = 'none';
 
-        Event.addEvent(document, 'mousemove', this.handleMouseMove);
-        Event.addEvent(document, 'mouseup', this.handleMouseUp);
+        Event.addEvent(document, 'mousemove', handleMouseMove);
+        Event.addEvent(document, 'mouseup', handleMouseUp);
 
-    }
+        // unmount
+        return () => {
+            Event.removeEvent(document, 'mousemove', handleMouseMove);
+            Event.removeEvent(document, 'mouseup', handleMouseUp);
+        };
 
-    componentWillUnmount() {
-        Event.removeEvent(document, 'mousemove', this.handleMouseMove);
-        Event.removeEvent(document, 'mouseup', this.handleMouseUp);
-    }
+    }, []);
 
-    handleChange = data => {
-        if (data !== this.state.data) {
-            this.setState({
-                data,
-                markdownHTML: Markdown.parse(data, this.parseOption)
-            });
-        }
-    };
+    return (
+        <div className={`mark-down-editor-wrapper ${isResizing ? 'resizing' : ''}`}>
 
-    handleScroll = editor => {
-        this.markdownBodyEl.scrollTop =
-            (this.markdownBodyEl.scrollHeight - window.innerHeight)
-            *
-            (editor.renderer.scrollTop / (editor.renderer.layerConfig.maxHeight - editor.renderer.layerConfig.height));
-    };
+            <div ref={markdownBody}
+                 className="markdown-body"
+                 style={{width: markdownBodyWidth}}
+                 dangerouslySetInnerHTML={{__html: markdownHTML}}></div>
 
-    handleMouseDown = () => {
-        this.setState({
-            isResizing: true
-        });
-    };
+            <AceEditor className="mark-down-editor"
+                       style={{left: markdownBodyWidth}}
+                       width={`calc(100% - ${markdownBodyWidth}px)`}
+                       height="100%"
+                       mode="markdown"
+                       theme="monokai"
+                       focus={true}
+                       fontSize={14}
+                       showPrintMargin={false}
+                       showGutter={false}
+                       highlightActiveLine={true}
+                       setOptions={{
+                           enableBasicAutocompletion: false,
+                           enableLiveAutocompletion: false,
+                           enableSnippets: false,
+                           showLineNumbers: false,
+                           scrollPastEnd: .4,
+                           tabSize: 4
+                       }}
+                       value={data}
+                       onChange={handleChange}
+                       onScroll={handleScroll}/>
 
-    handleMouseMove = e => {
+            <div className="drag-edge"
+                 style={{left: markdownBodyWidth - 4}}
+                 onMouseDown={handleMouseDown}></div>
 
-        if (!this.state.isResizing) {
-            return;
-        }
-
-        this.setState({
-            editorWidthPerCent: (window.innerWidth - e.clientX) / window.innerWidth
-        });
-
-    };
-
-    handleMouseUp = () => {
-        this.setState({
-            isResizing: false
-        });
-    };
-
-    render() {
-
-        const {data, markdownHTML, editorWidthPerCent, isResizing} = this.state,
-            markdownBodyWidth = window.innerWidth * (1 - editorWidthPerCent);
-
-        return (
-            <div className={`mark-down-editor-wrapper ${isResizing ? 'resizing' : ''}`}>
-
-                <div ref={el => this.markdownBodyEl = el}
-                     className="markdown-body"
-                     style={{width: markdownBodyWidth}}
-                     dangerouslySetInnerHTML={{__html: markdownHTML}}></div>
-
-                <AceEditor className="mark-down-editor"
-                           style={{left: markdownBodyWidth}}
-                           width={`calc(100% - ${markdownBodyWidth}px)`}
-                           height="100%"
-                           mode="markdown"
-                           theme="monokai"
-                           focus={true}
-                           fontSize={14}
-                           showPrintMargin={false}
-                           showGutter={false}
-                           highlightActiveLine={true}
-                           setOptions={{
-                               enableBasicAutocompletion: false,
-                               enableLiveAutocompletion: false,
-                               enableSnippets: false,
-                               showLineNumbers: false,
-                               scrollPastEnd: .4,
-                               tabSize: 4
-                           }}
-                           value={data}
-                           onChange={this.handleChange}
-                           onScroll={this.handleScroll}/>
-
-                <div className="drag-edge"
-                     style={{left: markdownBodyWidth - 4}}
-                     onMouseDown={this.handleMouseDown}></div>
-
-            </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default AppRoot;
