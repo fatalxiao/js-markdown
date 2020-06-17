@@ -1,12 +1,20 @@
+/**
+ * @file AppRoot.js
+ */
+
 import React, {Component} from 'react';
+
+// Statics
+import MarkDownData from 'assets/MarkDown.md';
+
+// Vendors
 import AceEditor from 'react-ace';
 import 'brace/mode/markdown';
 import 'brace/theme/monokai';
-
 import Markdown from 'src';
 import Event from 'vendors/Event';
-import MarkDownData from 'assets/MarkDown.md';
 
+// Styles
 import 'sass/global.scss';
 import 'assets/sass/MarkDownEditor.scss';
 import 'github-markdown-css';
@@ -33,37 +41,45 @@ class AppRoot extends Component {
 
         };
 
-        this.changeHandler = ::this.changeHandler;
-        this.editorScrollHandler = ::this.editorScrollHandler;
-        this.mouseDownHandler = ::this.mouseDownHandler;
-        this.mouseMoveHandler = ::this.mouseMoveHandler;
-        this.mouseUpHandler = ::this.mouseUpHandler;
+    }
+
+    componentDidMount() {
+
+        document.getElementById('loading').style.display = 'none';
+
+        Event.addEvent(document, 'mousemove', this.handleMouseMove);
+        Event.addEvent(document, 'mouseup', this.handleMouseUp);
 
     }
 
-    changeHandler(data) {
+    componentWillUnmount() {
+        Event.removeEvent(document, 'mousemove', this.handleMouseMove);
+        Event.removeEvent(document, 'mouseup', this.handleMouseUp);
+    }
+
+    handleChange = data => {
         if (data !== this.state.data) {
             this.setState({
                 data,
                 markdownHTML: Markdown.parse(data, this.parseOption)
             });
         }
-    }
+    };
 
-    editorScrollHandler(editor) {
+    handleScroll = editor => {
         this.markdownBodyEl.scrollTop =
             (this.markdownBodyEl.scrollHeight - window.innerHeight)
             *
             (editor.renderer.scrollTop / (editor.renderer.layerConfig.maxHeight - editor.renderer.layerConfig.height));
-    }
+    };
 
-    mouseDownHandler() {
+    handleMouseDown = () => {
         this.setState({
             isResizing: true
         });
-    }
+    };
 
-    mouseMoveHandler(e) {
+    handleMouseMove = e => {
 
         if (!this.state.isResizing) {
             return;
@@ -73,54 +89,29 @@ class AppRoot extends Component {
             editorWidthPerCent: (window.innerWidth - e.clientX) / window.innerWidth
         });
 
-    }
+    };
 
-    mouseUpHandler() {
+    handleMouseUp = () => {
         this.setState({
             isResizing: false
         });
-    }
-
-    componentDidMount() {
-
-        document.getElementById('loading').style.display = 'none';
-
-        Event.addEvent(document, 'mousemove', this.mouseMoveHandler);
-        Event.addEvent(document, 'mouseup', this.mouseUpHandler);
-
-    }
-
-    componentWillUnmount() {
-        Event.removeEvent(document, 'mousemove', this.mouseMoveHandler);
-        Event.removeEvent(document, 'mouseup', this.mouseUpHandler);
-    }
+    };
 
     render() {
 
         const {data, markdownHTML, editorWidthPerCent, isResizing} = this.state,
-
-            markdownBodyWidth = window.innerWidth * (1 - editorWidthPerCent),
-
-            markdownBodyStyle = {
-                width: markdownBodyWidth
-            },
-            markDownEditorStyle = {
-                left: markdownBodyWidth
-            },
-            dragEdgeStyle = {
-                left: markdownBodyWidth - 4
-            };
+            markdownBodyWidth = window.innerWidth * (1 - editorWidthPerCent);
 
         return (
             <div className={`mark-down-editor-wrapper ${isResizing ? 'resizing' : ''}`}>
 
                 <div ref={el => this.markdownBodyEl = el}
                      className="markdown-body"
-                     style={markdownBodyStyle}
+                     style={{width: markdownBodyWidth}}
                      dangerouslySetInnerHTML={{__html: markdownHTML}}></div>
 
                 <AceEditor className="mark-down-editor"
-                           style={markDownEditorStyle}
+                           style={{left: markdownBodyWidth}}
                            width={`calc(100% - ${markdownBodyWidth}px)`}
                            height="100%"
                            mode="markdown"
@@ -139,12 +130,12 @@ class AppRoot extends Component {
                                tabSize: 4
                            }}
                            value={data}
-                           onChange={this.changeHandler}
-                           onScroll={this.editorScrollHandler}/>
+                           onChange={this.handleChange}
+                           onScroll={this.handleScroll}/>
 
                 <div className="drag-edge"
-                     style={dragEdgeStyle}
-                     onMouseDown={this.mouseDownHandler}></div>
+                     style={{left: markdownBodyWidth - 4}}
+                     onMouseDown={this.handleMouseDown}></div>
 
             </div>
         );
