@@ -4,6 +4,9 @@
 
 import React, {useState, useEffect, useCallback, useRef} from 'react';
 
+// Markdown Compiler
+import Markdown from 'src';
+
 // Statics
 import MarkDownData from 'assets/MarkDown.md';
 
@@ -11,7 +14,6 @@ import MarkDownData from 'assets/MarkDown.md';
 import AceEditor from 'react-ace';
 import 'brace/mode/markdown';
 import 'brace/theme/monokai';
-import Markdown from 'src';
 import Event from 'vendors/Event';
 
 // Styles
