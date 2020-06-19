@@ -15,7 +15,6 @@ module.exports = {
         'polyfill': ['@babel/polyfill'],
         'react': ['react', 'react-dom'],
         'brace': ['brace'],
-        'editor': ['react-ace']
     },
 
     output: {
