@@ -1,5 +1,5 @@
 /**
- * @file AppRoot.js
+ * @file Editor.js
  */
 
 import React, {useState, useEffect, useCallback, useRef} from 'react';
@@ -8,13 +8,13 @@ import React, {useState, useEffect, useCallback, useRef} from 'react';
 import Markdown from 'src';
 
 // Statics
-import MarkDownData from 'assets/MarkDown.md';
+import MarkDownData from 'MarkDown.md';
 
 // Vendors
 import AceEditor from 'react-ace';
 import 'brace/mode/markdown';
 import 'brace/theme/monokai';
-import Event from 'vendors/Event';
+import {addEvent, removeEvent} from 'examples/lib/Event';
 
 // Styles
 import 'sass/global.scss';
@@ -22,7 +22,7 @@ import 'assets/sass/MarkDownEditor.scss';
 import 'github-markdown-css';
 import 'assets/sass/selfDefinedSyntax.scss';
 
-function AppRoot() {
+function Editor() {
 
     const PARSE_OPTION = {
             dialect: Markdown.Dialect.DERBY
@@ -83,13 +83,13 @@ function AppRoot() {
         // mount
         document.getElementById('loading').style.display = 'none';
 
-        Event.addEvent(document, 'mousemove', handleMouseMove);
-        Event.addEvent(document, 'mouseup', handleMouseUp);
+        addEvent(document, 'mousemove', handleMouseMove);
+        addEvent(document, 'mouseup', handleMouseUp);
 
         // unmount
         return () => {
-            Event.removeEvent(document, 'mousemove', handleMouseMove);
-            Event.removeEvent(document, 'mouseup', handleMouseUp);
+            removeEvent(document, 'mousemove', handleMouseMove);
+            removeEvent(document, 'mouseup', handleMouseUp);
         };
 
     }, []);
@@ -133,4 +133,4 @@ function AppRoot() {
     );
 }
 
-export default AppRoot;
+export default Editor;

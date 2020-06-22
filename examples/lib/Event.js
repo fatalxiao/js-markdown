@@ -8,7 +8,7 @@
  * @param type
  * @param cb
  */
-function addEvent(el, type, cb) {
+export function addEvent(el, type, cb) {
     if (typeof window.addEventListener === 'function') {
         el.addEventListener(type, cb, false);
     } else if (typeof document.attachEvent === 'function') {
@@ -24,7 +24,7 @@ function addEvent(el, type, cb) {
  * @param type
  * @param cb
  */
-function removeEvent(el, type, cb) {
+export function removeEvent(el, type, cb) {
     if (typeof window.removeEventListener === 'function') {
         el.removeEventListener(type, cb, false);
     } else if (typeof document.detachEvent === 'function') {

@@ -1,12 +1,17 @@
+/**
+ * @file index.js
+ */
+
 'use strict';
 
 import '@babel/polyfill';
+
 import React from 'react';
 import {render} from 'react-dom';
 
-import AppRoot from 'containers/AppRoot';
+import Editor from 'Editor';
 
 render(
-    <AppRoot/>,
+    <Editor/>,
     document.getElementById('app-container')
 );
