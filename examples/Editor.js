@@ -8,13 +8,13 @@ import React, {useState, useEffect, useCallback, useRef} from 'react';
 import Markdown from 'src';
 
 // Statics
-import MarkDownData from 'MarkDown.md';
+import MarkDownData from 'assets/MarkDown.md';
 
 // Vendors
 import AceEditor from 'react-ace';
 import 'brace/mode/markdown';
 import 'brace/theme/monokai';
-import {addEvent, removeEvent} from 'examples/lib/Event';
+import {addEvent, removeEvent} from './lib/Event';
 
 // Styles
 import 'sass/global.scss';
@@ -22,7 +22,7 @@ import 'assets/sass/MarkDownEditor.scss';
 import 'github-markdown-css';
 import 'assets/sass/selfDefinedSyntax.scss';
 
-function Editor() {
+export default function Editor() {
 
     const PARSE_OPTION = {
             dialect: Markdown.Dialect.DERBY
@@ -132,5 +132,3 @@ function Editor() {
         </div>
     );
 }
-
-export default Editor;
