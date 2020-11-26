@@ -34,7 +34,7 @@ export default {
     DEFAULT: {
         blockTypes: [
             'AtxHeader', 'BlockCode', 'SetextHeader', 'HorizontalRule', 'Table', 'List', 'Blockquote',
-            'Footnote', 'ReferenceDefine', 'MetaData', 'Paragraph'
+            'Footnote', 'ReferenceDefine'/*, 'MetaData'*/, 'Paragraph'
         ],
         inlineTypes: {
             '\\': 'Escaped',
@@ -52,7 +52,7 @@ export default {
     DERBY: {
         blockTypes: [
             'AtxHeader', 'Mark', 'BlockCode', 'SetextHeader', 'HorizontalRule', 'Table', 'List', 'Blockquote',
-            'Footnote', 'ReferenceDefine', 'MetaData', 'Paragraph'
+            'Footnote', 'ReferenceDefine'/*, 'MetaData'*/, 'Paragraph'
         ],
         inlineTypes: {
             '\\': 'Escaped',
