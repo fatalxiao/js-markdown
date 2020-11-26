@@ -1,12 +1,3 @@
-name:        js-markdown
-author:      falalxiao
-description: A markdown language js compiler.
-repository:  https://github.com/fatalxiao/js-markdown
-homepage:    https://fatalxiao.github.io/js-markdown
-license:     MIT
-
-
-
 Markdown: Syntax
 ================
 
