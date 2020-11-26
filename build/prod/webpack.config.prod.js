@@ -1,6 +1,6 @@
 const path = require('path'),
     webpack = require('webpack'),
-    merge = require('webpack-merge'),
+    {merge} = require('webpack-merge'),
     CopyPlugin = require('copy-webpack-plugin'),
     HtmlPlugin = require('html-webpack-plugin'),
     HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin'),
