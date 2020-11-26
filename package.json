@@ -1,7 +1,7 @@
 {
     "name": "js-markdown",
     "author": "falalxiao",
-    "version": "1.1.4",
+    "version": "1.1.5",
     "description": "A markdown language js compiler.",
     "main": "./src/index.js",
     "scripts": {
